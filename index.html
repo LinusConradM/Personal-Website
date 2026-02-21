@@ -1453,12 +1453,16 @@
         m => m.getAttribute('onclick') && m.getAttribute('onclick').includes("'" + tabName + "'")
       );
       if (menuEl) menuEl.classList.add('active');
-      // Hide popup and scroll back to top of new tab (desktop + mobile)
+      // Hide popup and scroll to the tab ribbon (desktop + mobile)
       const popup = document.getElementById('nav-popup');
       if (popup) popup.classList.remove('visible');
       const content = document.querySelector('.content');
       if (content) content.scrollTop = 0;
-      window.scrollTo(0, 0);
+      // On mobile the window scrolls; scroll so the tab ribbon (not the sidebar) is at the top
+      if (window.innerWidth <= 900) {
+        const tabRibbon = document.querySelector('.menu');
+        if (tabRibbon) tabRibbon.scrollIntoView({ behavior: 'instant' });
+      }
     }
 
     // ── Scroll-driven timeline line (lerp — trails behind scroll) ──

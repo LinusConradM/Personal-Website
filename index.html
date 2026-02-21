@@ -787,6 +787,93 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ─── EXPLORE MORE POPUP ──────────────────────── */
+    .nav-popup {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(26, 35, 126, 0.2);
+      padding: 1rem 1.2rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transform: translateY(140%);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      pointer-events: none;
+      border: 1px solid #E3E8FF;
+    }
+
+    .nav-popup.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-popup-label {
+      font-size: 0.72rem;
+      color: #90A4AE;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      margin: 0;
+    }
+
+    .nav-popup-btns {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .nav-popup-btn {
+      background: linear-gradient(135deg, #1A237E, #283593);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .nav-popup-btn:hover {
+      background: linear-gradient(135deg, #283593, #3949AB);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 35, 126, 0.25);
+    }
+
+    .nav-popup-btn.certs-btn {
+      background: linear-gradient(135deg, #4A148C, #6A1B9A);
+    }
+
+    .nav-popup-btn.certs-btn:hover {
+      background: linear-gradient(135deg, #6A1B9A, #7B1FA2);
+      box-shadow: 0 4px 12px rgba(74, 20, 140, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .nav-popup {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+      }
+
+      .nav-popup-btns {
+        flex-direction: column;
+      }
+
+      .nav-popup-btn {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -1340,6 +1427,20 @@
         </div>
 
       </div><!-- /content -->
+
+        <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
+        <div id="nav-popup" class="nav-popup">
+          <p class="nav-popup-label">What's next?</p>
+          <div class="nav-popup-btns">
+            <button class="nav-popup-btn" onclick="showTab('projects', null)">
+              <i class="fa fa-code"></i> Projects
+            </button>
+            <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)">
+              <i class="fa fa-certificate"></i> Certifications
+            </button>
+          </div>
+        </div>
+
     </div><!-- /main -->
   </div><!-- /container -->
 
@@ -1348,7 +1449,15 @@
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
       document.getElementById(tabName).classList.add('active');
-      if (el) el.classList.add('active');
+      const menuEl = el || [...document.querySelectorAll('.menu-item')].find(
+        m => m.getAttribute('onclick') && m.getAttribute('onclick').includes("'" + tabName + "'")
+      );
+      if (menuEl) menuEl.classList.add('active');
+      // Hide popup and scroll back to top of new tab
+      const popup = document.getElementById('nav-popup');
+      if (popup) popup.classList.remove('visible');
+      const content = document.querySelector('.content');
+      if (content) content.scrollTop = 0;
     }
 
     // ── Scroll-driven timeline line (lerp — trails behind scroll) ──
@@ -1399,6 +1508,28 @@
       // Initialise without animation
       target = current = calcTarget();
       timeline.style.setProperty('--line-height', (current * 100) + '%');
+    })();
+
+    // ── Explore-more popup: appears when About tab is scrolled to the bottom ──
+    (function () {
+      const content = document.querySelector('.content');
+      const popup = document.getElementById('nav-popup');
+      if (!content || !popup) return;
+
+      function checkScroll() {
+        const aboutPanel = document.getElementById('about');
+        if (!aboutPanel.classList.contains('active')) {
+          popup.classList.remove('visible');
+          return;
+        }
+        const threshold = 80;
+        const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - threshold;
+        popup.classList.toggle('visible', atBottom);
+      }
+
+      content.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
     })();
   </script>
 </body>

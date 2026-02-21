@@ -1203,7 +1203,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card" id="goals-section">
             <h2>Personal Goals and Motivation</h2>
             <p>As a Data Scientist and AI/ML Engineer, my core goal is to build intelligent systems that drive
               meaningful, measurable impact—whether that’s accelerating scientific research, enhancing operational
@@ -1453,11 +1453,12 @@
         m => m.getAttribute('onclick') && m.getAttribute('onclick').includes("'" + tabName + "'")
       );
       if (menuEl) menuEl.classList.add('active');
-      // Hide popup and scroll back to top of new tab
+      // Hide popup and scroll back to top of new tab (desktop + mobile)
       const popup = document.getElementById('nav-popup');
       if (popup) popup.classList.remove('visible');
       const content = document.querySelector('.content');
       if (content) content.scrollTop = 0;
+      window.scrollTo(0, 0);
     }
 
     // ── Scroll-driven timeline line (lerp — trails behind scroll) ──
@@ -1510,26 +1511,29 @@
       timeline.style.setProperty('--line-height', (current * 100) + '%');
     })();
 
-    // ── Explore-more popup: appears when About tab is scrolled to the bottom ──
+    // ── Explore-more popup: appears when "Personal Goals" card enters view ──
     (function () {
       const content = document.querySelector('.content');
       const popup = document.getElementById('nav-popup');
       if (!content || !popup) return;
 
-      function checkScroll() {
+      function checkGoalsVisible() {
         const aboutPanel = document.getElementById('about');
         if (!aboutPanel.classList.contains('active')) {
           popup.classList.remove('visible');
           return;
         }
-        const threshold = 80;
-        const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - threshold;
-        popup.classList.toggle('visible', atBottom);
+        const goalsSection = document.getElementById('goals-section');
+        if (!goalsSection) return;
+        // getBoundingClientRect works for both desktop (.content scroll) and mobile (window scroll)
+        const rect = goalsSection.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        popup.classList.toggle('visible', inView);
       }
 
-      content.addEventListener('scroll', checkScroll, { passive: true });
-      window.addEventListener('scroll', checkScroll, { passive: true });
-      window.addEventListener('resize', checkScroll, { passive: true });
+      content.addEventListener('scroll', checkGoalsVisible, { passive: true });
+      window.addEventListener('scroll', checkGoalsVisible, { passive: true });
+      window.addEventListener('resize', checkGoalsVisible, { passive: true });
     })();
   </script>
 </body>

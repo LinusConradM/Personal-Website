@@ -649,22 +649,45 @@
 
     /* ─── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 900px) {
+      body, html {
+        height: auto;
+      }
+
       .container {
         flex-direction: column;
+        height: auto;
+        min-height: 100vh;
       }
 
       .sidebar {
         position: relative;
         width: 100%;
         height: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+
+      .avatar {
+        width: 160px;
+        height: 160px;
+      }
+
+      .sidebar .tagline {
+        text-align: center;
       }
 
       .main {
         margin-left: 0;
         width: 100%;
+        height: auto;
+      }
+
+      .content {
+        overflow-y: visible;
+        height: auto;
+        flex: none;
       }
 
       .edu-grid,
@@ -697,18 +720,58 @@
     }
 
     @media (max-width: 600px) {
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .sidebar {
+        padding: 1.5rem 1rem;
+      }
+
       .sidebar h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+      }
+
+      .sidebar h2 {
+        font-size: 0.82rem;
+      }
+
+      .sidebar .tagline {
+        font-size: 0.83rem;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .menu-item {
+        padding: 0.8rem 1rem;
+        font-size: 0.82rem;
       }
 
       .skills-grid {
         grid-template-columns: 1fr 1fr;
       }
 
+      .tl-box {
+        padding: 0.8rem;
+      }
+
+      .cert-badge {
+        width: 100px;
+        height: 100px;
+      }
+
       .cert-row {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 1rem;
       }
 
       .cert-details {
@@ -1290,14 +1353,14 @@
       let current = 0;   // where the line actually is right now
       let rafId = null;
 
+      // Works for both desktop (content div scrolls) and mobile (window scrolls)
+      // by using viewport-relative positions from getBoundingClientRect
       function calcTarget() {
-        const contentRect = content.getBoundingClientRect();
         const timelineRect = timeline.getBoundingClientRect();
-        const timelineTop = timelineRect.top - contentRect.top + content.scrollTop;
         const timelineH = timeline.offsetHeight;
-        const contentH = content.clientHeight;
-        const scrolled = content.scrollTop - (timelineTop - contentH);
-        return Math.min(Math.max(scrolled / timelineH, 0), 1);
+        const viewportH = window.innerHeight;
+        const scrolledPast = viewportH - timelineRect.top;
+        return Math.min(Math.max(scrolledPast / timelineH, 0), 1);
       }
 
       function tick() {
@@ -1313,10 +1376,14 @@
         }
       }
 
-      content.addEventListener('scroll', function () {
+      function onScroll() {
         target = calcTarget();
         if (!rafId) rafId = requestAnimationFrame(tick);
-      }, { passive: true });
+      }
+
+      // Listen on both the content div (desktop) and window (mobile)
+      content.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
 
       // Initialise without animation
       target = current = calcTarget();

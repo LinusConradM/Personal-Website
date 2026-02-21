@@ -1,0 +1,1 @@
+/* Unused – script is embedded in index.html */

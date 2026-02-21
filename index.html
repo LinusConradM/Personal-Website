@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    /* ─── SIDEBAR ─────────────────────────────────── */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 38%;
+      background: linear-gradient(160deg, #1A237E 0%, #0D1452 100%);
+      color: white;
+      padding: 2rem 1.8rem;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5C6BC0, #9575CD);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.8rem;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      letter-spacing: 2px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .sidebar h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #B0BEC5;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .sidebar .tagline {
+      font-size: 0.88rem;
+      color: #CFD8DC;
+      line-height: 1.65;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 1.5rem;
+      font-size: 0.83rem;
+      color: #B0BEC5;
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .contact-info i {
+      color: #7986CB;
+      width: 16px;
+    }
+
+    .links {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .btn-link {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s;
+    }
+
+    .btn-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ─── MAIN PANEL ──────────────────────────────── */
+    .main {
+      margin-left: 38%;
+      width: 62%;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .menu {
+      background: #283593;
+      color: white;
+      display: flex;
+      padding: 0;
+      flex-shrink: 0;
+      overflow-x: auto;
+    }
+
+    .menu-item {
+      padding: 1rem 1.4rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .menu-item:hover,
+    .menu-item.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom-color: #7986CB;
+      color: #C5CAE9;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      background-color: #F5F7FA;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────── */
+    .content h2 {
+      font-size: 1.35rem;
+      color: #1A237E;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #E3E8FF;
+    }
+
+    .content h3 {
+      font-size: 1.05rem;
+      color: #283593;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .content p {
+      font-size: 0.92rem;
+      color: #455A64;
+      line-height: 1.7;
+      margin-bottom: 0.7rem;
+    }
+
+    /* ─── SECTION CARD ───────────────────────────── */
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ─── EDUCATION ROWS ─────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .edu-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      background: #F8F9FF;
+      border: 1px solid #E3E8FF;
+      border-radius: 8px;
+      padding: 0.9rem;
+    }
+
+    .org-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.7rem;
+      color: white;
+      text-align: center;
+      line-height: 1.2;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .edu-text .degree {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #1A237E;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-text .school {
+      font-size: 0.82rem;
+      color: #607D8B;
+      font-style: italic;
+    }
+
+    .edu-text .year {
+      font-size: 0.78rem;
+      color: #90A4AE;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── TIMELINE ───────────────────────────────── */
+    .timeline {
+      position: relative;
+      margin: 1.5rem 0;
+      --line-height: 0%;
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      background: #C5CAE9;
+      top: 0;
+      left: 50%;
+      margin-left: -2px;
+      z-index: 1;
+      border-radius: 2px;
+      height: var(--line-height);
+    }
+
+    .tl-item {
+      padding: 0 45px;
+      position: relative;
+      width: 50%;
+      margin-bottom: 1.5rem;
+    }
+
+    .tl-left {
+      left: 0;
+    }
+
+    .tl-right {
+      left: 50%;
+    }
+
+    .tl-icon {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      right: -22px;
+      top: 14px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.6rem;
+      color: white;
+      text-align: center;
+      line-height: 1.2;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .tl-right .tl-icon {
+      left: -22px;
+      right: auto;
+    }
+
+    .tl-box {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      border: 1px solid #E3E8FF;
+      position: relative;
+      font-size: 0.88rem;
+    }
+
+    .tl-box h3 {
+      font-size: 0.95rem;
+      color: #1A237E;
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-box small {
+      color: #7986CB;
+      font-size: 0.78rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .tl-box ul {
+      padding-left: 1.1rem;
+    }
+
+    .tl-box li {
+      color: #546E7A;
+      margin-bottom: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .tl-arrow-left {
+      position: absolute;
+      top: 18px;
+      right: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid white;
+      z-index: 2;
+    }
+
+    .tl-arrow-right {
+      position: absolute;
+      top: 18px;
+      left: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid white;
+      z-index: 2;
+    }
+
+    /* ─── SKILLS GRID ────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .skill-chip {
+      background: linear-gradient(160deg, #1A237E 0%, #0D1452 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 0.8rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .skill-chip strong {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ─── PROJECTS ───────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E3E8FF;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(26, 35, 126, 0.15);
+    }
+
+    .project-banner {
+      height: 120px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .project-banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .project-banner i.project-icon {
+      position: absolute;
+      bottom: -15px;
+      right: 15px;
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.15);
+      z-index: 0;
+      transform: rotate(-15deg);
+    }
+
+    .project-banner h3 {
+      position: relative;
+      color: white;
+      font-size: 1.15rem;
+      text-align: left;
+      font-weight: 700;
+      z-index: 1;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-body .tools {
+      font-size: 0.82rem;
+      color: #7986CB;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-body p {
+      font-size: 0.88rem;
+      color: #455A64;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .project-body ul {
+      padding-left: 1.2rem;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-body li {
+      font-size: 0.86rem;
+      color: #546E7A;
+      margin-bottom: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .learn-more {
+      display: inline-block;
+      margin-top: auto;
+      color: #3949AB;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: #EDEEF7;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .learn-more:hover {
+      background: #DFE2F2;
+      text-decoration: none;
+    }
+
+    /* ─── INTERESTS CHIPS ────────────────────────── */
+    .interest-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .interest-chip {
+      background: #E8EAF6;
+      color: #3949AB;
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ─── CERT CARDS ─────────────────────────────── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .cert-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid #E3E8FF;
+      transition: box-shadow 0.2s;
+      gap: 1.5rem;
+    }
+
+    .cert-row:hover {
+      box-shadow: 0 6px 18px rgba(26, 35, 126, 0.1);
+    }
+
+    .cert-badge {
+      width: 140px;
+      height: 140px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cert-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .cert-details h3 {
+      font-size: 1rem;
+      color: #1A237E;
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .cert-details .meta-line {
+      font-size: 0.85rem;
+      color: #1A237E;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-details .meta-line span {
+      color: #546E7A;
+      font-weight: 400;
+    }
+
+    .cert-details p {
+      font-size: 0.85rem;
+      color: #546E7A;
+      line-height: 1.5;
+      margin-top: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-details ul {
+      padding-left: 1.1rem;
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+
+    .cert-details li {
+      font-size: 0.8rem;
+      color: #546E7A;
+      margin-bottom: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .cert-details a {
+      color: #3949AB;
+      font-size: 0.8rem;
+    }
+
+    /* ─── LOGO IMAGES ───────────────────────────── */
+    .org-badge.logo-img,
+    .cert-badge.logo-img {
+      background: white;
+      padding: 5px;
+      border: 1px solid #E3E8FF;
+    }
+
+    .org-badge.logo-img img,
+    .cert-badge.logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .tl-icon.logo-img {
+      background: white;
+      padding: 4px;
+    }
+
+    .tl-icon.logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .edu-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tl-item {
+        width: 100%;
+        left: 0 !important;
+        padding: 0 0 0 50px;
+      }
+
+      .tl-icon {
+        left: 0 !important;
+        right: auto !important;
+      }
+
+      .timeline::after {
+        left: 22px;
+      }
+
+      .tl-arrow-left,
+      .tl-arrow-right {
+        left: -10px;
+        right: auto;
+        border-right: 10px solid white;
+        border-left: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sidebar h1 {
+        font-size: 1.3rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cert-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .cert-details {
+        text-align: center;
+      }
+
+      .cert-details .meta-line {
+        display: flex;
+        justify-content: center;
+      }
+
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- ═══ SIDEBAR ═══════════════════════════════════════ -->
+    <div class="sidebar">
+      <img src="images/ConradLinusMuhirwe_2.jpg" alt="Conrad Linus Muhirwe" class="avatar">
+      <h1>Conrad Linus Muhirwe</h1>
+      <h2>Data Scientist &nbsp;|&nbsp; Data Analyst &nbsp;|&nbsp; AI Engineer</h2>
+
+      <p class="tagline">
+        Hi! I’m Conrad, a Data Scientist, Data Analyst, and AI Engineer translating complex financial and operational
+        data into automated, high-impact intelligent systems. Currently, I specialize in architecting LLM-driven
+        applications and scalable ML pipelines. My ultimate mission is to help organizations harness Generative AI and
+        advanced analytics to create resilient, ethical, and meaningful technology solutions that solve critical
+        challenges.
+      </p>
+
+      <div class="contact-info-cards"
+        style="width: 100%; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 1.5rem;">
+        <div
+          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
+          <i class="fa fa-map-marker" style="font-size: 1.1rem;"></i> Washington, DC
+        </div>
+        <div
+          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
+          <i class="fa fa-envelope" style="font-size: 1.1rem;"></i> linusconradm@gmail.com
+        </div>
+        <div
+          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
+          <i class="fa fa-mobile" style="font-size: 1.25rem;"></i> +1 (240) 441-4805
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="btn-link" href="https://app.flowcv.com/resume/content" target="_blank">
+          <i class="fa fa-file-text"></i> Resume
+        </a>
+        <a class="btn-link" href="https://linkedin.com/in/Conrad-Linus-m" target="_blank">
+          <i class="fa fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ MAIN PANEL ════════════════════════════════════ -->
+    <div class="main">
+      <div class="menu">
+        <div class="menu-item active" onclick="showTab('about', this)">About Me</div>
+        <div class="menu-item" onclick="showTab('projects', this)">Projects</div>
+        <div class="menu-item" onclick="showTab('certifications', this)">Certifications</div>
+      </div>
+
+      <div class="content">
+
+        <!-- ─── ABOUT ME ──────────────────────────────── -->
+        <div id="about" class="tab-panel active">
+          <div class="card">
+            <h2>Professional Summary</h2>
+            <p>Data Scientist, Data Analyst, and AI Engineer with a unique background at the intersection of advanced
+              machine learning
+              and financial operations. I specialize in architecting LLM-powered applications, predictive analytics
+              pipelines, and agentic AI systems that automate complex workflows and drive strict regulatory compliance.
+            </p>
+            <p>Leveraging a robust skillset in Python, PyTorch, LangChain, and AWS, I transform sophisticated
+              statistical models and RAG architectures into seamless, scalable production tools. I am deeply passionate
+              about applying Generative AI to solve high-stakes business challenges and deliver measurable,
+              customer-centric innovations.</p>
+          </div>
+
+          <div class="card">
+            <h2>Academic Journey</h2>
+            <div class="edu-grid">
+
+              <div class="edu-item">
+                <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
+                    alt="American University"></div>
+                <div class="edu-text">
+                  <div class="degree">Master of Science in Analytics &amp; AI</div>
+                  <div class="school">American University, Kogod School of Business</div>
+                  <div class="year">Washington, DC &nbsp;·&nbsp; May 2026</div>
+                </div>
+              </div>
+
+              <div class="edu-item">
+                <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
+                    alt="American University"></div>
+                <div class="edu-text">
+                  <div class="degree">Graduate Certificate in Data Science</div>
+                  <div class="school">American University, Kogod School of Business</div>
+                  <div class="year">Washington, DC &nbsp;·&nbsp; May 2026</div>
+                </div>
+              </div>
+
+              <div class="edu-item">
+                <div class="org-badge logo-img"><img
+                    src="images/uganda-martyrs-university-umu-logo-png_seeklogo-550311.png"
+                    alt="Uganda Martyrs University"></div>
+                <div class="edu-text">
+                  <div class="degree">Bachelor of Business Administration &amp; Management - Finance &amp; Accounting
+                  </div>
+                  <div class="school">Uganda Martyrs University</div>
+                  <div class="year">Kampala, Uganda &nbsp;·&nbsp; Nov 2011</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:1rem;">
+            <h2>Professional Experience</h2>
+            <p style="font-size:0.85rem;color:#90A4AE;">A timeline of roles across AI engineering, data science, and
+              financial services.</p>
+          </div>
+
+          <div class="timeline">
+
+            <!-- Institute on Disability and Public Policy – Research Associate (Most Recent) -->
+            <div class="tl-item tl-left">
+              <div class="tl-icon"
+                style="right:-22px; background:#4A148C; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:bold; letter-spacing:1px; z-index:10;">
+                IDPP</div>
+              <div class="tl-box">
+                <div class="tl-arrow-left"></div>
+                <h3>Research Associate <span
+                    style="font-size:0.75rem;background:#EDE7F6;color:#4A148C;border-radius:10px;padding:2px 8px;font-weight:500;margin-left:4px;">Part-time</span>
+                </h3>
+                <small>Institute on Disability and Public Policy &nbsp;|&nbsp; Feb 2026 – Present &nbsp;·&nbsp;
+                  Washington, DC · Hybrid</small>
+                <ul>
+                  <li>Building LLM-powered analytics infrastructure for the <strong>CRPD Global Disability Rights
+                      Dashboard</strong>, analyzing UN treaty implementation across <strong>180+ countries</strong>
+                    ahead of the June 2026 UN Conference of States Parties launch.</li>
+                  <li>Automating data collection pipelines for UN disability rights reports using Python and R
+                    ecosystems.</li>
+                  <li>Conducting NLP and transformer-based text analysis to extract policy insights from multilingual
+                    treaty documents.</li>
+                  <li>Developing interactive <strong>Shiny and Streamlit dashboards</strong> that translate complex
+                    policy data into actionable insights for civil society organizations and disability advocates.</li>
+                  <li>Contributing to academic publications; collaborating with the <strong>World Bank Disability Data
+                      Hub</strong> and Fordham's Disability Data Initiative.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- American University – Event Data Coordinator -->
+            <div class="tl-item tl-right">
+              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/American-University-logo.webp"
+                  alt="American University"></div>
+              <div class="tl-box">
+                <div class="tl-arrow-right"></div>
+                <h3>Event Data Coordinator</h3>
+                <small>American University &nbsp;|&nbsp; Aug 2025 – Jan 2026 &nbsp;·&nbsp; Washington, DC</small>
+                <ul>
+                  <li>Applied time-series forecasting and seasonality modeling to predict event demand and capacity,
+                    enabling data-driven resource allocation.</li>
+                  <li>Built NLP-based text mining pipelines to analyze survey feedback, extracting actionable themes
+                    through statistical testing and sentiment analysis.</li>
+                  <li>Developed segmentation models using clustering to identify high-engagement cohorts and retention
+                    drivers.</li>
+                  <li>Constructed reproducible analytics pipelines with versioned datasets feeding BI dashboards.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Harmonia Holdings -->
+            <div class="tl-item tl-left">
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Harmonia Holdings Logo"
+                  alt="Harmonia Holdings"></div>
+              <div class="tl-box">
+                <div class="tl-arrow-left"></div>
+                <h3>Software / Data Analyst – Intern</h3>
+                <small>Harmonia Holdings Group LLC &nbsp;|&nbsp; Jun – Aug 2025 &nbsp;·&nbsp; Virginia, USA</small>
+                <ul>
+                  <li>Designed and integrated AI-powered validation and predictive analytics pipelines into a federal
+                    financial reporting application, improving data accuracy and reducing regulatory risk.</li>
+                  <li>Built real-time NLP-driven workflows featuring automated error detection, compliance checks, and
+                    self-generating audit trails.</li>
+                  <li>Architected and deployed a full-stack application on AWS (React, Flask/FastAPI, PostgreSQL),
+                    reducing manual processing by <strong>80%</strong> through intelligent automation.</li>
+                  <li>Developed interactive dashboards with forecasting and variance analysis for grant management and
+                    financial oversight.</li>
+                  <li>Implemented multi-language voice input using NLP and WCAG 2.1 AA accessibility features.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- AU – Graduate Assistant -->
+            <div class="tl-item tl-right">
+              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/American-University-logo.webp"
+                  alt="American University">
+              </div>
+              <div class="tl-box">
+                <div class="tl-arrow-right"></div>
+                <h3>Graduate Assistant – Research &amp; Teaching</h3>
+                <small>American University &nbsp;|&nbsp; Jan – Jun 2025 &nbsp;·&nbsp; Washington, DC</small>
+                <ul>
+                  <li>Supported advanced coursework in predictive modeling, machine learning, and applied data science.
+                  </li>
+                  <li>Contributed to research in statistical analysis and business intelligence.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Uganda Development Bank -->
+            <div class="tl-item tl-left">
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Uganda Devevlopment Bank Logo"
+                  alt="Uganda Development Bank"></div>
+              <div class="tl-box">
+                <div class="tl-arrow-left"></div>
+                <h3>Senior Internal Auditor – Business Operations</h3>
+                <small>Uganda Development Bank &nbsp;|&nbsp; Jun 2023 – Jul 2024 &nbsp;·&nbsp; Kampala, Uganda</small>
+                <ul>
+                  <li>Built predictive analytics models using Python and SQL for loan delinquency detection and
+                    repayment risk segmentation.</li>
+                  <li>Engineered data quality frameworks and continuous monitoring systems, achieving a <strong>95%
+                      compliance target</strong> through automated analytics.</li>
+                  <li>Designed Power BI dashboards for real-time audit tracking, driving a <strong>78% issue closure
+                      rate</strong>.</li>
+                  <li>Developed SQL-based revenue assurance models to identify and recover lost revenue through anomaly
+                    detection.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Stanbic Bank -->
+            <div class="tl-item tl-right">
+              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Stanbic Bank Logo" alt="Stanbic Bank">
+              </div>
+              <div class="tl-box">
+                <div class="tl-arrow-right"></div>
+                <h3>Business Compliance Advisory Manager</h3>
+                <small>Stanbic Bank (U) Ltd &nbsp;|&nbsp; Dec 2021 – May 2023 &nbsp;·&nbsp; Kampala, Uganda</small>
+                <ul>
+                  <li>Built SQL-based risk assessment and predictive models for KYC compliance, achieving a <strong>96%
+                      compliance score</strong>.</li>
+                  <li>Led data-driven Anti-Money Laundering assessments and large transaction monitoring, applying
+                    pattern recognition and anomaly detection for <strong>100% regulatory compliance</strong>.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Equity Bank Manager -->
+            <div class="tl-item tl-left">
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Equity%20Bank%20Logo.png"
+                  alt="Equity Bank"></div>
+              <div class="tl-box">
+                <div class="tl-arrow-left"></div>
+                <h3>Manager, Internal Audit</h3>
+                <small>Equity Bank (U) Ltd &nbsp;|&nbsp; Jan 2019 – Nov 2021 &nbsp;·&nbsp; Kampala, Uganda</small>
+                <ul>
+                  <li>Automated audit processes through ML-informed exception reporting models, achieving <strong>25%
+                      automation</strong> of daily reviews and reducing manual tasks by <strong>60%</strong>.</li>
+                  <li>Spearheaded risk-based audit methodology adoption, improving audit efficiency by
+                    <strong>40%</strong>.
+                  </li>
+                  <li>Delivered 30+ investigation reports with predictive insights and anomaly detection findings to
+                    executive stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Equity Bank Senior -->
+            <div class="tl-item tl-right">
+              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Equity%20Bank%20Logo.png"
+                  alt="Equity Bank"></div>
+              <div class="tl-box">
+                <div class="tl-arrow-right"></div>
+                <h3>Senior Internal Auditor &amp; Internal Auditor – Systems &amp; Processes</h3>
+                <small>Equity Bank (U) Ltd &nbsp;|&nbsp; Dec 2012 – Dec 2018 &nbsp;·&nbsp; Kampala, Uganda</small>
+                <ul>
+                  <li>Built foundational expertise in systems auditing, financial controls, and data integrity within a
+                    high-volume banking environment.</li>
+                  <li>Directed assurance services for key operational processes, increasing operational efficiency to an
+                    <strong>85% average</strong> through analytical optimization.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div><!-- /timeline -->
+
+          <div class="card">
+            <h2>Core Skills</h2>
+            <div class="skills-grid">
+              <div class="skill-chip">
+                <strong>AI & LLM Engineering</strong>
+                LangChain, Crew AI, RAG, Prompt Engineering, NLP
+              </div>
+              <div class="skill-chip">
+                <strong>ML & Deep Learning</strong>
+                PyTorch, TensorFlow, Scikit-learn, Neural Networks, PCA
+              </div>
+              <div class="skill-chip">
+                <strong>Programming & Data</strong>
+                Python, SQL, R, PySpark, PostgreSQL, MongoDB, Flask/FastAPI
+              </div>
+              <div class="skill-chip">
+                <strong>Cloud & DevOps</strong>
+                AWS, React, Docker, Secure Production Systems
+              </div>
+              <div class="skill-chip">
+                <strong>BI & Visualization</strong>
+                Tableau, Power BI, LookerStudio, R Shiny, Excel
+              </div>
+              <div class="skill-chip">
+                <strong>Statistical Methods</strong>
+                Regression, Hypothesis Testing, A/B Testing, Time Series, Sentiment Analysis
+              </div>
+              <div class="skill-chip">
+                <strong>Domain Expertise</strong>
+                Financial Services, Compliance Automation, Data Governance
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Interests</h2>
+            <div class="interest-chips">
+              <span class="interest-chip">Ethical AI</span>
+              <span class="interest-chip">Artificial General Intelligence</span>
+              <span class="interest-chip">Agentic AI</span>
+              <span class="interest-chip">Large Language Models</span>
+              <span class="interest-chip">Machine Learning at Scale</span>
+              <span class="interest-chip">Financial Innovation</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Personal Goals and Motivation</h2>
+            <p>As a Data Scientist and AI/ML Engineer, my core goal is to build intelligent systems that drive
+              meaningful, measurable impact—whether that’s accelerating scientific research, enhancing operational
+              efficiency, or improving human-centered decision-making. I am deeply motivated by the intersection of
+              data, machine learning, and real-world application, and I continuously seek opportunities to push the
+              boundaries of what AI can do in service of innovation and equity.</p>
+
+            <p>I thrive on solving complex problems with data, and I’m particularly passionate about:</p>
+            <ul
+              style="padding-left: 1.8rem; margin-bottom: 1.2rem; color: #455A64; font-size: 0.92rem; line-height: 1.7;">
+              <li style="margin-bottom: 0.4rem;">Developing robust ML pipelines that are scalable, ethical, and
+                production-ready.</li>
+              <li style="margin-bottom: 0.4rem;">Harnessing NLP and LLMs to extract insights from unstructured
+                information at scale.</li>
+              <li style="margin-bottom: 0.4rem;">Designing AI solutions that align with privacy, fairness, and
+                transparency principles.</li>
+            </ul>
+
+            <h3 style="margin-bottom: 0.6rem; margin-top: 1.5rem; color: #1A237E; font-size: 1.1rem;">What I’m Looking
+              for in an Organization</h3>
+            <p>I’m drawn to organizations that:</p>
+            <ul
+              style="padding-left: 1.8rem; margin-bottom: 1.2rem; color: #455A64; font-size: 0.92rem; line-height: 1.7;">
+              <li style="margin-bottom: 0.4rem;">Value innovation and invest in research and experimentation.</li>
+              <li style="margin-bottom: 0.4rem;">Encourage cross-functional collaboration and knowledge sharing.</li>
+              <li style="margin-bottom: 0.4rem;">Offer a strong culture of mentorship, continuous learning, and
+                technical excellence.</li>
+              <li style="margin-bottom: 0.4rem;">Are committed to responsible AI practices and real-world impact,
+                especially in domains like healthcare, education, social equity, and sustainability.</li>
+            </ul>
+
+            <p style="margin-bottom: 0;">Ultimately, I’m looking to join a mission-driven team where I can apply my
+              technical expertise, continue to grow as a leader and problem-solver, and contribute to building systems
+              that matter.</p>
+          </div>
+        </div>
+
+        <!-- ─── PROJECTS ───────────────────────────────── -->
+        <div id="projects" class="tab-panel">
+          <div class="card" style="margin-bottom:1rem;">
+            <h2>Featured Projects</h2>
+            <p style="font-size:0.85rem;color:#90A4AE;">End-to-end AI and data science solutions built in production
+              environments.</p>
+          </div>
+
+          <div class="projects-grid">
+
+            <div class="project-card">
+              <div class="project-banner" style="background: linear-gradient(135deg, #1A237E 0%, #4A148C 100%);">
+                <i class="fa fa-dashboard project-icon"></i>
+                <h3>AI-Powered Federal Financial Reporting Dashboard</h3>
+              </div>
+              <div class="project-body">
+                <p class="tools"><strong>Tools:</strong> React, Flask, AWS, PostgreSQL, NLP</p>
+                <p>
+                  End-to-end AI automation platform integrating predictive analytics, NLP-driven validation,
+                  and real-time compliance monitoring for federal financial reporting. Built at Harmonia Holdings Group
+                  LLC in partnership with a cross-functional team.
+                </p>
+                <ul>
+                  <li><strong>AI Validation Pipelines:</strong> Designed intelligent workflows for automated error
+                    detection and self-generating audit trails.</li>
+                  <li><strong>Full-Stack on AWS:</strong> Architected and deployed the application, reducing manual
+                    processing by
+                    <strong>80%</strong>.
+                  </li>
+                  <li><strong>Predictive Dashboards:</strong> Developed interactive dashboards with forecasting.</li>
+                </ul>
+                <a class="learn-more" href="https://hail.harmonia.com/FederalFinancialReportingDashboard"
+                  target="_blank">
+                  <i class="fa fa-external-link"></i> View Project
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-banner" style="background: linear-gradient(135deg, #0288D1 0%, #01579B 100%);">
+                <i class="fa fa-pie-chart project-icon"></i>
+                <h3>US Food Insecurity Dashboard</h3>
+              </div>
+              <div class="project-body">
+                <p class="tools"><strong>Tools:</strong> R, ShinyApps, Data Visualization</p>
+                <p>
+                  An interactive Shiny web application designed to track, visualize, and analyze food insecurity metrics
+                  across different regions to support data-driven decision making.
+                </p>
+                <ul>
+                  <li><strong>Interactive Data Visualization:</strong> Built comprehensive, dynamic charts and maps to
+                    explore localized food insecurity trends.</li>
+                  <li><strong>User-Centric Design:</strong> Developed an intuitive interface that allows users to filter
+                    and drill down into specific demographic data.</li>
+                  <li><strong>Real-World Impact:</strong> Highlights key areas of need to assist policymakers and
+                    community organizations in resource allocation.</li>
+                </ul>
+                <a class="learn-more" href="https://conradlinusmuhirwe-foodinsecurity.share.connect.posit.cloud"
+                  target="_blank">
+                  <i class="fa fa-external-link"></i> View Project
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /projects -->
+
+        <!-- ─── CERTIFICATIONS ────────────────────────── -->
+        <div id="certifications" class="tab-panel">
+          <div class="card" style="margin-bottom:1rem;">
+            <h2>Certifications &amp; Professional Training</h2>
+            <p style="font-size:0.85rem;color:#90A4AE;">Professional certifications and training completed across AI
+              engineering, data science, and finance.</p>
+          </div>
+
+          <div class="cert-grid">
+
+            <div class="cert-row">
+              <div class="cert-badge logo-img"><img src="images/udemy logo.png" alt="Udemy"></div>
+              <div class="cert-details">
+                <h3>AI Engineer Core Track: LLM Engineering, RAG, QLoRA &amp; Agents</h3>
+                <div class="meta-line">Issued by <span>Udemy</span></div>
+                <div class="meta-line">Issued on <span>Feb 2026</span></div>
+                <div class="meta-line">Expires on <span>Does not expire</span></div>
+                <p>This certification validates my expertise in applying advanced AI engineering techniques using Python
+                  and modern LLM frameworks. The program covered the end-to-end development of production-ready AI
+                  applications, including:</p>
+                <ul>
+                  <li>Generative AI and LLM fundamentals (tokens, context windows, cost optimization)</li>
+                  <li>Advanced prompt engineering and system message design</li>
+                  <li>Retrieval-Augmented Generation (RAG) pipelines and vector databases</li>
+                  <li>Parameter-efficient fine-tuning custom models using QLoRA</li>
+                  <li>Building autonomous AI agents and orchestration using LangChain and CrewAI</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cert-row">
+              <div class="cert-badge logo-img"><img src="images/IBM Data Science Logo.png" alt="IBM Data Science"></div>
+              <div class="cert-details">
+                <h3>IBM Professional Data Science Certificate</h3>
+                <div class="meta-line">Issued by <span>IBM / Coursera</span></div>
+                <div class="meta-line">Credential ID <span>T6XEQGVXB7R4</span></div>
+                <div class="meta-line">Issued on <span>Aug 2024</span></div>
+                <div class="meta-line">Expires on <span>Does not expire</span></div>
+                <p>This certification validates my expertise in applying data science methodologies to real-world
+                  problems. The program covered the end-to-end development of data pipelines and predictive models,
+                  including:</p>
+                <ul>
+                  <li>Data handling, cleaning, and exploratory data analysis (EDA)</li>
+                  <li>Relational databases and complex SQL querying</li>
+                  <li>Data visualization using Matplotlib, Seaborn, and Folium</li>
+                  <li>Building and evaluating Machine Learning models (Regression, Classification)</li>
+                  <li>Hands-on application with Python, Pandas, Scikit-learn, and IBM Watson</li>
+                </ul>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" target="_blank"
+                  style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link"></i>
+                  View Credential</a>
+              </div>
+            </div>
+
+            <div class="cert-row">
+              <div class="cert-badge logo-img"><img src="images/FMVA Logo" alt="CFI FMVA"></div>
+              <div class="cert-details">
+                <h3>Financial Modeling &amp; Valuation Analyst (FMVA)</h3>
+                <div class="meta-line">Issued by <span>Corporate Finance Institute (CFI)</span></div>
+                <div class="meta-line">Credential ID <span>68664647-7852-47f7-9a55-50289335bd37</span></div>
+                <div class="meta-line">Issued on <span>July 22, 2022</span></div>
+                <div class="meta-line">Expires on <span>Does not expire</span></div>
+                <p>This certification validates my expertise in advanced financial analysis, valuation, and forecasting.
+                  The program equipped me to build robust, industry-standard financial models from scratch, including:
+                </p>
+                <ul>
+                  <li>Structuring dynamic 3-statement models with complex, multi-year financial projections.</li>
+                  <li>Executing advanced corporate valuations using DCF, Comparable Companies, and Precedent
+                    Transactions to determine intrinsic value.</li>
+                  <li>Performing critical scenario and sensitivity analyses to assess risks and evaluate
+                    accretion/dilution in M&amp;A.</li>
+                  <li>Analyzing financial health through in-depth credit metrics, ratio analysis, and comprehensive debt
+                    schedules.</li>
+                  <li>Synthesizing complex data into impactful PowerPoint pitch decks and interactive Excel dashboards
+                    for executive leadership.</li>
+                </ul>
+                <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37#acc.iLZ5Cn73"
+                  target="_blank" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
+                    class="fa fa-external-link"></i> View Credential</a>
+              </div>
+            </div>
+
+            <div class="cert-row">
+              <div class="cert-badge logo-img"><img src="images/BIDA Logo.png" alt="CFI BIDA"></div>
+              <div class="cert-details">
+                <h3>Business Intelligence &amp; Data Analysis (BIDA)</h3>
+                <div class="meta-line">Issued by <span>Corporate Finance Institute (CFI)</span></div>
+                <div class="meta-line">Credential ID <span>f4890a5f-3502-410a-9592-d21952d2b9a6</span></div>
+                <div class="meta-line">Issued on <span>May 24, 2023</span></div>
+                <div class="meta-line">Expires on <span>Does not expire</span></div>
+                <p>This certification validates my expertise in applying business intelligence tools and data modeling
+                  techniques. The program covered the end-to-end development of analytical workflows, including:</p>
+                <ul>
+                  <li>Data transformation and automated pipelines using Power Query</li>
+                  <li>Interactive data visualization and dashboarding with Power BI and Tableau</li>
+                  <li>Database querying, aggregation, and data extraction using SQL</li>
+                  <li>Statistical foundations, predictive analysis, and Monte Carlo simulations</li>
+                </ul>
+                <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6#acc.OCBNScLp"
+                  target="_blank" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
+                    class="fa fa-external-link"></i> View Credential</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /content -->
+    </div><!-- /main -->
+  </div><!-- /container -->
+
+  <script>
+    function showTab(tabName, el) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      if (el) el.classList.add('active');
+    }
+
+    // ── Scroll-driven timeline line (lerp — trails behind scroll) ──
+    (function () {
+      const content = document.querySelector('.content');
+      const timeline = document.querySelector('.timeline');
+      if (!content || !timeline) return;
+
+      // Lower = slower / further behind scroll  (0.015 ≈ ~1.5% of gap closed per frame)
+      const LERP = 0.015;
+
+      let target = 0;   // where the line should eventually reach
+      let current = 0;   // where the line actually is right now
+      let rafId = null;
+
+      function calcTarget() {
+        const contentRect = content.getBoundingClientRect();
+        const timelineRect = timeline.getBoundingClientRect();
+        const timelineTop = timelineRect.top - contentRect.top + content.scrollTop;
+        const timelineH = timeline.offsetHeight;
+        const contentH = content.clientHeight;
+        const scrolled = content.scrollTop - (timelineTop - contentH);
+        return Math.min(Math.max(scrolled / timelineH, 0), 1);
+      }
+
+      function tick() {
+        current += (target - current) * LERP;
+        timeline.style.setProperty('--line-height', (current * 100).toFixed(3) + '%');
+
+        if (Math.abs(target - current) > 0.0003) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          current = target;
+          timeline.style.setProperty('--line-height', (current * 100) + '%');
+          rafId = null;
+        }
+      }
+
+      content.addEventListener('scroll', function () {
+        target = calcTarget();
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+
+      // Initialise without animation
+      target = current = calcTarget();
+      timeline.style.setProperty('--line-height', (current * 100) + '%');
+    })();
+  </script>
+</body>
+
+</html>

@@ -964,7 +964,7 @@
       gap: 0.7rem;
       transform: translateY(140%);
       opacity: 0;
-      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.75s ease;
       pointer-events: none;
       border: 1px solid #E3E8FF;
     }
@@ -998,6 +998,10 @@
       flex-wrap: wrap;
     }
 
+    .nav-popup-btn.desktop-home {
+      display: none;
+    }
+
     .nav-popup-btn {
       background: linear-gradient(135deg, #1A237E, #283593);
       color: white;
@@ -1012,6 +1016,11 @@
       gap: 0.45rem;
       transition: all 0.2s;
       font-family: inherit;
+      opacity: 0;
+      transform: translateY(10px);
+      animation-fill-mode: forwards;
+      animation-duration: 0.75s;
+      animation-timing-function: ease-out;
     }
 
     .nav-popup-btn:hover {
@@ -1056,6 +1065,54 @@
       box-shadow: 0 4px 12px rgba(0, 96, 100, 0.25);
     }
 
+    /* Popup button entry animation */
+    @keyframes popup-fade-rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-popup:not(.visible) .nav-popup-btn {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: none;
+    }
+
+    .nav-popup.visible .home-row .nav-popup-btn {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0s;
+    }
+
+    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(1) {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0.12s;
+    }
+
+    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(2) {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0.24s;
+    }
+
+    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(3) {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0.36s;
+    }
+
+    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(4) {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0.48s;
+    }
+
+    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(5) {
+      animation: popup-fade-rise 0.9s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+
     @media (max-width: 768px) {
       .nav-popup {
         bottom: 1rem;
@@ -1089,6 +1146,10 @@
         gap: 0.6rem;
       }
 
+      .nav-popup-btn.desktop-home {
+        display: none !important;
+      }
+
       /* Certifications: mobile layout adjustments */
       .cert-row {
         flex-direction: column;
@@ -1117,6 +1178,26 @@
 
       .cert-details p {
         text-align: justify;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .home-row {
+        display: none !important;
+      }
+
+      .grid-row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .nav-popup-btns {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .nav-popup-btn.desktop-home {
+        display: flex !important;
       }
     }
   </style>
@@ -1753,6 +1834,9 @@
           </button>
         </div>
         <div class="nav-popup-btns grid-row">
+          <button class="nav-popup-btn home-btn desktop-home" onclick="goHome()">
+            <i class="fa fa-home"></i> Home
+          </button>
           <button class="nav-popup-btn" onclick="showTab('projects', null)">
             <i class="fa fa-rocket"></i> Projects
           </button>

@@ -990,6 +990,14 @@
       gap: 0.6rem;
     }
 
+    .nav-popup-btns.home-row {
+      justify-content: flex-start;
+    }
+
+    .nav-popup-btns.grid-row {
+      flex-wrap: wrap;
+    }
+
     .nav-popup-btn {
       background: linear-gradient(135deg, #1A237E, #283593);
       color: white;
@@ -1062,6 +1070,23 @@
 
       .nav-popup-btn {
         justify-content: center;
+      }
+
+      .nav-popup-btns.home-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+      }
+
+      .nav-popup-btn.home-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-popup-btns.grid-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
       }
 
       /* Certifications: mobile layout adjustments */
@@ -1722,10 +1747,12 @@
       <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
       <div id="nav-popup" class="nav-popup">
         <p class="nav-popup-label">What's next?</p>
-        <div class="nav-popup-btns">
+        <div class="nav-popup-btns home-row">
           <button class="nav-popup-btn home-btn" onclick="goHome()">
             <i class="fa fa-home"></i> Home
           </button>
+        </div>
+        <div class="nav-popup-btns grid-row">
           <button class="nav-popup-btn" onclick="showTab('projects', null)">
             <i class="fa fa-rocket"></i> Projects
           </button>

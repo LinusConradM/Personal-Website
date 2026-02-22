@@ -591,6 +591,8 @@
     .cert-details .meta-line span {
       color: #546E7A;
       font-weight: 400;
+      margin-left: 4px;
+      display: inline-block;
     }
 
     .cert-details p {
@@ -1051,6 +1053,32 @@
 
       .nav-popup-btn {
         justify-content: center;
+      }
+
+      /* Certifications: mobile layout adjustments */
+      .cert-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .cert-badge {
+        margin: 0 auto 0.5rem;
+      }
+
+      .cert-details {
+        width: 100%;
+        text-align: left;
+      }
+
+      .cert-details h3 {
+        text-align: center;
+      }
+
+      .cert-details .meta-line,
+      .cert-details p,
+      .cert-details ul {
+        text-align: left;
       }
     }
   </style>

@@ -788,6 +788,145 @@
       }
     }
 
+    /* ─── CONTACT FORM ───────────────────────────────────── */
+    .contact-form-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #283593;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #C5CAE9;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: #37474F;
+      background: #FAFBFF;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #3949AB;
+      box-shadow: 0 0 0 3px rgba(57, 73, 171, 0.12);
+      background: white;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #1A237E, #283593);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 2rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #283593, #3949AB);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(26, 35, 126, 0.3);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .form-status.success {
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #A5D6A7;
+      display: block;
+    }
+
+    .form-status.error {
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1px solid #FFCDD2;
+      display: block;
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-info-tile {
+      background: #F0F2FF;
+      border: 1px solid #C5CAE9;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: #283593;
+      font-weight: 500;
+    }
+
+    .contact-info-tile i {
+      font-size: 1.1rem;
+      color: #3949AB;
+      width: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ─── EXPLORE MORE POPUP ──────────────────────── */
     .nav-popup {
       position: fixed;
@@ -926,6 +1065,7 @@
         <div class="menu-item active" onclick="showTab('about', this)">About Me</div>
         <div class="menu-item" onclick="showTab('projects', this)">Projects</div>
         <div class="menu-item" onclick="showTab('certifications', this)">Certifications</div>
+        <div class="menu-item" onclick="showTab('contact', this)">Contact</div>
       </div>
 
       <div class="content">
@@ -1426,6 +1566,73 @@
           </div>
         </div>
 
+        <!-- ─── CONTACT ───────────────────────────────── -->
+        <div id="contact" class="tab-panel">
+
+          <div class="card">
+            <h2>Get in Touch</h2>
+            <p>Whether you have a project in mind, a question about my work, or just want to connect — I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
+            <div class="contact-info-grid">
+              <div class="contact-info-tile">
+                <i class="fa fa-envelope"></i>
+                linusconradm@gmail.com
+              </div>
+              <div class="contact-info-tile">
+                <i class="fa fa-map-marker"></i>
+                Washington, DC
+              </div>
+              <div class="contact-info-tile">
+                <i class="fa fa-linkedin"></i>
+                Conrad-Linus-m
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <h2 style="font-size:1.2rem;color:#1A237E;margin-bottom:1.4rem;padding-bottom:0.4rem;border-bottom:2px solid #E3E8FF;">Send a Message</h2>
+
+            <!--
+              ╔══════════════════════════════════════════════════════════════╗
+              ║  FORMSPREE SETUP — replace the action URL with your own:    ║
+              ║  1. Go to https://formspree.io and sign up                  ║
+              ║  2. Create a new form → copy your endpoint URL              ║
+              ║  3. Replace "YOUR_FORM_ID" below with that URL              ║
+              ╚══════════════════════════════════════════════════════════════╝
+            -->
+            <form id="contact-form" action="https://formspree.io/f/mgolnjpa" method="POST" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Full Name <span style="color:#E53935;">*</span></label>
+                  <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required>
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email Address <span style="color:#E53935;">*</span></label>
+                  <input type="email" id="cf-email" name="email" placeholder="jane@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cf-subject">Subject</label>
+                <input type="text" id="cf-subject" name="subject" placeholder="e.g. Collaboration opportunity, Project inquiry…">
+              </div>
+
+              <div class="form-group">
+                <label for="cf-message">Message <span style="color:#E53935;">*</span></label>
+                <textarea id="cf-message" name="message" placeholder="Tell me a bit about what you have in mind…" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit" id="cf-submit">
+                <i class="fa fa-paper-plane"></i> Send Message
+              </button>
+
+              <div class="form-status" id="cf-status"></div>
+
+            </form>
+          </div>
+
+        </div><!-- /contact -->
+
       </div><!-- /content -->
 
         <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
@@ -1513,6 +1720,63 @@
       // Initialise without animation
       target = current = calcTarget();
       timeline.style.setProperty('--line-height', (current * 100) + '%');
+    })();
+
+    // ── Contact form: AJAX submission via Formspree ──
+    (function () {
+      const form = document.getElementById('contact-form');
+      const statusEl = document.getElementById('cf-status');
+      const submitBtn = document.getElementById('cf-submit');
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Basic client-side validation
+        const name = form.querySelector('#cf-name').value.trim();
+        const email = form.querySelector('#cf-email').value.trim();
+        const message = form.querySelector('#cf-message').value.trim();
+        if (!name || !email || !message) {
+          showStatus('error', '<i class="fa fa-exclamation-circle"></i> Please fill in all required fields.');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending…';
+        statusEl.className = 'form-status';
+        statusEl.style.display = 'none';
+
+        try {
+          const data = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            showStatus('success', '<i class="fa fa-check-circle"></i> Message sent! I\'ll get back to you soon.');
+            form.reset();
+          } else {
+            const json = await response.json().catch(() => ({}));
+            const msg = (json.errors && json.errors.map(e => e.message).join(', ')) ||
+              'Something went wrong. Please try again or email me directly.';
+            showStatus('error', '<i class="fa fa-exclamation-circle"></i> ' + msg);
+          }
+        } catch (err) {
+          showStatus('error', '<i class="fa fa-exclamation-circle"></i> Network error. Please check your connection and try again.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fa fa-paper-plane"></i> Send Message';
+        }
+      });
+
+      function showStatus(type, html) {
+        statusEl.className = 'form-status ' + type;
+        statusEl.innerHTML = html;
+        statusEl.style.display = 'block';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     })();
 
     // ── Explore-more popup: appears when "Personal Goals" card enters view ──

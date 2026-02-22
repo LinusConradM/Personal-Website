@@ -1723,7 +1723,7 @@
       <div id="nav-popup" class="nav-popup">
         <p class="nav-popup-label">What's next?</p>
         <div class="nav-popup-btns">
-          <button class="nav-popup-btn home-btn" onclick="showTab('about', null)">
+          <button class="nav-popup-btn home-btn" onclick="goHome()">
             <i class="fa fa-home"></i> Home
           </button>
           <button class="nav-popup-btn" onclick="showTab('projects', null)">
@@ -1916,6 +1916,14 @@
         statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     })();
+
+    function goHome() {
+      showTab('about', null);
+      const content = document.querySelector('.content');
+      if (content) content.scrollTop = 0;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.checkNavPopup) window.checkNavPopup();
+    }
 
     // ── Explore-more popup: show near the end of any tab (About, Projects, Certs, Resume, Contact) ──
     (function () {

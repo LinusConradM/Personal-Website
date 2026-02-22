@@ -939,20 +939,33 @@
 
     /* ─── EXPLORE MORE POPUP ──────────────────────── */
     .nav-popup {
-      background: #F8F9FF;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: white;
       border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(26, 35, 126, 0.2);
       padding: 1rem 1.2rem;
+      z-index: 1000;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      border: 1px solid #C5CAE9;
-      margin-top: 1.5rem;
-      box-shadow: 0 4px 18px rgba(26, 35, 126, 0.08);
+      gap: 0.7rem;
+      transform: translateY(140%);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      pointer-events: none;
+      border: 1px solid #E3E8FF;
+    }
+
+    .nav-popup.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
     }
 
     .nav-popup-label {
       font-size: 0.72rem;
-      color: #7986CB;
+      color: #90A4AE;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.9px;
@@ -1014,9 +1027,16 @@
       box-shadow: 0 4px 12px rgba(191, 54, 12, 0.25);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .nav-popup {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+      }
+
       .nav-popup-btns {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
 
       .nav-popup-btn {
@@ -1366,25 +1386,6 @@
             <p style="margin-bottom: 0;">Ultimately, I’m looking to join a mission-driven team where I can apply my
               technical expertise, continue to grow as a leader and problem-solver, and contribute to building systems
               that matter.</p>
-
-            <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
-            <div id="nav-popup" class="nav-popup">
-              <p class="nav-popup-label">Explore more</p>
-              <div class="nav-popup-btns">
-                <button class="nav-popup-btn" onclick="showTab(‘projects’, null)">
-                  <i class="fa fa-rocket"></i> Projects
-                </button>
-                <button class="nav-popup-btn certs-btn" onclick="showTab(‘certifications’, null)">
-                  <i class="fa fa-certificate"></i> Certifications
-                </button>
-                <button class="nav-popup-btn resume-btn" onclick="showTab(‘resume’, null)">
-                  <i class="fa fa-file-text"></i> Resume
-                </button>
-                <button class="nav-popup-btn contact-btn" onclick="showTab(‘contact’, null)">
-                  <i class="fa fa-envelope"></i> Contact
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1667,6 +1668,25 @@
 
       </div><!-- /content -->
 
+      <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
+      <div id="nav-popup" class="nav-popup">
+        <p class="nav-popup-label">What's next?</p>
+        <div class="nav-popup-btns">
+          <button class="nav-popup-btn" onclick="showTab('projects', null)">
+            <i class="fa fa-rocket"></i> Projects
+          </button>
+          <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)">
+            <i class="fa fa-certificate"></i> Certifications
+          </button>
+          <button class="nav-popup-btn resume-btn" onclick="showTab('resume', null)">
+            <i class="fa fa-file-text"></i> Resume
+          </button>
+          <button class="nav-popup-btn contact-btn" onclick="showTab('contact', null)">
+            <i class="fa fa-envelope"></i> Contact
+          </button>
+        </div>
+      </div>
+
     </div><!-- /main -->
   </div><!-- /container -->
 
@@ -1679,7 +1699,9 @@
         m => m.getAttribute('onclick') && m.getAttribute('onclick').includes("'" + tabName + "'")
       );
       if (menuEl) menuEl.classList.add('active');
-      // Scroll to top of content on tab switch
+      // Hide popup and scroll to the tab ribbon (desktop + mobile)
+      const popup = document.getElementById('nav-popup');
+      if (popup) popup.classList.remove('visible');
       const content = document.querySelector('.content');
       if (content) content.scrollTop = 0;
       // On mobile the window scrolls; scroll so the tab ribbon (not the sidebar) is at the top
@@ -1838,6 +1860,31 @@
         statusEl.style.display = 'block';
         statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+    })();
+
+    // ── Explore-more popup: appears when "Personal Goals" card enters view ──
+    (function () {
+      const content = document.querySelector('.content');
+      const popup = document.getElementById('nav-popup');
+      if (!content || !popup) return;
+
+      function checkGoalsVisible() {
+        const aboutPanel = document.getElementById('about');
+        if (!aboutPanel.classList.contains('active')) {
+          popup.classList.remove('visible');
+          return;
+        }
+        const goalsSection = document.getElementById('goals-section');
+        if (!goalsSection) return;
+        // getBoundingClientRect works for both desktop (.content scroll) and mobile (window scroll)
+        const rect = goalsSection.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        popup.classList.toggle('visible', inView);
+      }
+
+      content.addEventListener('scroll', checkGoalsVisible, { passive: true });
+      window.addEventListener('scroll', checkGoalsVisible, { passive: true });
+      window.addEventListener('resize', checkGoalsVisible, { passive: true });
     })();
 
   </script>

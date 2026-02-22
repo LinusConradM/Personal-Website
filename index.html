@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -896,7 +897,7 @@
 
     .contact-info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       margin-top: 0.5rem;
     }
@@ -905,20 +906,29 @@
       background: #F0F2FF;
       border: 1px solid #C5CAE9;
       border-radius: 10px;
-      padding: 1rem 1.2rem;
+      padding: 1rem 0.8rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
-      font-size: 0.85rem;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
       color: #283593;
       font-weight: 500;
+      text-align: center;
+      word-break: break-word;
+      min-width: 0;
     }
 
     .contact-info-tile i {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #3949AB;
-      width: 20px;
-      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 600px) {
@@ -1033,30 +1043,7 @@
         challenges.
       </p>
 
-      <div class="contact-info-cards"
-        style="width: 100%; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 1.5rem;">
-        <div
-          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
-          <i class="fa fa-map-marker" style="font-size: 1.1rem;"></i> Washington, DC
-        </div>
-        <div
-          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
-          <i class="fa fa-envelope" style="font-size: 1.1rem;"></i> linusconradm@gmail.com
-        </div>
-        <div
-          style="background: #2b82f0; color: white; padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; text-decoration: none;">
-          <i class="fa fa-mobile" style="font-size: 1.25rem;"></i> +1 (240) 441-4805
-        </div>
-      </div>
 
-      <div class="links">
-        <a class="btn-link" href="https://app.flowcv.com/resume/content" target="_blank">
-          <i class="fa fa-file-text"></i> Resume
-        </a>
-        <a class="btn-link" href="https://linkedin.com/in/Conrad-Linus-m" target="_blank">
-          <i class="fa fa-linkedin"></i> LinkedIn
-        </a>
-      </div>
     </div>
 
     <!-- ═══ MAIN PANEL ════════════════════════════════════ -->
@@ -1065,6 +1052,7 @@
         <div class="menu-item active" onclick="showTab('about', this)">About Me</div>
         <div class="menu-item" onclick="showTab('projects', this)">Projects</div>
         <div class="menu-item" onclick="showTab('certifications', this)">Certifications</div>
+        <div class="menu-item" onclick="showTab('resume', this)">Resume</div>
         <div class="menu-item" onclick="showTab('contact', this)">Contact</div>
       </div>
 
@@ -1566,24 +1554,49 @@
           </div>
         </div>
 
+        <!-- ─── RESUME ────────────────────────────────── -->
+        <div id="resume" class="tab-panel">
+          <div class="card" style="text-align:center; padding: 3rem 2rem;">
+            <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1A237E,#3949AB);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+              <i class="fa fa-file-text" style="font-size:1.8rem;color:white;"></i>
+            </div>
+            <h2 style="margin-bottom:0.5rem;">My Resume</h2>
+            <p style="color:#607D8B;max-width:480px;margin:0 auto 1.8rem;">Download a professionally formatted PDF copy of my resume, or view the full version online.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+              <button id="btn-download-pdf" onclick="downloadResumePDF()" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#1A237E,#283593);color:white;padding:0.85rem 2rem;border-radius:8px;border:none;font-weight:600;font-size:0.95rem;font-family:inherit;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 14px rgba(26,35,126,0.25);">
+                <i class="fa fa-download"></i> Download PDF
+              </button>
+              <a href="https://app.flowcv.com/resume/content" target="_blank"
+                style="display:inline-flex;align-items:center;gap:0.6rem;background:transparent;color:#1A237E;padding:0.85rem 2rem;border-radius:8px;border:2px solid #1A237E;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.2s;">
+                <i class="fa fa-external-link"></i> View Online
+              </a>
+            </div>
+            <p id="pdf-status" style="margin-top:1.2rem;font-size:0.85rem;color:#607D8B;display:none;"></p>
+          </div>
+        </div><!-- /resume -->
+
         <!-- ─── CONTACT ───────────────────────────────── -->
         <div id="contact" class="tab-panel">
 
           <div class="card">
-            <h2>Get in Touch</h2>
-            <p>Whether you have a project in mind, a question about my work, or just want to connect — I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
+            <h2>Let's Connect</h2>
+            <p>I'm open to new opportunities, collaborations, and conversations about Data Science and Artificial Intelligence-(AI). If you think we could work together or simply want to exchange ideas, I'd be glad to hear from you.</p>
             <div class="contact-info-grid">
-              <div class="contact-info-tile">
-                <i class="fa fa-envelope"></i>
-                linusconradm@gmail.com
-              </div>
               <div class="contact-info-tile">
                 <i class="fa fa-map-marker"></i>
                 Washington, DC
               </div>
               <div class="contact-info-tile">
-                <i class="fa fa-linkedin"></i>
-                Conrad-Linus-m
+                <i class="fa fa-envelope"></i>
+                linusconradm@gmail.com
+              </div>
+              <div class="contact-info-tile">
+                <i class="fa fa-mobile"></i>
+                +1 (240) 441-4805
+              </div>
+              <div class="contact-info-tile">
+                <img src="images/linkedin-logo.webp" alt="LinkedIn" style="width:22px;height:22px;object-fit:contain;">
+                <a href="https://linkedin.com/in/Conrad-Linus-m" target="_blank" style="color:#283593;text-decoration:none;">Conrad-Linus-m</a>
               </div>
             </div>
           </div>
@@ -1722,6 +1735,50 @@
       timeline.style.setProperty('--line-height', (current * 100) + '%');
     })();
 
+    // ── Resume PDF download via html2pdf.js ──
+    function downloadResumePDF() {
+      const btn = document.getElementById('btn-download-pdf');
+      const status = document.getElementById('pdf-status');
+      const template = document.getElementById('resume-pdf-template');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Generating PDF…';
+      status.style.display = 'block';
+      status.textContent = 'Building your resume — this takes a few seconds…';
+
+      // Temporarily make visible for rendering
+      template.style.display = 'block';
+      template.style.position = 'fixed';
+      template.style.left = '-9999px';
+      template.style.top = '0';
+
+      const element = template.querySelector('div');
+
+      const opt = {
+        margin:       [8, 0, 8, 0],
+        filename:     'Conrad_Linus_Muhirwe_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: 'css' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(function () {
+        template.style.display = 'none';
+        template.style.position = 'absolute';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
+        status.textContent = '✓ Your resume has been downloaded!';
+        setTimeout(() => { status.style.display = 'none'; }, 4000);
+      }).catch(function () {
+        template.style.display = 'none';
+        template.style.position = 'absolute';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
+        status.textContent = 'Something went wrong. Please try again.';
+      });
+    }
+
     // ── Contact form: AJAX submission via Formspree ──
     (function () {
       const form = document.getElementById('contact-form');
@@ -1804,6 +1861,195 @@
       window.addEventListener('resize', checkGoalsVisible, { passive: true });
     })();
   </script>
+
+<!-- ═══ HIDDEN RESUME TEMPLATE FOR PDF EXPORT ═══════════════════════════════ -->
+<div id="resume-pdf-template" style="display:none; position:absolute; left:-9999px; top:0;">
+  <div style="font-family: Arial, Helvetica, sans-serif; font-size: 11.5px; color: #212121; background: white; width: 794px; padding: 28px 50px; box-sizing: border-box; line-height: 1.4;">
+
+    <!-- HEADER -->
+    <div style="border-bottom: 3px solid #1A237E; padding-bottom: 10px; margin-bottom: 12px; text-align: center;">
+      <h1 style="font-size: 26px; font-weight: 800; color: #1A237E; margin: 0 0 5px 0; letter-spacing: 0.5px;">Conrad Linus Muhirwe</h1>
+      <div style="font-size: 11px; color: #455A64;">
+        &#128205; Washington, DC &nbsp;&nbsp;&#9993; linusconradm@gmail.com &nbsp;&nbsp;&#128222; +1 (240) 441-4805 &nbsp;&nbsp;&#128279; linkedin.com/in/Conrad-Linus-m
+      </div>
+    </div>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <div style="margin-bottom: 11px;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 5px 0;">Professional Summary</h2>
+      <p style="margin: 0 0 4px 0; color: #37474F; font-size: 11px; line-height: 1.45;">Data Scientist, Data Analyst, and AI Engineer with a unique background at the intersection of advanced machine learning and financial operations. I specialize in architecting LLM-powered applications, predictive analytics pipelines, and agentic AI systems that automate complex workflows and drive strict regulatory compliance.</p>
+      <p style="margin: 0; color: #37474F; font-size: 11px; line-height: 1.45;">Leveraging a robust skillset in Python, PyTorch, LangChain, and AWS, I transform sophisticated statistical models and RAG architectures into seamless, scalable production tools. I am deeply passionate about applying Generative AI to solve high-stakes business challenges and deliver measurable, customer-centric innovations.</p>
+    </div>
+
+    <!-- CORE SKILLS -->
+    <div style="margin-bottom: 11px;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 6px 0;">Core Skills</h2>
+      <table style="width: 100%; border-collapse: collapse; font-size: 11px; color: #37474F;">
+        <tr><td style="padding: 2px 8px 2px 0; width: 30%; vertical-align: top;"><strong style="color: #1A237E;">AI &amp; LLM Engineering</strong></td><td style="padding: 2px 0;">LangChain, CrewAI, RAG, Prompt Engineering, NLP</td></tr>
+        <tr style="background:#F8F9FF;"><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">ML &amp; Deep Learning</strong></td><td style="padding: 2px 0;">PyTorch, TensorFlow, Scikit-learn, Neural Networks, PCA</td></tr>
+        <tr><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">Programming &amp; Data</strong></td><td style="padding: 2px 0;">Python, SQL, R, PySpark, PostgreSQL, MongoDB, Flask/FastAPI</td></tr>
+        <tr style="background:#F8F9FF;"><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">Cloud &amp; DevOps</strong></td><td style="padding: 2px 0;">AWS, React, Docker, Secure Production Systems</td></tr>
+        <tr><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">BI &amp; Visualization</strong></td><td style="padding: 2px 0;">Tableau, Power BI, LookerStudio, R Shiny, Excel</td></tr>
+        <tr style="background:#F8F9FF;"><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">Statistical Methods</strong></td><td style="padding: 2px 0;">Regression, Hypothesis Testing, A/B Testing, Time Series, Sentiment Analysis</td></tr>
+        <tr><td style="padding: 2px 8px 2px 0; vertical-align: top;"><strong style="color: #1A237E;">Domain Expertise</strong></td><td style="padding: 2px 0;">Financial Services, Compliance Automation, Data Governance</td></tr>
+      </table>
+    </div>
+
+    <!-- EDUCATION -->
+    <div style="margin-bottom: 11px;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 6px 0;">Education</h2>
+      <div style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">Master of Science in Analytics &amp; AI</div><div style="font-size: 10.5px; color: #607D8B;">American University, Kogod School of Business &nbsp;·&nbsp; Washington, DC</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">May 2026</span>
+      </div>
+      <div style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">Graduate Certificate in Data Science</div><div style="font-size: 10.5px; color: #607D8B;">American University, Kogod School of Business &nbsp;·&nbsp; Washington, DC</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">May 2026</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">Bachelor of Business Administration &amp; Management – Finance &amp; Accounting</div><div style="font-size: 10.5px; color: #607D8B;">Uganda Martyrs University &nbsp;·&nbsp; Kampala, Uganda</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">Nov 2011</span>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div style="margin-bottom: 11px;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 6px 0;">Certifications</h2>
+      <div style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">AI Engineer Core Track: LLM Engineering, RAG, QLoRA &amp; Agents</div><div style="font-size: 10.5px; color: #607D8B;">Udemy</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">Feb 2026</span>
+      </div>
+      <div style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">IBM Professional Data Science Certificate</div><div style="font-size: 10.5px; color: #607D8B;">IBM / Coursera &nbsp;·&nbsp; Credential ID: T6XEQGVXB7R4</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">Aug 2024</span>
+      </div>
+      <div style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">Financial Modeling &amp; Valuation Analyst (FMVA)</div><div style="font-size: 10.5px; color: #607D8B;">Corporate Finance Institute (CFI) &nbsp;·&nbsp; Credential ID: 68664647-7852-47f7-9a55-50289335bd37</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">Jul 2022</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <div><div style="font-weight: 700; font-size: 11px; color: #1A237E;">Business Intelligence &amp; Data Analysis (BIDA)</div><div style="font-size: 10.5px; color: #607D8B;">Corporate Finance Institute (CFI) &nbsp;·&nbsp; Credential ID: f4890a5f-3502-410a-9592-d21952d2b9a6</div></div>
+        <span style="font-size: 10.5px; color: #607D8B; white-space: nowrap; margin-left: 16px;">May 2023</span>
+      </div>
+    </div>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <div style="margin-bottom: 11px; break-before: avoid;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 7px 0;">Professional Experience</h2>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Research Associate</span><span style="font-size: 10.5px; color: #607D8B;">Feb 2026 – Present</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Institute on Disability and Public Policy &nbsp;·&nbsp; Washington, DC &nbsp;·&nbsp; Hybrid, Part-time</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Building LLM-powered analytics infrastructure for the CRPD Global Disability Rights Dashboard, analyzing UN treaty implementation across 180+ countries ahead of the June 2026 UN Conference of States Parties launch.</li>
+          <li>Automating data pipelines for UN disability rights reports; conducting NLP and transformer-based text analysis on multilingual treaty documents.</li>
+          <li>Developing Shiny and Streamlit dashboards translating policy data into actionable insights; collaborating with the World Bank Disability Data Hub.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Event Data Coordinator</span><span style="font-size: 10.5px; color: #607D8B;">Aug 2025 – Jan 2026</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">American University &nbsp;·&nbsp; Washington, DC</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Applied time-series forecasting and NLP text mining to predict event demand and extract actionable insights from survey feedback.</li>
+          <li>Built clustering-based segmentation models and reproducible analytics pipelines feeding BI dashboards for data-driven resource allocation.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Software / Data Analyst – Intern</span><span style="font-size: 10.5px; color: #607D8B;">Jun 2025 – Aug 2025</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Harmonia Holdings Group LLC &nbsp;·&nbsp; Virginia, USA</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Architected and deployed a full-stack AI validation platform on AWS (React, Flask/FastAPI, PostgreSQL), reducing manual processing by 80% through intelligent automation.</li>
+          <li>Built real-time NLP workflows for automated error detection, compliance checks, and self-generating audit trails for federal financial reporting.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Graduate Assistant – Research &amp; Teaching</span><span style="font-size: 10.5px; color: #607D8B;">Jan 2025 – Jun 2025</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">American University &nbsp;·&nbsp; Washington, DC</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Supported advanced coursework in predictive modeling, machine learning, and applied data science; contributed to faculty research in statistical analysis and business intelligence.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Senior Internal Auditor – Business Operations</span><span style="font-size: 10.5px; color: #607D8B;">Jun 2023 – Jul 2024</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Uganda Development Bank &nbsp;·&nbsp; Kampala, Uganda</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Built predictive analytics models in Python and SQL for loan delinquency detection; engineered data quality frameworks achieving a 95% compliance target.</li>
+          <li>Designed Power BI dashboards for real-time audit tracking (78% issue closure rate) and SQL revenue assurance models for anomaly detection.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Business Compliance Advisory Manager</span><span style="font-size: 10.5px; color: #607D8B;">Dec 2021 – May 2023</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Stanbic Bank (U) Ltd &nbsp;·&nbsp; Kampala, Uganda</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Built SQL-based KYC risk models (96% compliance score) and led AML transaction monitoring using pattern recognition and anomaly detection for 100% regulatory compliance.</li>
+          <li>Developed compliance training programs embedding a data-driven risk culture across business units.</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Manager, Internal Audit</span><span style="font-size: 10.5px; color: #607D8B;">Jan 2019 – Nov 2021</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Equity Bank (U) Ltd &nbsp;·&nbsp; Kampala, Uganda</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Automated audit processes via ML-informed exception reporting (25% automation, 60% manual task reduction); adopted risk-based methodology improving efficiency by 40%.</li>
+          <li>Delivered 30+ investigation reports with predictive insights and anomaly detection findings to executive stakeholders.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Senior Internal Auditor &amp; Internal Auditor – Systems &amp; Processes</span><span style="font-size: 10.5px; color: #607D8B;">Dec 2012 – Dec 2018</span></div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Equity Bank (U) Ltd &nbsp;·&nbsp; Kampala, Uganda</div>
+        <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
+          <li>Built foundational expertise in systems auditing, financial controls, and data integrity within a high-volume banking environment.</li>
+          <li>Directed assurance services for key operational processes, increasing operational efficiency to an 85% average through analytical optimization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div style="margin-bottom: 11px;">
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 7px 0;">Featured Projects</h2>
+
+      <div style="margin-bottom: 7px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">US Food Insecurity Analytics Platform</span>
+          <a href="https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud" style="font-size: 10.5px; color: #3949AB; text-decoration: underline;">&#128279; View Project</a>
+        </div>
+        <div style="font-size: 11px; color: #455A64; line-height: 1.4; margin-top: 3px;">LLM-powered platform unlocking 15 years of county-level food insecurity data (2009–2023) with a natural-language chat interface, SHAP explainability, anomaly detection, and Prophet/ARIMA forecasting projecting rates 3–5 years ahead.</div>
+        <div style="margin-top: 2px; font-size: 10.5px;"><strong style="color: #1A237E;">Tech Stack:</strong> <span style="color: #455A64;">Python, Streamlit, Google Gemini, Plotly, Scikit-learn, Prophet, ARIMA</span></div>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">AI-Powered Federal Financial Reporting Dashboard</span>
+          <a href="https://hail.harmonia.com/FederalFinancialReportingDashboard" style="font-size: 10.5px; color: #3949AB; text-decoration: underline;">&#128279; View Project</a>
+        </div>
+        <div style="font-size: 11px; color: #455A64; line-height: 1.4; margin-top: 3px;">End-to-end AI automation platform with NLP-driven validation and real-time compliance monitoring for federal financial reporting. Reduced manual processing by 80%; deployed full-stack on AWS.</div>
+        <div style="margin-top: 2px; font-size: 10.5px;"><strong style="color: #1A237E;">Tech Stack:</strong> <span style="color: #455A64;">React, Flask/FastAPI, AWS, PostgreSQL, NLP, Python</span></div>
+      </div>
+    </div>
+
+    <!-- INTERESTS -->
+    <div>
+      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 6px 0;">Interests</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Ethical AI</span>
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Artificial General Intelligence</span>
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Agentic AI</span>
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Large Language Models</span>
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Machine Learning at Scale</span>
+        <span style="background: #E8EAF6; color: #3949AB; border-radius: 12px; padding: 3px 11px; font-size: 11px; font-weight: 500;">Financial Innovation</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ═══ END HIDDEN RESUME TEMPLATE ══════════════════════════════════════════ -->
+
 </body>
 
 </html>

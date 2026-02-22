@@ -1919,18 +1919,18 @@
         return remaining <= THRESHOLD || fitsInViewport;
       }
 
-      function isNearBottomMobile() {
+      function isBottomMobile() {
         const activePanel = document.querySelector('.tab-panel.active');
         if (!activePanel) return false;
         const rect = activePanel.getBoundingClientRect();
-        const fitsInViewport = rect.height <= window.innerHeight - THRESHOLD / 2;
-        return rect.bottom - window.innerHeight <= THRESHOLD || fitsInViewport;
+        const reachedBottom = rect.bottom <= window.innerHeight + 12; // allow small tolerance
+        const scrolledSome = window.scrollY > 40; // avoid showing immediately on load
+        return reachedBottom && scrolledSome;
       }
 
       function checkPopup() {
-        const nearContentEnd = isNearBottomDesktop(); // covers desktop and cases where content scrolls
-        const nearWindowEnd = isNearBottomMobile();   // covers mobile/viewport scrolling
-        popup.classList.toggle('visible', nearContentEnd || nearWindowEnd);
+        const nearEnd = window.innerWidth > 900 ? isNearBottomDesktop() : isBottomMobile();
+        popup.classList.toggle('visible', nearEnd);
       }
 
       // expose so tab switcher can force a recalculation

@@ -1008,6 +1008,24 @@
       box-shadow: 0 4px 12px rgba(74, 20, 140, 0.25);
     }
 
+    .nav-popup-btn.resume-btn {
+      background: linear-gradient(135deg, #00695C, #00897B);
+    }
+
+    .nav-popup-btn.resume-btn:hover {
+      background: linear-gradient(135deg, #00897B, #00ACC1);
+      box-shadow: 0 4px 12px rgba(0, 105, 92, 0.25);
+    }
+
+    .nav-popup-btn.contact-btn {
+      background: linear-gradient(135deg, #BF360C, #E64A19);
+    }
+
+    .nav-popup-btn.contact-btn:hover {
+      background: linear-gradient(135deg, #E64A19, #F4511E);
+      box-shadow: 0 4px 12px rgba(191, 54, 12, 0.25);
+    }
+
     @media (max-width: 768px) {
       .nav-popup {
         bottom: 1rem;
@@ -1657,6 +1675,12 @@
             </button>
             <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)">
               <i class="fa fa-certificate"></i> Certifications
+            </button>
+            <button class="nav-popup-btn resume-btn" onclick="showTab('resume', null)">
+              <i class="fa fa-file-text"></i> Resume
+            </button>
+            <button class="nav-popup-btn contact-btn" onclick="showTab('contact', null)">
+              <i class="fa fa-envelope"></i> Contact
             </button>
           </div>
         </div>

@@ -1039,6 +1039,15 @@
       box-shadow: 0 4px 12px rgba(191, 54, 12, 0.25);
     }
 
+    .nav-popup-btn.home-btn {
+      background: linear-gradient(135deg, #006064, #00838F);
+    }
+
+    .nav-popup-btn.home-btn:hover {
+      background: linear-gradient(135deg, #00838F, #0097A7);
+      box-shadow: 0 4px 12px rgba(0, 96, 100, 0.25);
+    }
+
     @media (max-width: 768px) {
       .nav-popup {
         bottom: 1rem;
@@ -1714,6 +1723,9 @@
       <div id="nav-popup" class="nav-popup">
         <p class="nav-popup-label">What's next?</p>
         <div class="nav-popup-btns">
+          <button class="nav-popup-btn home-btn" onclick="showTab('about', null)">
+            <i class="fa fa-home"></i> Home
+          </button>
           <button class="nav-popup-btn" onclick="showTab('projects', null)">
             <i class="fa fa-rocket"></i> Projects
           </button>

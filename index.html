@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VSEDF267QR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VSEDF267QR');
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1962,6 +1970,12 @@
         if (tabRibbon) tabRibbon.scrollIntoView({ behavior: 'instant' });
       }
       if (window.checkNavPopup) window.checkNavPopup();
+      // GA4: track which tab was viewed
+      if (typeof gtag === 'function') {
+        gtag('event', 'tab_view', {
+          tab_name: tabName
+        });
+      }
     }
 
     // ── Scroll-driven timeline line (lerp — trails behind scroll) ──

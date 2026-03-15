@@ -77,6 +77,70 @@ function showTab(tabName, el) {
 })();
 
 // ── Resume PDF download via html2pdf.js ──
+// Auto-populates the PDF projects section from the live page content.
+// Caps project count and truncates descriptions to keep the PDF at 2 pages.
+function buildPdfProjects() {
+  var MAX_PROJECTS = 4;        // hard cap — keeps PDF within 2 pages
+  var MAX_SUMMARY_CHARS = 200; // truncate long descriptions for compactness
+
+  var container = document.getElementById('pdf-projects');
+  if (!container) return;
+
+  // Keep the heading, clear any previously generated entries
+  var heading = container.querySelector('h2');
+  container.innerHTML = '';
+  if (heading) container.appendChild(heading);
+
+  // Read project cards from the visible Projects tab (capped at MAX_PROJECTS)
+  var cards = Array.prototype.slice.call(
+    document.querySelectorAll('#projects .project-card'), 0, MAX_PROJECTS
+  );
+
+  cards.forEach(function (card, i) {
+    var title = (card.querySelector('.project-banner h3') || {}).textContent || '';
+    var toolsEl = card.querySelector('.project-body .tools');
+    var tools = toolsEl ? toolsEl.textContent.replace(/^Tools:\s*/i, '') : '';
+    var link = card.querySelector('.learn-more');
+    var href = link ? link.href : '';
+
+    // Build a short summary from the first <p> that isn't the tools line
+    var paragraphs = card.querySelectorAll('.project-body > p');
+    var summary = '';
+    for (var j = 0; j < paragraphs.length; j++) {
+      if (!paragraphs[j].classList.contains('tools')) {
+        summary = paragraphs[j].textContent.trim();
+        break;
+      }
+    }
+    // Truncate to keep the PDF compact
+    if (summary.length > MAX_SUMMARY_CHARS) {
+      summary = summary.substring(0, MAX_SUMMARY_CHARS).replace(/\s+\S*$/, '') + '\u2026';
+    }
+
+    var entry = document.createElement('div');
+    entry.style.marginBottom = (i < cards.length - 1) ? '7px' : '0';
+
+    var headerRow = document.createElement('div');
+    headerRow.style.cssText = 'display:flex;justify-content:space-between;align-items:baseline;';
+    headerRow.innerHTML =
+      '<span style="font-weight:700;font-size:11.5px;color:#1A237E;">' + title + '</span>' +
+      (href ? '<a href="' + href + '" style="font-size:10.5px;color:#3949AB;text-decoration:underline;">&#128279; View Project</a>' : '');
+
+    var desc = document.createElement('div');
+    desc.style.cssText = 'font-size:11px;color:#455A64;line-height:1.4;margin-top:3px;';
+    desc.textContent = summary;
+
+    var techLine = document.createElement('div');
+    techLine.style.cssText = 'margin-top:2px;font-size:10.5px;';
+    techLine.innerHTML = '<strong style="color:#1A237E;">Tech Stack:</strong> <span style="color:#455A64;">' + tools + '</span>';
+
+    entry.appendChild(headerRow);
+    entry.appendChild(desc);
+    entry.appendChild(techLine);
+    container.appendChild(entry);
+  });
+}
+
 function downloadResumePDF() {
   const btn = document.getElementById('btn-download-pdf');
   const status = document.getElementById('pdf-status');
@@ -86,6 +150,9 @@ function downloadResumePDF() {
   btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Generating PDF\u2026';
   status.style.display = 'block';
   status.textContent = 'Building your resume \u2014 this takes a few seconds\u2026';
+
+  // Auto-populate projects from the live page
+  buildPdfProjects();
 
   // Temporarily make visible for rendering
   template.style.display = 'block';

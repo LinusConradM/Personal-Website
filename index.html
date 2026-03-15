@@ -10,1296 +10,47 @@
     gtag('js', new Date());
     gtag('config', 'G-VSEDF267QR');
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
 
-    body,
-    html {
-      height: 100%;
-    }
-
-    /* ─── SIDEBAR ─────────────────────────────────── */
-    .container {
-      display: flex;
-      height: 100vh;
-    }
-
-    .sidebar {
-      width: 38%;
-      background: linear-gradient(160deg, #1A237E 0%, #0D1452 100%);
-      color: white;
-      padding: 2rem 1.8rem;
-      position: fixed;
-      height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .avatar {
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #5C6BC0, #9575CD);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 0.8rem;
-      border: 4px solid rgba(255, 255, 255, 0.25);
-      letter-spacing: 2px;
-      flex-shrink: 0;
-      object-fit: cover;
-    }
-
-    .sidebar h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .sidebar h2 {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #B0BEC5;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-    }
-
-    .sidebar .tagline {
-      font-size: 0.88rem;
-      color: #CFD8DC;
-      line-height: 1.65;
-      text-align: left;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-info {
-      width: 100%;
-      text-align: left;
-      margin-bottom: 1.5rem;
-      font-size: 0.83rem;
-      color: #B0BEC5;
-    }
-
-    .contact-info div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .contact-info i {
-      color: #7986CB;
-      width: 16px;
-    }
-
-    .links {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-
-    .btn-link {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 8px 14px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.82rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.25s;
-    }
-
-    .btn-link:hover {
-      background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    /* ─── MAIN PANEL ──────────────────────────────── */
-    .main {
-      margin-left: 38%;
-      width: 62%;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    .menu {
-      background: #283593;
-      color: white;
-      display: flex;
-      padding: 0;
-      flex-shrink: 0;
-      overflow-x: auto;
-    }
-
-    .menu-item {
-      padding: 1rem 1.4rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .menu-item:hover,
-    .menu-item.active {
-      background: rgba(255, 255, 255, 0.1);
-      border-bottom-color: #7986CB;
-      color: #C5CAE9;
-    }
-
-    .content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 2rem;
-      background-color: #F5F7FA;
-    }
-
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    /* ─── TYPOGRAPHY ─────────────────────────────── */
-    .content h2 {
-      font-size: 1.35rem;
-      color: #1A237E;
-      margin-bottom: 1rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid #E3E8FF;
-    }
-
-    .content h3 {
-      font-size: 1.05rem;
-      color: #283593;
-      margin: 1rem 0 0.5rem;
-    }
-
-    .content p {
-      font-size: 0.92rem;
-      color: #455A64;
-      line-height: 1.7;
-      margin-bottom: 0.7rem;
-    }
-
-    /* ─── SECTION CARD ───────────────────────────── */
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    }
-
-    /* ─── EDUCATION ROWS ─────────────────────────── */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .edu-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-      background: #F8F9FF;
-      border: 1px solid #E3E8FF;
-      border-radius: 8px;
-      padding: 0.9rem;
-    }
-
-    .org-badge {
-      width: 52px;
-      height: 52px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.7rem;
-      color: white;
-      text-align: center;
-      line-height: 1.2;
-      flex-shrink: 0;
-      letter-spacing: 0.5px;
-    }
-
-    .edu-text .degree {
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: #1A237E;
-      margin-bottom: 0.2rem;
-    }
-
-    .edu-text .school {
-      font-size: 0.82rem;
-      color: #607D8B;
-      font-style: italic;
-    }
-
-    .edu-text .year {
-      font-size: 0.78rem;
-      color: #90A4AE;
-      margin-top: 0.2rem;
-    }
-
-    /* ─── TIMELINE ───────────────────────────────── */
-    .timeline {
-      position: relative;
-      margin: 1.5rem 0;
-      --line-height: 0%;
-    }
-
-    .timeline::after {
-      content: "";
-      position: absolute;
-      width: 4px;
-      background: #C5CAE9;
-      top: 0;
-      left: 50%;
-      margin-left: -2px;
-      z-index: 1;
-      border-radius: 2px;
-      height: var(--line-height);
-    }
-
-    .tl-item {
-      padding: 0 45px;
-      position: relative;
-      width: 50%;
-      margin-bottom: 1.5rem;
-    }
-
-    .tl-left {
-      left: 0;
-    }
-
-    .tl-right {
-      left: 50%;
-    }
-
-    .tl-icon {
-      position: absolute;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      right: -22px;
-      top: 14px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.6rem;
-      color: white;
-      text-align: center;
-      line-height: 1.2;
-      border: 3px solid white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .tl-right .tl-icon {
-      left: -22px;
-      right: auto;
-    }
-
-    .tl-box {
-      background: white;
-      border-radius: 8px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-      border: 1px solid #E3E8FF;
-      position: relative;
-      font-size: 0.88rem;
-    }
-
-    .tl-box h3 {
-      font-size: 0.95rem;
-      color: #1A237E;
-      margin-bottom: 0.2rem;
-    }
-
-    .tl-box small {
-      color: #7986CB;
-      font-size: 0.78rem;
-      display: block;
-      margin-bottom: 0.6rem;
-    }
-
-    .tl-box ul {
-      padding-left: 1.1rem;
-    }
-
-    .tl-box li {
-      color: #546E7A;
-      margin-bottom: 0.35rem;
-      line-height: 1.5;
-    }
-
-    .tl-arrow-left {
-      position: absolute;
-      top: 18px;
-      right: -10px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid white;
-      z-index: 2;
-    }
-
-    .tl-arrow-right {
-      position: absolute;
-      top: 18px;
-      left: -10px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid white;
-      z-index: 2;
-    }
-
-    /* ─── SKILLS GRID ────────────────────────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .skill-chip {
-      background: linear-gradient(160deg, #1A237E 0%, #0D1452 100%);
-      color: white;
-      border-radius: 8px;
-      padding: 0.8rem;
-      text-align: center;
-      font-size: 0.8rem;
-    }
-
-    .skill-chip strong {
-      display: block;
-      font-size: 0.85rem;
-      margin-bottom: 0.3rem;
-    }
-
-    /* ─── PROJECTS ───────────────────────────────── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .project-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      border: 1px solid #E3E8FF;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(26, 35, 126, 0.15);
-    }
-
-    .project-banner {
-      height: 120px;
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .project-banner::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    .project-banner i.project-icon {
-      position: absolute;
-      bottom: -15px;
-      right: 15px;
-      font-size: 5rem;
-      color: rgba(255, 255, 255, 0.15);
-      z-index: 0;
-      transform: rotate(-15deg);
-    }
-
-    .project-banner h3 {
-      position: relative;
-      color: white;
-      font-size: 1.15rem;
-      text-align: left;
-      font-weight: 700;
-      z-index: 1;
-      margin: 0;
-      line-height: 1.3;
-    }
-
-    .project-body {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-body .tools {
-      font-size: 0.82rem;
-      color: #7986CB;
-      margin-bottom: 0.8rem;
-    }
-
-    .project-body p {
-      font-size: 0.88rem;
-      color: #455A64;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .project-body ul {
-      padding-left: 1.2rem;
-      flex: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-body li {
-      font-size: 0.86rem;
-      color: #546E7A;
-      margin-bottom: 0.35rem;
-      line-height: 1.5;
-    }
-
-    .learn-more {
-      display: inline-block;
-      margin-top: auto;
-      color: #3949AB;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: #EDEEF7;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-align: center;
-      transition: background 0.2s;
-    }
-
-    .learn-more:hover {
-      background: #DFE2F2;
-      text-decoration: none;
-    }
-
-    /* ─── INTERESTS CHIPS ────────────────────────── */
-    .interest-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-    }
-
-    .interest-chip {
-      background: #E8EAF6;
-      color: #3949AB;
-      border-radius: 20px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
-
-    /* ─── CERT CARDS ─────────────────────────────── */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .cert-row {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      border: 1px solid #E3E8FF;
-      transition: box-shadow 0.2s;
-      gap: 1.5rem;
-    }
-
-    .cert-row:hover {
-      box-shadow: 0 6px 18px rgba(26, 35, 126, 0.1);
-    }
-
-    .cert-badge {
-      width: 140px;
-      height: 140px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .cert-details {
-      flex: 1;
-      text-align: left;
-    }
-
-    .cert-details h3 {
-      font-size: 1rem;
-      color: #1A237E;
-      margin-bottom: 0.3rem;
-      line-height: 1.4;
-      font-weight: 700;
-    }
-
-    .cert-details .meta-line {
-      font-size: 0.85rem;
-      color: #1A237E;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .cert-details .meta-line span {
-      color: #546E7A;
-      font-weight: 400;
-      margin-left: 4px;
-      display: inline-block;
-    }
-
-    .cert-details p {
-      font-size: 0.85rem;
-      color: #546E7A;
-      line-height: 1.5;
-      margin-top: 0.8rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .cert-details ul {
-      padding-left: 1.1rem;
-      text-align: left;
-      margin-top: 0.5rem;
-    }
-
-    .cert-details li {
-      font-size: 0.8rem;
-      color: #546E7A;
-      margin-bottom: 0.35rem;
-      line-height: 1.5;
-    }
-
-    .cert-details a {
-      color: #3949AB;
-      font-size: 0.8rem;
-    }
-
-    /* ─── LOGO IMAGES ───────────────────────────── */
-    .org-badge.logo-img,
-    .cert-badge.logo-img {
-      background: white;
-      padding: 5px;
-      border: 1px solid #E3E8FF;
-    }
-
-    .org-badge.logo-img img,
-    .cert-badge.logo-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .tl-icon.logo-img {
-      background: white;
-      padding: 4px;
-    }
-
-    .tl-icon.logo-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 50%;
-      display: block;
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 900px) {
-      body, html {
-        height: auto;
-      }
-
-      .container {
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-      }
-
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 2rem 1.5rem;
-      }
-
-      .avatar {
-        width: 160px;
-        height: 160px;
-      }
-
-      .sidebar .tagline {
-        text-align: center;
-      }
-
-      .main {
-        margin-left: 0;
-        width: 100%;
-        height: auto;
-      }
-
-      .content {
-        overflow-y: visible;
-        height: auto;
-        flex: none;
-      }
-
-      .edu-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tl-item {
-        width: 100%;
-        left: 0 !important;
-        padding: 0 0 0 50px;
-      }
-
-      .tl-icon {
-        left: 0 !important;
-        right: auto !important;
-      }
-
-      .timeline::after {
-        left: 22px;
-      }
-
-      .tl-arrow-left,
-      .tl-arrow-right {
-        left: -10px;
-        right: auto;
-        border-right: 10px solid white;
-        border-left: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .avatar {
-        width: 120px;
-        height: 120px;
-      }
-
-      .sidebar {
-        padding: 1.5rem 1rem;
-      }
-
-      .sidebar h1 {
-        font-size: 1.2rem;
-      }
-
-      .sidebar h2 {
-        font-size: 0.82rem;
-      }
-
-      .sidebar .tagline {
-        font-size: 0.83rem;
-      }
-
-      .content {
-        padding: 1rem;
-      }
-
-      .card {
-        padding: 1rem;
-      }
-
-      .menu-item {
-        padding: 0.8rem 1rem;
-        font-size: 0.82rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .tl-box {
-        padding: 0.8rem;
-      }
-
-      .cert-badge {
-        width: 100px;
-        height: 100px;
-      }
-
-      .cert-row {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-      }
-
-      .cert-details {
-        text-align: left;
-        width: 100%;
-      }
-
-      .cert-details h3 {
-        text-align: left;
-      }
-
-      .cert-details p,
-      .cert-details ul,
-      .cert-details li {
-        text-align: left;
-      }
-
-      .cert-details .meta-line {
-        display: flex;
-        justify-content: flex-start;
-      }
-
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ─── CONTACT FORM ───────────────────────────────────── */
-    .contact-form-card {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #283593;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1.5px solid #C5CAE9;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-family: inherit;
-      color: #37474F;
-      background: #FAFBFF;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: #3949AB;
-      box-shadow: 0 0 0 3px rgba(57, 73, 171, 0.12);
-      background: white;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 140px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, #1A237E, #283593);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.75rem 2rem;
-      font-size: 0.92rem;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
-    }
-
-    .btn-submit:hover {
-      background: linear-gradient(135deg, #283593, #3949AB);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(26, 35, 126, 0.3);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .form-status {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      display: none;
-    }
-
-    .form-status.success {
-      background: #E8F5E9;
-      color: #2E7D32;
-      border: 1px solid #A5D6A7;
-      display: block;
-    }
-
-    .form-status.error {
-      background: #FFEBEE;
-      color: #C62828;
-      border: 1px solid #FFCDD2;
-      display: block;
-    }
-
-    .contact-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .contact-info-tile {
-      background: #F0F2FF;
-      border: 1px solid #C5CAE9;
-      border-radius: 10px;
-      padding: 1rem 0.8rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      color: #283593;
-      font-weight: 500;
-      text-align: center;
-      word-break: break-word;
-      min-width: 0;
-    }
-
-    .contact-info-tile i {
-      font-size: 1.2rem;
-      color: #3949AB;
-    }
-
-    @media (max-width: 700px) {
-      .contact-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ─── EXPLORE MORE POPUP ──────────────────────── */
-    .nav-popup {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 8px 32px rgba(26, 35, 126, 0.2);
-      padding: 1rem 1.2rem;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      transform: translateY(140%);
-      opacity: 0;
-      transition: transform 1.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 1.6s ease;
-      pointer-events: none;
-      border: 1px solid #E3E8FF;
-    }
-
-    .nav-popup.visible {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .nav-popup-label {
-      font-size: 0.72rem;
-      color: #90A4AE;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
-      margin: 0;
-    }
-
-    .nav-popup-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .nav-popup-btns.home-row {
-      justify-content: flex-start;
-    }
-
-    .nav-popup-btns.grid-row {
-      flex-wrap: wrap;
-    }
-
-    .nav-popup-btn.desktop-home {
-      display: none;
-    }
-
-    .nav-popup-btn {
-      background: linear-gradient(135deg, #1A237E, #283593);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.55rem 1rem;
-      font-size: 0.83rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: all 0.2s;
-      font-family: inherit;
-      opacity: 0;
-      transform: translateY(10px);
-      animation-fill-mode: forwards;
-      animation-duration: 0.75s;
-      animation-timing-function: ease-out;
-    }
-
-    .nav-popup-btn:hover {
-      background: linear-gradient(135deg, #283593, #3949AB);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(26, 35, 126, 0.25);
-    }
-
-    .nav-popup-btn.certs-btn {
-      background: linear-gradient(135deg, #4A148C, #6A1B9A);
-    }
-
-    .nav-popup-btn.certs-btn:hover {
-      background: linear-gradient(135deg, #6A1B9A, #7B1FA2);
-      box-shadow: 0 4px 12px rgba(74, 20, 140, 0.25);
-    }
-
-    .nav-popup-btn.resume-btn {
-      background: linear-gradient(135deg, #00695C, #00897B);
-    }
-
-    .nav-popup-btn.resume-btn:hover {
-      background: linear-gradient(135deg, #00897B, #00ACC1);
-      box-shadow: 0 4px 12px rgba(0, 105, 92, 0.25);
-    }
-
-    .nav-popup-btn.contact-btn {
-      background: linear-gradient(135deg, #BF360C, #E64A19);
-    }
-
-    .nav-popup-btn.contact-btn:hover {
-      background: linear-gradient(135deg, #E64A19, #F4511E);
-      box-shadow: 0 4px 12px rgba(191, 54, 12, 0.25);
-    }
-
-    .nav-popup-btn.home-btn {
-      background: linear-gradient(135deg, #006064, #00838F);
-    }
-
-    .nav-popup-btn.home-btn:hover {
-      background: linear-gradient(135deg, #00838F, #0097A7);
-      box-shadow: 0 4px 12px rgba(0, 96, 100, 0.25);
-    }
-
-    /* Popup button entry animation */
-    @keyframes popup-fade-rise {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .nav-popup:not(.visible) .nav-popup-btn {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: none;
-    }
-
-    .nav-popup.visible .home-row .nav-popup-btn {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0s;
-    }
-
-    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(1) {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0.12s;
-    }
-
-    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(2) {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0.24s;
-    }
-
-    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(3) {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0.36s;
-    }
-
-    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(4) {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0.48s;
-    }
-
-    .nav-popup.visible .grid-row .nav-popup-btn:nth-child(5) {
-      animation: popup-fade-rise 0.9s ease-out forwards;
-      animation-delay: 0.6s;
-    }
-
-    @media (max-width: 768px) {
-      .nav-popup {
-        bottom: 1rem;
-        right: 1rem;
-        left: 1rem;
-        transition: transform 2.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 2.4s ease;
-      }
-
-      .nav-popup-btns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nav-popup-btn {
-        justify-content: center;
-      }
-
-      .nav-popup-btns.home-row {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 0.4rem;
-      }
-
-      .nav-popup-btn.home-btn {
-        width: 50%;
-        max-width: 240px;
-        justify-content: center;
-      }
-
-      .nav-popup-btns.grid-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.6rem;
-      }
-
-      .nav-popup-btn.desktop-home {
-        display: none !important;
-      }
-
-      /* Mobile popup animation: slide in right→left, sync with container */
-      @keyframes popup-slide-left-mobile {
-        from {
-          opacity: 0;
-          transform: translateX(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .nav-popup:not(.visible) .nav-popup-btn {
-        opacity: 0;
-        transform: translateX(40px);
-        animation: none;
-      }
-
-      .nav-popup.visible .home-row .nav-popup-btn {
-        animation: popup-slide-left-mobile 2.4s ease-out forwards;
-        animation-delay: 0s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(1) {
-        animation: popup-slide-left-mobile 2.4s ease-out forwards;
-        animation-delay: 0.35s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(2) {
-        animation: popup-slide-left-mobile 2.4s ease-out forwards;
-        animation-delay: 0.7s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(3) {
-        animation: popup-slide-left-mobile 2.4s ease-out forwards;
-        animation-delay: 1.05s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(4) {
-        animation: popup-slide-left-mobile 2.4s ease-out forwards;
-        animation-delay: 1.4s;
-      }
-
-      /* Certifications: mobile layout adjustments */
-      .cert-row {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .cert-badge {
-        margin: 0.4rem auto 0.35rem;
-      }
-
-      .cert-details {
-        width: 100%;
-        text-align: left;
-      }
-
-      .cert-details h3 {
-        text-align: center;
-      }
-
-      .cert-details .meta-line,
-      .cert-details p,
-      .cert-details ul {
-        text-align: left;
-      }
-
-      .cert-details p {
-        text-align: justify;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .home-row {
-        display: none !important;
-      }
-
-      .grid-row {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .nav-popup-btns {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .nav-popup-btn.desktop-home {
-        display: flex !important;
-      }
-
-      /* Desktop animation: ribbon slides in right→left, slower */
-      @keyframes popup-slide-left {
-        from {
-          opacity: 0;
-          transform: translateX(60px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .nav-popup:not(.visible) .nav-popup-btn {
-        opacity: 0;
-        transform: translateX(60px);
-        animation: none;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(1) {
-        animation: popup-slide-left 1.6s ease-out forwards;
-        animation-delay: 0s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(2) {
-        animation: popup-slide-left 1.6s ease-out forwards;
-        animation-delay: 0.2s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(3) {
-        animation: popup-slide-left 1.6s ease-out forwards;
-        animation-delay: 0.4s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(4) {
-        animation: popup-slide-left 1.6s ease-out forwards;
-        animation-delay: 0.6s;
-      }
-
-      .nav-popup.visible .grid-row .nav-popup-btn:nth-child(5) {
-        animation: popup-slide-left 1.6s ease-out forwards;
-        animation-delay: 0.8s;
-      }
-    }
-  </style>
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer. Specializing in LLM-powered applications, predictive analytics, and scalable ML pipelines. Currently completing an MS in Analytics at American University.">
+  <meta property="og:title" content="Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer">
+  <meta property="og:description" content="Data Scientist and AI Engineer specializing in LLM-powered applications, RAG architectures, and production-grade ML systems. 10+ years of financial services experience.">
+  <meta property="og:image" content="https://conradlinusmuhirwe.netlify.app/images/ConradLinusMuhirwe_2.jpg">
+  <meta property="og:url" content="https://conradlinusmuhirwe.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Conrad Linus Muhirwe">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer">
+  <meta name="twitter:description" content="Data Scientist and AI Engineer specializing in LLM-powered applications, RAG architectures, and production-grade ML systems.">
+  <meta name="twitter:image" content="https://conradlinusmuhirwe.netlify.app/images/ConradLinusMuhirwe_2.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- html2pdf (deferred — only needed on Resume tab) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
+  <!-- Skip to content (Accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="container">
 
     <!-- ═══ SIDEBAR ═══════════════════════════════════════ -->
@@ -1309,39 +60,50 @@
       <h2>Data Scientist &nbsp;|&nbsp; Data Analyst &nbsp;|&nbsp; AI Engineer</h2>
 
       <p class="tagline">
-        Hi! I’m Conrad, a Data Scientist, Data Analyst, and AI Engineer translating complex financial and operational
+        Hi! I'm Conrad, a Data Scientist, Data Analyst, and AI Engineer translating complex financial and operational
         data into automated, high-impact intelligent systems. Currently, I specialize in architecting LLM-driven
         applications and scalable ML pipelines. My ultimate mission is to help organizations harness Generative AI and
         advanced analytics to create resilient, ethical, and meaningful technology solutions that solve critical
         challenges.
       </p>
 
-
+      <!-- Social & Contact Links -->
+      <div class="links">
+        <a href="https://linkedin.com/in/Conrad-Linus-m" target="_blank" rel="noopener" class="btn-link" aria-label="LinkedIn Profile">
+          <i class="fa fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/LinusConradM" target="_blank" rel="noopener" class="btn-link" aria-label="GitHub Profile">
+          <i class="fa fa-github"></i> GitHub
+        </a>
+        <a href="mailto:linusconradm@gmail.com" class="btn-link" aria-label="Send Email">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </div>
     </div>
 
     <!-- ═══ MAIN PANEL ════════════════════════════════════ -->
-    <div class="main">
-      <div class="menu">
-        <div class="menu-item active" onclick="showTab('about', this)">About Me</div>
-        <div class="menu-item" onclick="showTab('projects', this)">Projects</div>
-        <div class="menu-item" onclick="showTab('certifications', this)">Certifications</div>
-        <div class="menu-item" onclick="showTab('resume', this)">Resume</div>
-        <div class="menu-item" onclick="showTab('contact', this)">Contact</div>
-      </div>
+    <div class="main" id="main-content">
+      <nav class="menu" role="tablist" aria-label="Main navigation">
+        <button class="menu-item active" role="tab" aria-selected="true" data-tab="about" aria-controls="about">About Me</button>
+        <button class="menu-item" role="tab" aria-selected="false" data-tab="projects" aria-controls="projects">Projects</button>
+        <button class="menu-item" role="tab" aria-selected="false" data-tab="certifications" aria-controls="certifications">Certifications</button>
+        <button class="menu-item" role="tab" aria-selected="false" data-tab="resume" aria-controls="resume">Resume</button>
+        <button class="menu-item" role="tab" aria-selected="false" data-tab="contact" aria-controls="contact">Contact</button>
+      </nav>
 
       <div class="content">
 
         <!-- ─── ABOUT ME ──────────────────────────────── -->
-        <div id="about" class="tab-panel active">
+        <div id="about" class="tab-panel active" role="tabpanel">
           <div class="card">
             <h2>Professional Summary</h2>
-            <p>Data Scientist, AI Engineer and Data Analyst combining 10+ years of financial services experience with hands-on expertise building LLM-powered analytics platforms, 
-              RAG architectures, and production-grade automation systems. I have deployed AI solutions that reduced manual processing by 80%, built data pipelines processing UN treaty 
+            <p>Data Scientist, AI Engineer and Data Analyst combining 10+ years of financial services experience with hands-on expertise building LLM-powered analytics platforms,
+              RAG architectures, and production-grade automation systems. I have deployed AI solutions that reduced manual processing by 80%, built data pipelines processing UN treaty
               data across 180+ countries, and co-authored peer-reviewed research in predictive analytics.
             </p>
-            <p>My technical foundation spans Python, SQL, LangChain, scikit-learn, Flask, and AWS — applied to real problems in federal compliance, international policy, credit risk, 
-              and agricultural AI. I am particularly focused on the space where rigorous data engineering meets business accountability: systems that are not just intelligent, 
-              but trustworthy and explainable to the stakeholders who depend on them. Currently completing an MS in Analytics at American University (May 2026) and 
+            <p>My technical foundation spans Python, SQL, LangChain, scikit-learn, Flask, and AWS — applied to real problems in federal compliance, international policy, credit risk,
+              and agricultural AI. I am particularly focused on the space where rigorous data engineering meets business accountability: systems that are not just intelligent,
+              but trustworthy and explainable to the stakeholders who depend on them. Currently completing an MS in Analytics at American University (May 2026) and
               open to full-time roles in data analytics, AI engineering, and applied ML.</p>
           </div>
 
@@ -1351,7 +113,7 @@
 
               <div class="edu-item">
                 <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
-                    alt="American University"></div>
+                    alt="American University" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Master of Science in Analytics &amp; AI</div>
                   <div class="school">American University, Kogod School of Business</div>
@@ -1361,7 +123,7 @@
 
               <div class="edu-item">
                 <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
-                    alt="American University"></div>
+                    alt="American University" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Graduate Certificate in Data Science</div>
                   <div class="school">American University, College of Arts and Sciences</div>
@@ -1372,7 +134,7 @@
               <div class="edu-item">
                 <div class="org-badge logo-img"><img
                     src="images/uganda-martyrs-university-umu-logo-png_seeklogo-550311.png"
-                    alt="Uganda Martyrs University"></div>
+                    alt="Uganda Martyrs University" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Bachelor of Business Administration &amp; Management - Finance &amp; Accounting
                   </div>
@@ -1423,7 +185,7 @@
             <!-- American University – Event Data Coordinator -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/American-University-logo.webp"
-                  alt="American University"></div>
+                  alt="American University" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Event Data Coordinator</h3>
@@ -1442,8 +204,8 @@
 
             <!-- Harmonia Holdings -->
             <div class="tl-item tl-left">
-              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Harmonia Holdings Logo"
-                  alt="Harmonia Holdings"></div>
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Harmonia Holdings Logo.png"
+                  alt="Harmonia Holdings" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Software / Data Analyst – Intern</h3>
@@ -1465,7 +227,7 @@
             <!-- AU – Graduate Assistant -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/American-University-logo.webp"
-                  alt="American University">
+                  alt="American University" loading="lazy">
               </div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
@@ -1481,8 +243,8 @@
 
             <!-- Uganda Development Bank -->
             <div class="tl-item tl-left">
-              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Uganda Devevlopment Bank Logo"
-                  alt="Uganda Development Bank"></div>
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Uganda Devevlopment Bank Logo.png"
+                  alt="Uganda Development Bank" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Senior Internal Auditor – Business Operations</h3>
@@ -1502,7 +264,7 @@
 
             <!-- Stanbic Bank -->
             <div class="tl-item tl-right">
-              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Stanbic Bank Logo" alt="Stanbic Bank">
+              <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Stanbic Bank Logo.png" alt="Stanbic Bank" loading="lazy">
               </div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
@@ -1520,7 +282,7 @@
             <!-- Equity Bank Manager -->
             <div class="tl-item tl-left">
               <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Equity%20Bank%20Logo.png"
-                  alt="Equity Bank"></div>
+                  alt="Equity Bank" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Manager, Internal Audit</h3>
@@ -1540,7 +302,7 @@
             <!-- Equity Bank Senior -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Equity%20Bank%20Logo.png"
-                  alt="Equity Bank"></div>
+                  alt="Equity Bank" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Senior Internal Auditor &amp; Internal Auditor – Systems &amp; Processes</h3>
@@ -1606,12 +368,12 @@
           <div class="card" id="goals-section">
             <h2>Personal Goals and Motivation</h2>
             <p>As a Data Scientist and AI/ML Engineer, my core goal is to build intelligent systems that drive
-              meaningful, measurable impact—whether that’s accelerating scientific research, enhancing operational
+              meaningful, measurable impact—whether that's accelerating scientific research, enhancing operational
               efficiency, or improving human-centered decision-making. I am deeply motivated by the intersection of
               data, machine learning, and real-world application, and I continuously seek opportunities to push the
               boundaries of what AI can do in service of innovation and equity.</p>
 
-            <p>I thrive on solving complex problems with data, and I’m particularly passionate about:</p>
+            <p>I thrive on solving complex problems with data, and I'm particularly passionate about:</p>
             <ul
               style="padding-left: 1.8rem; margin-bottom: 1.2rem; color: #455A64; font-size: 0.92rem; line-height: 1.7;">
               <li style="margin-bottom: 0.4rem;">Developing robust ML pipelines that are scalable, ethical, and
@@ -1622,9 +384,9 @@
                 transparency principles.</li>
             </ul>
 
-            <h3 style="margin-bottom: 0.6rem; margin-top: 1.5rem; color: #1A237E; font-size: 1.1rem;">What I’m Looking
+            <h3 style="margin-bottom: 0.6rem; margin-top: 1.5rem; color: #1A237E; font-size: 1.1rem;">What I'm Looking
               for in an Organization</h3>
-            <p>I’m drawn to organizations that:</p>
+            <p>I'm drawn to organizations that:</p>
             <ul
               style="padding-left: 1.8rem; margin-bottom: 1.2rem; color: #455A64; font-size: 0.92rem; line-height: 1.7;">
               <li style="margin-bottom: 0.4rem;">Value innovation and invest in research and experimentation.</li>
@@ -1635,14 +397,14 @@
                 especially in domains like healthcare, education, social equity, and sustainability.</li>
             </ul>
 
-            <p style="margin-bottom: 0;">Ultimately, I’m looking to join a mission-driven team where I can apply my
+            <p style="margin-bottom: 0;">Ultimately, I'm looking to join a mission-driven team where I can apply my
               technical expertise, continue to grow as a leader and problem-solver, and contribute to building systems
               that matter.</p>
           </div>
         </div>
 
         <!-- ─── PROJECTS ───────────────────────────────── -->
-        <div id="projects" class="tab-panel">
+        <div id="projects" class="tab-panel" role="tabpanel">
           <div class="card" style="margin-bottom:1rem;">
             <h2>Featured Projects</h2>
             <p style="font-size:0.85rem;color:#90A4AE;">End-to-end AI and data science solutions built in production
@@ -1679,7 +441,7 @@
                     despite broad economic improvements.</li>
                 </ul>
                 <a class="learn-more" href="https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud"
-                  target="_blank">
+                  target="_blank" rel="noopener">
                   <i class="fa fa-external-link"></i> View Project
                 </a>
               </div>
@@ -1691,7 +453,7 @@
                 <h3>AI-Powered Federal Financial Reporting Dashboard</h3>
               </div>
               <div class="project-body">
-                <p class="tools"><strong>Tools:</strong> React, Flask, AWS, PostgreSQL, NLP</p>
+                <p class="tools"><strong>Tools:</strong> React, Flask/FastAPI, AWS, PostgreSQL, NLP, Python</p>
                 <p>
                   End-to-end AI automation platform integrating predictive analytics, NLP-driven validation,
                   and real-time compliance monitoring for federal financial reporting. Built at Harmonia Holdings Group
@@ -1699,15 +461,18 @@
                 </p>
                 <ul>
                   <li><strong>AI Validation Pipelines:</strong> Designed intelligent workflows for automated error
-                    detection and self-generating audit trails.</li>
-                  <li><strong>Full-Stack on AWS:</strong> Architected and deployed the application, reducing manual
-                    processing by
-                    <strong>80%</strong>.
-                  </li>
-                  <li><strong>Predictive Dashboards:</strong> Developed interactive dashboards with forecasting.</li>
+                    detection, compliance checks, and self-generating audit trails that flag discrepancies before
+                    regulatory submission.</li>
+                  <li><strong>Full-Stack on AWS:</strong> Architected and deployed the application (React frontend,
+                    Flask/FastAPI backend, PostgreSQL), reducing manual processing by <strong>80%</strong> through
+                    intelligent automation.</li>
+                  <li><strong>Predictive Dashboards:</strong> Developed interactive dashboards with forecasting and
+                    variance analysis for grant management and financial oversight across reporting cycles.</li>
+                  <li><strong>Accessible by Design:</strong> Implemented multi-language voice input using NLP and
+                    WCAG 2.1 AA accessibility standards, ensuring inclusive access for all users.</li>
                 </ul>
                 <a class="learn-more" href="https://hail.harmonia.com/FederalFinancialReportingDashboard"
-                  target="_blank">
+                  target="_blank" rel="noopener">
                   <i class="fa fa-external-link"></i> View Project
                 </a>
                 <p style="font-size:0.75rem; color:#90A4AE; margin-top:1rem; margin-bottom:0; font-style:italic;">
@@ -1744,7 +509,7 @@
                     aggregator noise.</li>
                 </ul>
                 <a class="learn-more" href="https://github.com/LinusConradM/job_tracker"
-                  target="_blank">
+                  target="_blank" rel="noopener">
                   <i class="fa fa-external-link"></i> View Project
                 </a>
               </div>
@@ -1754,7 +519,7 @@
         </div><!-- /projects -->
 
         <!-- ─── CERTIFICATIONS ────────────────────────── -->
-        <div id="certifications" class="tab-panel">
+        <div id="certifications" class="tab-panel" role="tabpanel">
           <div class="card" style="margin-bottom:1rem;">
             <h2>Certifications &amp; Professional Training</h2>
             <p style="font-size:0.85rem;color:#90A4AE;">Professional certifications and training completed across AI
@@ -1764,7 +529,7 @@
           <div class="cert-grid">
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/udemy logo.png" alt="Udemy"></div>
+              <div class="cert-badge logo-img"><img src="images/udemy logo.png" alt="Udemy" loading="lazy"></div>
               <div class="cert-details">
                 <h3>AI Engineer Core Track: LLM Engineering, RAG, QLoRA &amp; Agents</h3>
                 <div class="meta-line">Issued by: <span>Udemy</span></div>
@@ -1784,7 +549,7 @@
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/IBM Data Science Logo.png" alt="IBM Data Science"></div>
+              <div class="cert-badge logo-img"><img src="images/IBM Data Science Logo.png" alt="IBM Data Science" loading="lazy"></div>
               <div class="cert-details">
                 <h3>IBM Professional Data Science Certificate</h3>
                 <div class="meta-line">Issued by: <span>IBM / Coursera</span></div>
@@ -1801,14 +566,14 @@
                   <li>Building and evaluating Machine Learning models (Regression, Classification)</li>
                   <li>Hands-on application with Python, Pandas, Scikit-learn, and IBM Watson</li>
                 </ul>
-                <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" target="_blank"
+                <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" target="_blank" rel="noopener"
                   style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link"></i>
                   View Credential</a>
               </div>
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/FMVA Logo" alt="CFI FMVA"></div>
+              <div class="cert-badge logo-img"><img src="images/FMVA Logo.png" alt="CFI FMVA" loading="lazy"></div>
               <div class="cert-details">
                 <h3>Financial Modeling &amp; Valuation Analyst (FMVA)</h3>
                 <div class="meta-line">Issued by: <span>Corporate Finance Institute (CFI)</span></div>
@@ -1830,13 +595,13 @@
                     for executive leadership.</li>
                 </ul>
                 <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37#acc.iLZ5Cn73"
-                  target="_blank" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
+                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
                     class="fa fa-external-link"></i> View Credential</a>
               </div>
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/BIDA Logo.png" alt="CFI BIDA"></div>
+              <div class="cert-badge logo-img"><img src="images/BIDA Logo.png" alt="CFI BIDA" loading="lazy"></div>
               <div class="cert-details">
                 <h3>Business Intelligence &amp; Data Analysis (BIDA)</h3>
                 <div class="meta-line">Issued by: <span>Corporate Finance Institute (CFI)</span></div>
@@ -1852,7 +617,7 @@
                   <li>Statistical foundations, predictive analysis, and Monte Carlo simulations</li>
                 </ul>
                 <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6#acc.OCBNScLp"
-                  target="_blank" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
+                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
                     class="fa fa-external-link"></i> View Credential</a>
               </div>
             </div>
@@ -1861,7 +626,7 @@
         </div>
 
         <!-- ─── RESUME ────────────────────────────────── -->
-        <div id="resume" class="tab-panel">
+        <div id="resume" class="tab-panel" role="tabpanel">
           <div class="card" style="text-align:center; padding: 3rem 2rem;">
             <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1A237E,#3949AB);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
               <i class="fa fa-file-text" style="font-size:1.8rem;color:white;"></i>
@@ -1872,7 +637,7 @@
               <button id="btn-download-pdf" onclick="downloadResumePDF()" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#1A237E,#283593);color:white;padding:0.85rem 2rem;border-radius:8px;border:none;font-weight:600;font-size:0.95rem;font-family:inherit;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 14px rgba(26,35,126,0.25);">
                 <i class="fa fa-download"></i> Download PDF
               </button>
-              <a href="https://app.flowcv.com/resume/content" target="_blank"
+              <a href="https://app.flowcv.com/resume/content" target="_blank" rel="noopener"
                 style="display:inline-flex;align-items:center;gap:0.6rem;background:transparent;color:#1A237E;padding:0.85rem 2rem;border-radius:8px;border:2px solid #1A237E;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.2s;">
                 <i class="fa fa-external-link"></i> View Online
               </a>
@@ -1882,7 +647,7 @@
         </div><!-- /resume -->
 
         <!-- ─── CONTACT ───────────────────────────────── -->
-        <div id="contact" class="tab-panel">
+        <div id="contact" class="tab-panel" role="tabpanel">
 
           <div class="card">
             <h2>Let's Connect</h2>
@@ -1901,8 +666,8 @@
                 +1 (240) 441-4805
               </div>
               <div class="contact-info-tile">
-                <img src="images/linkedin-logo.webp" alt="LinkedIn" style="width:22px;height:22px;object-fit:contain;">
-                <a href="https://linkedin.com/in/Conrad-Linus-m" target="_blank" style="color:#283593;text-decoration:none;">Conrad-Linus-m</a>
+                <img src="images/linkedin-logo.webp" alt="LinkedIn" style="width:22px;height:22px;object-fit:contain;" loading="lazy">
+                <a href="https://linkedin.com/in/Conrad-Linus-m" target="_blank" rel="noopener" style="color:#283593;text-decoration:none;">Conrad-Linus-m</a>
               </div>
             </div>
           </div>
@@ -1910,14 +675,6 @@
           <div class="contact-form-card">
             <h2 style="font-size:1.2rem;color:#1A237E;margin-bottom:1.4rem;padding-bottom:0.4rem;border-bottom:2px solid #E3E8FF;">Send a Message</h2>
 
-            <!--
-              ╔══════════════════════════════════════════════════════════════╗
-              ║  FORMSPREE SETUP — replace the action URL with your own:    ║
-              ║  1. Go to https://formspree.io and sign up                  ║
-              ║  2. Create a new form → copy your endpoint URL              ║
-              ║  3. Replace "YOUR_FORM_ID" below with that URL              ║
-              ╚══════════════════════════════════════════════════════════════╝
-            -->
             <form id="contact-form" action="https://formspree.io/f/mgolnjpa" method="POST" novalidate>
 
               <div class="form-row">
@@ -1955,27 +712,27 @@
       </div><!-- /content -->
 
       <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
-      <div id="nav-popup" class="nav-popup">
+      <div id="nav-popup" class="nav-popup" aria-label="Quick navigation">
         <p class="nav-popup-label">What's next?</p>
         <div class="nav-popup-btns home-row">
-          <button class="nav-popup-btn home-btn" onclick="goHome()">
+          <button class="nav-popup-btn home-btn" onclick="goHome()" aria-label="Go to Home">
             <i class="fa fa-home"></i> Home
           </button>
         </div>
         <div class="nav-popup-btns grid-row">
-          <button class="nav-popup-btn home-btn desktop-home" onclick="goHome()">
+          <button class="nav-popup-btn home-btn desktop-home" onclick="goHome()" aria-label="Go to Home">
             <i class="fa fa-home"></i> Home
           </button>
-          <button class="nav-popup-btn" onclick="showTab('projects', null)">
+          <button class="nav-popup-btn" onclick="showTab('projects', null)" aria-label="Go to Projects">
             <i class="fa fa-rocket"></i> Projects
           </button>
-          <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)">
+          <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)" aria-label="Go to Certifications">
             <i class="fa fa-certificate"></i> Certifications
           </button>
-          <button class="nav-popup-btn resume-btn" onclick="showTab('resume', null)">
+          <button class="nav-popup-btn resume-btn" onclick="showTab('resume', null)" aria-label="Go to Resume">
             <i class="fa fa-file-text"></i> Resume
           </button>
-          <button class="nav-popup-btn contact-btn" onclick="showTab('contact', null)">
+          <button class="nav-popup-btn contact-btn" onclick="showTab('contact', null)" aria-label="Go to Contact">
             <i class="fa fa-envelope"></i> Contact
           </button>
         </div>
@@ -1984,231 +741,8 @@
     </div><!-- /main -->
   </div><!-- /container -->
 
-  <script>
-    function showTab(tabName, el) {
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-      const menuEl = el || [...document.querySelectorAll('.menu-item')].find(
-        m => m.getAttribute('onclick') && m.getAttribute('onclick').includes("'" + tabName + "'")
-      );
-      if (menuEl) menuEl.classList.add('active');
-      // Hide popup and scroll to the tab ribbon (desktop + mobile)
-      const popup = document.getElementById('nav-popup');
-      if (popup) popup.classList.remove('visible');
-      const content = document.querySelector('.content');
-      if (content) content.scrollTop = 0;
-      // On mobile the window scrolls; scroll so the tab ribbon (not the sidebar) is at the top
-      if (window.innerWidth <= 900) {
-        const tabRibbon = document.querySelector('.menu');
-        if (tabRibbon) tabRibbon.scrollIntoView({ behavior: 'instant' });
-      }
-      if (window.checkNavPopup) window.checkNavPopup();
-      // GA4: track which tab was viewed
-      if (typeof gtag === 'function') {
-        gtag('event', 'tab_view', {
-          tab_name: tabName
-        });
-      }
-    }
-
-    // ── Scroll-driven timeline line (lerp — trails behind scroll) ──
-    (function () {
-      const content = document.querySelector('.content');
-      const timeline = document.querySelector('.timeline');
-      if (!content || !timeline) return;
-
-      // Lower = slower / further behind scroll  (0.015 ≈ ~1.5% of gap closed per frame)
-      const LERP = 0.015;
-
-      let target = 0;   // where the line should eventually reach
-      let current = 0;   // where the line actually is right now
-      let rafId = null;
-
-      // Works for both desktop (content div scrolls) and mobile (window scrolls)
-      // by using viewport-relative positions from getBoundingClientRect
-      function calcTarget() {
-        const timelineRect = timeline.getBoundingClientRect();
-        const timelineH = timeline.offsetHeight;
-        const viewportH = window.innerHeight;
-        const scrolledPast = viewportH - timelineRect.top;
-        return Math.min(Math.max(scrolledPast / timelineH, 0), 1);
-      }
-
-      function tick() {
-        current += (target - current) * LERP;
-        timeline.style.setProperty('--line-height', (current * 100).toFixed(3) + '%');
-
-        if (Math.abs(target - current) > 0.0003) {
-          rafId = requestAnimationFrame(tick);
-        } else {
-          current = target;
-          timeline.style.setProperty('--line-height', (current * 100) + '%');
-          rafId = null;
-        }
-      }
-
-      function onScroll() {
-        target = calcTarget();
-        if (!rafId) rafId = requestAnimationFrame(tick);
-      }
-
-      // Listen on both the content div (desktop) and window (mobile)
-      content.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('scroll', onScroll, { passive: true });
-
-      // Initialise without animation
-      target = current = calcTarget();
-      timeline.style.setProperty('--line-height', (current * 100) + '%');
-    })();
-
-    // ── Resume PDF download via html2pdf.js ──
-    function downloadResumePDF() {
-      const btn = document.getElementById('btn-download-pdf');
-      const status = document.getElementById('pdf-status');
-      const template = document.getElementById('resume-pdf-template');
-
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Generating PDF…';
-      status.style.display = 'block';
-      status.textContent = 'Building your resume — this takes a few seconds…';
-
-      // Temporarily make visible for rendering
-      template.style.display = 'block';
-      template.style.position = 'fixed';
-      template.style.left = '-9999px';
-      template.style.top = '0';
-
-      const element = template.querySelector('div');
-
-      const opt = {
-        margin:       [8, 0, 8, 0],
-        filename:     'Conrad_Linus_Muhirwe_Resume.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: 'css' }
-      };
-
-      html2pdf().set(opt).from(element).save().then(function () {
-        template.style.display = 'none';
-        template.style.position = 'absolute';
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
-        status.textContent = '✓ Your resume has been downloaded!';
-        setTimeout(() => { status.style.display = 'none'; }, 4000);
-      }).catch(function () {
-        template.style.display = 'none';
-        template.style.position = 'absolute';
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
-        status.textContent = 'Something went wrong. Please try again.';
-      });
-    }
-
-    // ── Contact form: AJAX submission via Formspree ──
-    (function () {
-      const form = document.getElementById('contact-form');
-      const statusEl = document.getElementById('cf-status');
-      const submitBtn = document.getElementById('cf-submit');
-      if (!form) return;
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // Basic client-side validation
-        const name = form.querySelector('#cf-name').value.trim();
-        const email = form.querySelector('#cf-email').value.trim();
-        const message = form.querySelector('#cf-message').value.trim();
-        if (!name || !email || !message) {
-          showStatus('error', '<i class="fa fa-exclamation-circle"></i> Please fill in all required fields.');
-          return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending…';
-        statusEl.className = 'form-status';
-        statusEl.style.display = 'none';
-
-        try {
-          const data = new FormData(form);
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            showStatus('success', '<i class="fa fa-check-circle"></i> Message sent! I\'ll get back to you soon.');
-            form.reset();
-          } else {
-            const json = await response.json().catch(() => ({}));
-            const msg = (json.errors && json.errors.map(e => e.message).join(', ')) ||
-              'Something went wrong. Please try again or email me directly.';
-            showStatus('error', '<i class="fa fa-exclamation-circle"></i> ' + msg);
-          }
-        } catch (err) {
-          showStatus('error', '<i class="fa fa-exclamation-circle"></i> Network error. Please check your connection and try again.');
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fa fa-paper-plane"></i> Send Message';
-        }
-      });
-
-      function showStatus(type, html) {
-        statusEl.className = 'form-status ' + type;
-        statusEl.innerHTML = html;
-        statusEl.style.display = 'block';
-        statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    })();
-
-    function goHome() {
-      showTab('about', null);
-      const content = document.querySelector('.content');
-      if (content) content.scrollTop = 0;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.checkNavPopup) window.checkNavPopup();
-    }
-
-    // ── Explore-more popup: show near the end of any tab (About, Projects, Certs, Resume, Contact) ──
-    (function () {
-      const content = document.querySelector('.content');
-      const popup = document.getElementById('nav-popup');
-      if (!content || !popup) return;
-
-      const THRESHOLD = 180; // px from bottom considered "near end"
-
-      function isNearBottomDesktop() {
-        const remaining = content.scrollHeight - content.scrollTop - content.clientHeight;
-        const fitsInViewport = content.scrollHeight <= content.clientHeight + THRESHOLD;
-        return remaining <= THRESHOLD || fitsInViewport;
-      }
-
-      function isBottomMobile() {
-        const activePanel = document.querySelector('.tab-panel.active');
-        if (!activePanel) return false;
-        const rect = activePanel.getBoundingClientRect();
-        const reachedBottom = rect.bottom <= window.innerHeight + 12; // allow small tolerance
-        const scrolledSome = window.scrollY > 40; // avoid showing immediately on load
-        return reachedBottom && scrolledSome;
-      }
-
-      function checkPopup() {
-        const nearEnd = window.innerWidth > 900 ? isNearBottomDesktop() : isBottomMobile();
-        popup.classList.toggle('visible', nearEnd);
-      }
-
-      // expose so tab switcher can force a recalculation
-      window.checkNavPopup = checkPopup;
-
-      content.addEventListener('scroll', checkPopup, { passive: true });
-      window.addEventListener('scroll', checkPopup, { passive: true });
-      window.addEventListener('resize', checkPopup, { passive: true });
-      checkPopup();
-    })();
-
-  </script>
+  <!-- Main script (deferred to not block rendering) -->
+  <script src="script.js"></script>
 
 <!-- ═══ HIDDEN RESUME TEMPLATE FOR PDF EXPORT ═══════════════════════════════ -->
 <div id="resume-pdf-template" style="display:none; position:absolute; left:-9999px; top:0;">

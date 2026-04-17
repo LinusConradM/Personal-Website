@@ -1,5 +1,5 @@
 # Deployment Instructions
-**Live site:** https://conrarlinusm.netlify.app
+**Live site:** https://conradlinusmuhirwe.netlify.app/
 
 ---
 
@@ -14,7 +14,7 @@ Yes — after any update to `index.html`, you need to redeploy for the changes t
 Do this each time you update the site:
 
 1. Go to **https://app.netlify.com**
-2. Log in and click on your site (**conrarlinusm**)
+2. Log in and click on your site (**conradlinusmuhirwe**)
 3. Go to the **Deploys** tab
 4. Drag and drop your entire `personal_website 3` folder onto the deploy area
 5. Wait ~30 seconds → your live site updates automatically

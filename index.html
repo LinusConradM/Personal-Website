@@ -414,6 +414,44 @@
           <div class="projects-grid">
 
             <div class="project-card">
+              <div class="project-banner" style="background: linear-gradient(135deg, #1976D2 0%, #003C8F 100%);">
+                <i class="fa fa-universal-access project-icon"></i>
+                <h3>CRPD Disability Rights Data Dashboard</h3>
+              </div>
+              <div class="project-body">
+                <p class="tools"><strong>Tools:</strong> Python, Streamlit, FAISS, sentence-transformers (all-mpnet-base-v2), Anthropic Claude, Groq (Llama 3.3 70B), Ollama (qwen3:8b), Plotly, Folium, Playwright + axe (WCAG audits), Posit Connect</p>
+                <p>
+                  The first NLP and AI-powered platform to make the full UN Convention on the Rights of
+                  Persons with Disabilities (CRPD) reporting cycle searchable, visual, and actionable —
+                  built at American University's Institute on Disability and Public Policy (IDPP) for
+                  disability rights organizations, governments, researchers, and policy advocates.
+                </p>
+                <ul>
+                  <li><strong>Multi-LLM RAG Architecture:</strong> Dual-stack combining local Ollama
+                    (qwen3:8b) for lightweight insights, Groq (Llama 3.3 70B) for RAG chat and policy
+                    briefs, and Anthropic Claude for the research-and-citation pipeline — all grounded
+                    in a sentence-transformers + FAISS vector index over the full CRPD corpus.</li>
+                  <li><strong>17 Interactive Dashboards:</strong> Spanning Explore (Folium choropleths,
+                    reporting timelines, country profiles, document comparison, semantic search),
+                    Analyze (article coverage, co-occurrence, medical-vs-rights-based language shift),
+                    and AI-Powered (Research Assistant and Policy Brief Generator with inline citations).</li>
+                  <li><strong>Accessibility as Subject Matter:</strong> WCAG 2.2 AA compliance is built
+                    in — the CRPD itself mandates accessible information (Articles 9 &amp; 21), so the
+                    platform is keyboard-navigable, screen-reader tested, XSS-sanitized via bleach, and
+                    continuously audited with Playwright + axe.</li>
+                  <li><strong>Evidence for Advocacy:</strong> Surfaces treaty compliance trends,
+                    rights-based language shifts, and cross-country comparisons across States Parties —
+                    moving DPOs, governments, and policy advocates from anecdote to defensible,
+                    quotable evidence.</li>
+                </ul>
+                <a class="learn-more" href="https://idpp-crpd-dashboard.share.connect.posit.cloud/"
+                  target="_blank" rel="noopener">
+                  <i class="fa fa-external-link"></i> View Project
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
               <div class="project-banner" style="background: linear-gradient(135deg, #0288D1 0%, #01579B 100%);">
                 <i class="fa fa-pie-chart project-icon"></i>
                 <h3>US Food Insecurity Analytics Platform</h3>

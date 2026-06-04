@@ -414,6 +414,42 @@
           <div class="projects-grid">
 
             <div class="project-card">
+              <div class="project-banner" style="background: linear-gradient(135deg, #059669 0%, #064E3B 100%);">
+                <i class="fa fa-balance-scale project-icon"></i>
+                <h3>AI-Powered Contract Review Agent</h3>
+              </div>
+              <div class="project-body">
+                <p class="tools"><strong>Tools:</strong> Next.js 15, Trigger.dev (durable workflows), PostgreSQL/Prisma, Cloudflare R2, Resend, Groq · Gemini · OpenRouter · OpenAI · Anthropic</p>
+                <p>
+                  A durable AI agent that reads a contract, flags the risky clauses, and waits for a
+                  human to sign off. Upload a PDF or Word document and a multi-stage workflow extracts
+                  the text, splits it into clauses, analyzes each one for legal risk in parallel, then
+                  pauses for human review before writing and emailing a final memorandum.
+                </p>
+                <ul>
+                  <li><strong>Human-in-the-Loop by Design:</strong> When analysis finishes, the run
+                    suspends on a durable waitpoint token and frees its compute entirely — sitting idle
+                    for minutes or weeks — then resumes the instant a reviewer approves or requests
+                    changes clause-by-clause.</li>
+                  <li><strong>Fault-Tolerant Orchestration:</strong> Every stage is a checkpointed
+                    Trigger.dev task, so a worker can crash, redeploy, or be evicted mid-run and the
+                    pipeline resumes exactly where it left off — no lost progress, no duplicate work.</li>
+                  <li><strong>Parallel Fan-Out with Throttling:</strong> Each clause is analyzed as its
+                    own parallel child run, with a queue concurrency limit keeping the whole batch within
+                    LLM provider rate limits automatically.</li>
+                  <li><strong>Provider-Agnostic LLM Layer:</strong> A single call routes across Groq,
+                    Gemini, OpenRouter, OpenAI, and Anthropic with automatic key-driven fallback — swap
+                    models without touching a line of pipeline code. Realtime streaming pipes the final
+                    memorandum to the UI as it's generated.</li>
+                </ul>
+                <a class="learn-more" href="https://contract-review-pied.vercel.app"
+                  target="_blank" rel="noopener">
+                  <i class="fa fa-external-link"></i> View Project
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
               <div class="project-banner" style="background: linear-gradient(135deg, #1976D2 0%, #003C8F 100%);">
                 <i class="fa fa-universal-access project-icon"></i>
                 <h3>CRPD Disability Rights Data Dashboard</h3>

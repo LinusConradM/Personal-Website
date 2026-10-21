@@ -1,15 +1,26 @@
 // ── Tab switching ──
 function showTab(tabName, el) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+  document.querySelectorAll('.menu-item').forEach(m => {
+    m.classList.remove('active');
+    m.setAttribute('aria-selected', 'false');
+    m.tabIndex = -1;
+  });
   document.getElementById(tabName).classList.add('active');
   const menuEl = el || [...document.querySelectorAll('.menu-item')].find(
     m => m.getAttribute('data-tab') === tabName
   );
-  if (menuEl) menuEl.classList.add('active');
+  if (menuEl) {
+    menuEl.classList.add('active');
+    menuEl.setAttribute('aria-selected', 'true');
+    menuEl.tabIndex = 0;
+  }
   // Hide popup and scroll to the tab ribbon (desktop + mobile)
   const popup = document.getElementById('nav-popup');
-  if (popup) popup.classList.remove('visible');
+  if (popup) {
+    popup.classList.remove('visible');
+    popup.inert = true;
+  }
   const content = document.querySelector('.content');
   if (content) content.scrollTop = 0;
   // On mobile the window scrolls; scroll so the tab ribbon (not the sidebar) is at the top
@@ -141,13 +152,28 @@ function buildPdfProjects() {
   });
 }
 
+// html2pdf is large, so it is only fetched the first time someone downloads the PDF
+var html2pdfLoader = null;
+function loadHtml2pdf() {
+  if (!html2pdfLoader) {
+    html2pdfLoader = new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+      s.onload = resolve;
+      s.onerror = function () { html2pdfLoader = null; reject(); };
+      document.head.appendChild(s);
+    });
+  }
+  return html2pdfLoader;
+}
+
 function downloadResumePDF() {
   const btn = document.getElementById('btn-download-pdf');
   const status = document.getElementById('pdf-status');
   const template = document.getElementById('resume-pdf-template');
 
   btn.disabled = true;
-  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Generating PDF\u2026';
+  btn.innerHTML = '<i aria-hidden="true" class="fa fa-spinner fa-spin"></i> Generating PDF\u2026';
   status.style.display = 'block';
   status.textContent = 'Building your resume \u2014 this takes a few seconds\u2026';
 
@@ -171,18 +197,20 @@ function downloadResumePDF() {
     pagebreak:    { mode: 'css' }
   };
 
-  html2pdf().set(opt).from(element).save().then(function () {
+  loadHtml2pdf().then(function () {
+    return html2pdf().set(opt).from(element).save();
+  }).then(function () {
     template.style.display = 'none';
     template.style.position = 'absolute';
     btn.disabled = false;
-    btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
+    btn.innerHTML = '<i aria-hidden="true" class="fa fa-download"></i> Download PDF';
     status.textContent = '\u2713 Your resume has been downloaded!';
     setTimeout(() => { status.style.display = 'none'; }, 4000);
   }).catch(function () {
     template.style.display = 'none';
     template.style.position = 'absolute';
     btn.disabled = false;
-    btn.innerHTML = '<i class="fa fa-download"></i> Download PDF';
+    btn.innerHTML = '<i aria-hidden="true" class="fa fa-download"></i> Download PDF';
     status.textContent = 'Something went wrong. Please try again.';
   });
 }
@@ -202,12 +230,12 @@ function downloadResumePDF() {
     const email = form.querySelector('#cf-email').value.trim();
     const message = form.querySelector('#cf-message').value.trim();
     if (!name || !email || !message) {
-      showStatus('error', '<i class="fa fa-exclamation-circle"></i> Please fill in all required fields.');
+      showStatus('error', '<i aria-hidden="true" class="fa fa-exclamation-circle"></i> Please fill in all required fields.');
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending\u2026';
+    submitBtn.innerHTML = '<i aria-hidden="true" class="fa fa-spinner fa-spin"></i> Sending\u2026';
     statusEl.className = 'form-status';
     statusEl.style.display = 'none';
 
@@ -220,19 +248,19 @@ function downloadResumePDF() {
       });
 
       if (response.ok) {
-        showStatus('success', '<i class="fa fa-check-circle"></i> Message sent! I\'ll get back to you soon.');
+        showStatus('success', '<i aria-hidden="true" class="fa fa-check-circle"></i> Message sent! I\'ll get back to you soon.');
         form.reset();
       } else {
         const json = await response.json().catch(() => ({}));
         const msg = (json.errors && json.errors.map(e => e.message).join(', ')) ||
           'Something went wrong. Please try again or email me directly.';
-        showStatus('error', '<i class="fa fa-exclamation-circle"></i> ' + msg);
+        showStatus('error', '<i aria-hidden="true" class="fa fa-exclamation-circle"></i> ' + msg);
       }
     } catch (err) {
-      showStatus('error', '<i class="fa fa-exclamation-circle"></i> Network error. Please check your connection and try again.');
+      showStatus('error', '<i aria-hidden="true" class="fa fa-exclamation-circle"></i> Network error. Please check your connection and try again.');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa fa-paper-plane"></i> Send Message';
+      submitBtn.innerHTML = '<i aria-hidden="true" class="fa fa-paper-plane"></i> Send Message';
     }
   });
 
@@ -278,6 +306,7 @@ function goHome() {
   function checkPopup() {
     const nearEnd = window.innerWidth > 900 ? isNearBottomDesktop() : isBottomMobile();
     popup.classList.toggle('visible', nearEnd);
+    popup.inert = !nearEnd;
   }
 
   // expose so tab switcher can force a recalculation
@@ -291,9 +320,25 @@ function goHome() {
 
 // ── Tab button click handlers (attached via data-tab attributes) ──
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.menu-item[data-tab]').forEach(function (btn) {
+  const tabs = [...document.querySelectorAll('.menu-item[data-tab]')];
+  tabs.forEach(function (btn) {
     btn.addEventListener('click', function () {
       showTab(this.getAttribute('data-tab'), this);
     });
+  });
+
+  // Arrow / Home / End keys move between tabs (WAI-ARIA tabs pattern)
+  document.querySelector('.menu').addEventListener('keydown', function (e) {
+    const i = tabs.indexOf(document.activeElement);
+    if (i === -1) return;
+    let next;
+    if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    showTab(tabs[next].getAttribute('data-tab'), tabs[next]);
+    tabs[next].focus();
   });
 });

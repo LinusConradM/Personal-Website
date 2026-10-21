@@ -21,15 +21,40 @@
   <meta property="og:description" content="Data Scientist and AI Engineer specializing in LLM-powered applications, RAG architectures, and production-grade ML systems. 10+ years of financial services experience.">
   <meta property="og:image" content="https://conradlinusmuhirwe.netlify.app/images/ConradLinusMuhirwe_2.jpg">
   <meta property="og:url" content="https://conradlinusmuhirwe.netlify.app/">
+  <link rel="canonical" href="https://conradlinusmuhirwe.netlify.app/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Conrad Linus Muhirwe">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:alt" content="Portrait of Conrad Linus Muhirwe">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Conrad Linus Muhirwe – Data Scientist, Data Analyst & AI Engineer">
   <meta name="twitter:description" content="Data Scientist and AI Engineer specializing in LLM-powered applications, RAG architectures, and production-grade ML systems.">
   <meta name="twitter:image" content="https://conradlinusmuhirwe.netlify.app/images/ConradLinusMuhirwe_2.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1A237E">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Conrad Linus Muhirwe",
+    "url": "https://conradlinusmuhirwe.netlify.app/",
+    "image": "https://conradlinusmuhirwe.netlify.app/images/ConradLinusMuhirwe_2.jpg",
+    "jobTitle": "Data Scientist, Data Analyst & AI Engineer",
+    "address": { "@type": "PostalAddress", "addressLocality": "Washington", "addressRegion": "DC", "addressCountry": "US" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "American University" },
+      { "@type": "CollegeOrUniversity", "name": "Uganda Martyrs University" }
+    ],
+    "sameAs": [
+      "https://linkedin.com/in/Conrad-Linus-m",
+      "https://github.com/LinusConradM"
+    ]
+  }
+  </script>
 
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,8 +68,6 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- html2pdf (deferred — only needed on Resume tab) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +80,7 @@
     <div class="sidebar">
       <img src="images/ConradLinusMuhirwe_2.jpg" alt="Conrad Linus Muhirwe" class="avatar">
       <h1>Conrad Linus Muhirwe</h1>
-      <h2>Data Scientist &nbsp;|&nbsp; Data Analyst &nbsp;|&nbsp; AI Engineer</h2>
+      <p class="subtitle">Data Scientist &nbsp;|&nbsp; Data Analyst &nbsp;|&nbsp; AI Engineer</p>
 
       <p class="tagline">
         Hi! I'm Conrad, a Data Scientist, Data Analyst, and AI Engineer translating complex financial and operational
@@ -70,13 +93,13 @@
       <!-- Social & Contact Links -->
       <div class="links">
         <a href="https://linkedin.com/in/Conrad-Linus-m" target="_blank" rel="noopener" class="btn-link" aria-label="LinkedIn Profile">
-          <i class="fa fa-linkedin"></i> LinkedIn
+          <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
         </a>
         <a href="https://github.com/LinusConradM" target="_blank" rel="noopener" class="btn-link" aria-label="GitHub Profile">
-          <i class="fa fa-github"></i> GitHub
+          <i class="fa fa-github" aria-hidden="true"></i> GitHub
         </a>
         <a href="mailto:linusconradm@gmail.com" class="btn-link" aria-label="Send Email">
-          <i class="fa fa-envelope"></i> Email
+          <i class="fa fa-envelope" aria-hidden="true"></i> Email
         </a>
       </div>
     </div>
@@ -84,17 +107,17 @@
     <!-- ═══ MAIN PANEL ════════════════════════════════════ -->
     <div class="main" id="main-content">
       <nav class="menu" role="tablist" aria-label="Main navigation">
-        <button class="menu-item active" role="tab" aria-selected="true" data-tab="about" aria-controls="about">About Me</button>
-        <button class="menu-item" role="tab" aria-selected="false" data-tab="projects" aria-controls="projects">Projects</button>
-        <button class="menu-item" role="tab" aria-selected="false" data-tab="certifications" aria-controls="certifications">Certifications</button>
-        <button class="menu-item" role="tab" aria-selected="false" data-tab="resume" aria-controls="resume">Resume</button>
-        <button class="menu-item" role="tab" aria-selected="false" data-tab="contact" aria-controls="contact">Contact</button>
+        <button id="tab-about" class="menu-item active" role="tab" aria-selected="true" data-tab="about" aria-controls="about">About Me</button>
+        <button id="tab-projects" class="menu-item" role="tab" aria-selected="false" data-tab="projects" tabindex="-1" aria-controls="projects">Projects</button>
+        <button id="tab-certifications" class="menu-item" role="tab" aria-selected="false" data-tab="certifications" tabindex="-1" aria-controls="certifications">Certifications</button>
+        <button id="tab-resume" class="menu-item" role="tab" aria-selected="false" data-tab="resume" tabindex="-1" aria-controls="resume">Resume</button>
+        <button id="tab-contact" class="menu-item" role="tab" aria-selected="false" data-tab="contact" tabindex="-1" aria-controls="contact">Contact</button>
       </nav>
 
       <div class="content">
 
         <!-- ─── ABOUT ME ──────────────────────────────── -->
-        <div id="about" class="tab-panel active" role="tabpanel">
+        <div id="about" aria-labelledby="tab-about" class="tab-panel active" role="tabpanel">
           <div class="card">
             <h2>Professional Summary</h2>
             <p>Data Scientist, AI Engineer and Data Analyst combining 10+ years of financial services experience with hands-on expertise building LLM-powered analytics platforms,
@@ -113,7 +136,7 @@
 
               <div class="edu-item">
                 <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
-                    alt="American University" loading="lazy"></div>
+                    alt="" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Master of Science in Analytics &amp; AI</div>
                   <div class="school">American University, Kogod School of Business</div>
@@ -123,7 +146,7 @@
 
               <div class="edu-item">
                 <div class="org-badge logo-img"><img src="images/American-University-logo.webp"
-                    alt="American University" loading="lazy"></div>
+                    alt="" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Graduate Certificate in Data Science</div>
                   <div class="school">American University, College of Arts and Sciences</div>
@@ -134,7 +157,7 @@
               <div class="edu-item">
                 <div class="org-badge logo-img"><img
                     src="images/uganda-martyrs-university-umu-logo-png_seeklogo-550311.png"
-                    alt="Uganda Martyrs University" loading="lazy"></div>
+                    alt="" loading="lazy"></div>
                 <div class="edu-text">
                   <div class="degree">Bachelor of Business Administration &amp; Management - Finance &amp; Accounting
                   </div>
@@ -157,7 +180,7 @@
             <!-- American University – Power BI Analyst (Most Recent) -->
             <div class="tl-item tl-left">
               <div class="tl-icon logo-img" style="right:-22px;"><img src="images/American-University-logo.webp"
-                  alt="American University" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Power BI Analyst</h3>
@@ -177,7 +200,7 @@
 
             <!-- Institute on Disability and Public Policy – Research Associate -->
             <div class="tl-item tl-right">
-              <div class="tl-icon"
+              <div class="tl-icon" aria-hidden="true"
                 style="left:-22px; background:#4A148C; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:bold; letter-spacing:1px; z-index:10;">
                 IDPP</div>
               <div class="tl-box">
@@ -206,7 +229,7 @@
             <!-- American University – Event Data Coordinator -->
             <div class="tl-item tl-left">
               <div class="tl-icon logo-img" style="right:-22px;"><img src="images/American-University-logo.webp"
-                  alt="American University" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Event Data Coordinator</h3>
@@ -226,7 +249,7 @@
             <!-- Harmonia Holdings -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Harmonia Holdings Logo.png"
-                  alt="Harmonia Holdings" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Software / Data Analyst – Intern</h3>
@@ -248,7 +271,7 @@
             <!-- AU – Graduate Assistant -->
             <div class="tl-item tl-left">
               <div class="tl-icon logo-img" style="right:-22px;"><img src="images/American-University-logo.webp"
-                  alt="American University" loading="lazy">
+                  alt="" loading="lazy">
               </div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
@@ -265,7 +288,7 @@
             <!-- Uganda Development Bank -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Uganda Devevlopment Bank Logo.png"
-                  alt="Uganda Development Bank" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Senior Internal Auditor – Business Operations</h3>
@@ -285,7 +308,7 @@
 
             <!-- Stanbic Bank -->
             <div class="tl-item tl-left">
-              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Stanbic Bank Logo.png" alt="Stanbic Bank" loading="lazy">
+              <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Stanbic Bank Logo.png" alt="" loading="lazy">
               </div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
@@ -303,7 +326,7 @@
             <!-- Equity Bank Manager -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Equity%20Bank%20Logo.png"
-                  alt="Equity Bank" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Manager, Internal Audit</h3>
@@ -323,7 +346,7 @@
             <!-- Equity Bank Senior -->
             <div class="tl-item tl-left">
               <div class="tl-icon logo-img" style="right:-22px;"><img src="images/Equity%20Bank%20Logo.png"
-                  alt="Equity Bank" loading="lazy"></div>
+                  alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-left"></div>
                 <h3>Senior Internal Auditor &amp; Internal Auditor – Systems &amp; Processes</h3>
@@ -425,7 +448,7 @@
         </div>
 
         <!-- ─── PROJECTS ───────────────────────────────── -->
-        <div id="projects" class="tab-panel" role="tabpanel">
+        <div id="projects" aria-labelledby="tab-projects" class="tab-panel" role="tabpanel">
           <div class="card" style="margin-bottom:1rem;">
             <h2>Featured Projects</h2>
             <p style="font-size:0.85rem;color:#6B7280;">End-to-end AI and data science solutions built in production
@@ -436,7 +459,7 @@
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-balance-scale project-icon"></i>
+                <i class="fa fa-balance-scale project-icon" aria-hidden="true"></i>
                 <h3>AI-Powered Contract Review Agent</h3>
               </div>
               <div class="project-body">
@@ -463,16 +486,16 @@
                     models without touching a line of pipeline code. Realtime streaming pipes the final
                     memorandum to the UI as it's generated.</li>
                 </ul>
-                <a class="learn-more" href="https://contract-review-pied.vercel.app"
+                <a class="learn-more" aria-label="View project: AI-Powered Contract Review Agent (opens in new tab)" href="https://contract-review-pied.vercel.app"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
               </div>
             </div>
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-universal-access project-icon"></i>
+                <i class="fa fa-universal-access project-icon" aria-hidden="true"></i>
                 <h3>CRPD Disability Rights Data Dashboard</h3>
               </div>
               <div class="project-body">
@@ -501,16 +524,16 @@
                     moving DPOs, governments, and policy advocates from anecdote to defensible,
                     quotable evidence.</li>
                 </ul>
-                <a class="learn-more" href="https://idpp-crpd-dashboard.share.connect.posit.cloud/"
+                <a class="learn-more" aria-label="View project: CRPD Disability Rights Data Dashboard (opens in new tab)" href="https://idpp-crpd-dashboard.share.connect.posit.cloud/"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
               </div>
             </div>
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-pie-chart project-icon"></i>
+                <i class="fa fa-pie-chart project-icon" aria-hidden="true"></i>
                 <h3>US Food Insecurity Analytics Platform</h3>
               </div>
               <div class="project-body">
@@ -535,16 +558,16 @@
                     across 15 years — including hotspots in the Mississippi Delta and Appalachia — that persist
                     despite broad economic improvements.</li>
                 </ul>
-                <a class="learn-more" href="https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud"
+                <a class="learn-more" aria-label="View project: US Food Insecurity Analytics Platform (opens in new tab)" href="https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
               </div>
             </div>
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-dashboard project-icon"></i>
+                <i class="fa fa-dashboard project-icon" aria-hidden="true"></i>
                 <h3>AI-Powered Federal Financial Reporting Dashboard</h3>
               </div>
               <div class="project-body">
@@ -566,9 +589,9 @@
                   <li><strong>Accessible by Design:</strong> Implemented multi-language voice input using NLP and
                     WCAG 2.1 AA accessibility standards, ensuring inclusive access for all users.</li>
                 </ul>
-                <a class="learn-more" href="https://hail.harmonia.com/FederalFinancialReportingDashboard"
+                <a class="learn-more" aria-label="View project: AI-Powered Federal Financial Reporting Dashboard (opens in new tab)" href="https://hail.harmonia.com/FederalFinancialReportingDashboard"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
                 <p style="font-size:0.75rem; color:#6B7280; margin-top:1rem; margin-bottom:0; font-style:italic;">
                   &copy; All rights reserved to Harmonia Holdings Group LLC
@@ -578,7 +601,7 @@
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-search project-icon"></i>
+                <i class="fa fa-search project-icon" aria-hidden="true"></i>
                 <h3>AI-Powered Job Tracker &amp; Daily Digest Agent</h3>
               </div>
               <div class="project-body">
@@ -603,16 +626,16 @@
                     with scored matches, skill-gap analysis, and direct ATS apply links — no
                     aggregator noise.</li>
                 </ul>
-                <a class="learn-more" href="https://github.com/LinusConradM/job_tracker"
+                <a class="learn-more" aria-label="View project: AI-Powered Job Tracker &amp; Daily Digest Agent (opens in new tab)" href="https://github.com/LinusConradM/job_tracker"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
               </div>
             </div>
 
             <div class="project-card">
               <div class="project-banner">
-                <i class="fa fa-whatsapp project-icon"></i>
+                <i class="fa fa-whatsapp project-icon" aria-hidden="true"></i>
                 <h3>Planit — AI WhatsApp Appointment Booking</h3>
               </div>
               <div class="project-body">
@@ -637,9 +660,9 @@
                     creation via Google Calendar API, with automated WhatsApp reminders 24hr and 1hr
                     before appointments.</li>
                 </ul>
-                <a class="learn-more" href="https://linusconradm.github.io/planit/"
+                <a class="learn-more" aria-label="View project: Planit — AI WhatsApp Appointment Booking (opens in new tab)" href="https://linusconradm.github.io/planit/"
                   target="_blank" rel="noopener">
-                  <i class="fa fa-external-link"></i> View Project
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
               </div>
             </div>
@@ -648,7 +671,7 @@
         </div><!-- /projects -->
 
         <!-- ─── CERTIFICATIONS ────────────────────────── -->
-        <div id="certifications" class="tab-panel" role="tabpanel">
+        <div id="certifications" aria-labelledby="tab-certifications" class="tab-panel" role="tabpanel">
           <div class="card" style="margin-bottom:1rem;">
             <h2>Certifications &amp; Professional Training</h2>
             <p style="font-size:0.85rem;color:#6B7280;">Professional certifications and training completed across AI
@@ -658,7 +681,7 @@
           <div class="cert-grid">
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/udemy logo.png" alt="Udemy" loading="lazy"></div>
+              <div class="cert-badge logo-img"><img src="images/udemy logo.png" alt="" loading="lazy"></div>
               <div class="cert-details">
                 <h3>AI Engineer Core Track: LLM Engineering, RAG, QLoRA &amp; Agents</h3>
                 <div class="meta-line">Issued by: <span>Udemy</span></div>
@@ -678,7 +701,7 @@
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/IBM Data Science Logo.png" alt="IBM Data Science" loading="lazy"></div>
+              <div class="cert-badge logo-img"><img src="images/IBM Data Science Logo.png" alt="" loading="lazy"></div>
               <div class="cert-details">
                 <h3>IBM Professional Data Science Certificate</h3>
                 <div class="meta-line">Issued by: <span>IBM / Coursera</span></div>
@@ -695,14 +718,14 @@
                   <li>Building and evaluating Machine Learning models (Regression, Classification)</li>
                   <li>Hands-on application with Python, Pandas, Scikit-learn, and IBM Watson</li>
                 </ul>
-                <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" target="_blank" rel="noopener"
-                  style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link"></i>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" aria-label="View credential: IBM Professional Data Science Certificate (opens in new tab)" target="_blank" rel="noopener"
+                  style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link" aria-hidden="true"></i>
                   View Credential</a>
               </div>
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/FMVA Logo.png" alt="CFI FMVA" loading="lazy"></div>
+              <div class="cert-badge logo-img"><img src="images/FMVA Logo.png" alt="" loading="lazy"></div>
               <div class="cert-details">
                 <h3>Financial Modeling &amp; Valuation Analyst (FMVA)</h3>
                 <div class="meta-line">Issued by: <span>Corporate Finance Institute (CFI)</span></div>
@@ -723,14 +746,13 @@
                   <li>Synthesizing complex data into impactful PowerPoint pitch decks and interactive Excel dashboards
                     for executive leadership.</li>
                 </ul>
-                <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37#acc.iLZ5Cn73"
-                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
-                    class="fa fa-external-link"></i> View Credential</a>
+                <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37#acc.iLZ5Cn73" aria-label="View credential: Financial Modeling &amp; Valuation Analyst (FMVA) (opens in new tab)"
+                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link" aria-hidden="true"></i> View Credential</a>
               </div>
             </div>
 
             <div class="cert-row">
-              <div class="cert-badge logo-img"><img src="images/BIDA Logo.png" alt="CFI BIDA" loading="lazy"></div>
+              <div class="cert-badge logo-img"><img src="images/BIDA Logo.png" alt="" loading="lazy"></div>
               <div class="cert-details">
                 <h3>Business Intelligence &amp; Data Analysis (BIDA)</h3>
                 <div class="meta-line">Issued by: <span>Corporate Finance Institute (CFI)</span></div>
@@ -745,9 +767,8 @@
                   <li>Database querying, aggregation, and data extraction using SQL</li>
                   <li>Statistical foundations, predictive analysis, and Monte Carlo simulations</li>
                 </ul>
-                <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6#acc.OCBNScLp"
-                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i
-                    class="fa fa-external-link"></i> View Credential</a>
+                <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6#acc.OCBNScLp" aria-label="View credential: Business Intelligence &amp; Data Analysis (BIDA) (opens in new tab)"
+                  target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem; font-weight:600;"><i class="fa fa-external-link" aria-hidden="true"></i> View Credential</a>
               </div>
             </div>
 
@@ -755,7 +776,7 @@
         </div>
 
         <!-- ─── RESUME ────────────────────────────────── -->
-        <div id="resume" class="tab-panel" role="tabpanel">
+        <div id="resume" aria-labelledby="tab-resume" class="tab-panel" role="tabpanel">
           <div class="card" style="text-align:center; padding: 3rem 2rem;">
             <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1A237E,#3949AB);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
               <i class="fa fa-file-text" style="font-size:1.8rem;color:white;"></i>
@@ -764,35 +785,35 @@
             <p style="color:#607D8B;max-width:480px;margin:0 auto 1.8rem;">Download a professionally formatted PDF copy of my resume, or view the full version online.</p>
             <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
               <button id="btn-download-pdf" onclick="downloadResumePDF()" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#1A237E,#283593);color:white;padding:0.85rem 2rem;border-radius:8px;border:none;font-weight:600;font-size:0.95rem;font-family:inherit;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 14px rgba(26,35,126,0.25);">
-                <i class="fa fa-download"></i> Download PDF
+                <i class="fa fa-download" aria-hidden="true"></i> Download PDF
               </button>
               <a href="https://app.flowcv.com/resume/content" target="_blank" rel="noopener"
                 style="display:inline-flex;align-items:center;gap:0.6rem;background:transparent;color:#1A237E;padding:0.85rem 2rem;border-radius:8px;border:2px solid #1A237E;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.2s;">
-                <i class="fa fa-external-link"></i> View Online
+                <i class="fa fa-external-link" aria-hidden="true"></i> View Online
               </a>
             </div>
-            <p id="pdf-status" style="margin-top:1.2rem;font-size:0.85rem;color:#607D8B;display:none;"></p>
+            <p id="pdf-status" role="status" aria-live="polite" style="margin-top:1.2rem;font-size:0.85rem;color:#607D8B;display:none;"></p>
           </div>
         </div><!-- /resume -->
 
         <!-- ─── CONTACT ───────────────────────────────── -->
-        <div id="contact" class="tab-panel" role="tabpanel">
+        <div id="contact" aria-labelledby="tab-contact" class="tab-panel" role="tabpanel">
 
           <div class="card">
             <h2>Let's Connect</h2>
             <p>I'm open to new opportunities, collaborations, and conversations about Data Science and Artificial Intelligence-(AI). If you think we could work together or simply want to exchange ideas, I'd be glad to hear from you.</p>
             <div class="contact-info-grid">
               <div class="contact-info-tile">
-                <i class="fa fa-map-marker"></i>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
                 Washington, DC
               </div>
               <div class="contact-info-tile">
-                <i class="fa fa-envelope"></i>
-                linusconradm@gmail.com
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:linusconradm@gmail.com" style="color:inherit;text-decoration:none;">linusconradm@gmail.com</a>
               </div>
               <div class="contact-info-tile">
-                <i class="fa fa-mobile"></i>
-                +1 (240) 441-4805
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                <a href="tel:+12404414805" style="color:inherit;text-decoration:none;">+1 (240) 441-4805</a>
               </div>
               <div class="contact-info-tile">
                 <img src="images/linkedin-logo.webp" alt="LinkedIn" style="width:22px;height:22px;object-fit:contain;" loading="lazy">
@@ -803,6 +824,8 @@
 
           <div class="contact-form-card">
             <h2>Send a Message</h2>
+
+            <p style="font-size:0.85rem;margin-bottom:1rem;">Fields marked * are required.</p>
 
             <form id="contact-form" action="https://formspree.io/f/mgolnjpa" method="POST" novalidate>
 
@@ -828,10 +851,10 @@
               </div>
 
               <button type="submit" class="btn-submit" id="cf-submit">
-                <i class="fa fa-paper-plane"></i> Send Message
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> Send Message
               </button>
 
-              <div class="form-status" id="cf-status"></div>
+              <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
 
             </form>
           </div>
@@ -841,28 +864,28 @@
       </div><!-- /content -->
 
       <!-- ─── EXPLORE MORE POPUP ─────────────────── -->
-      <div id="nav-popup" class="nav-popup" aria-label="Quick navigation">
+      <div id="nav-popup" class="nav-popup" role="region" aria-label="Quick navigation" inert>
         <p class="nav-popup-label">What's next?</p>
         <div class="nav-popup-btns home-row">
           <button class="nav-popup-btn home-btn" onclick="goHome()" aria-label="Go to Home">
-            <i class="fa fa-home"></i> Home
+            <i class="fa fa-home" aria-hidden="true"></i> Home
           </button>
         </div>
         <div class="nav-popup-btns grid-row">
           <button class="nav-popup-btn home-btn desktop-home" onclick="goHome()" aria-label="Go to Home">
-            <i class="fa fa-home"></i> Home
+            <i class="fa fa-home" aria-hidden="true"></i> Home
           </button>
           <button class="nav-popup-btn" onclick="showTab('projects', null)" aria-label="Go to Projects">
-            <i class="fa fa-rocket"></i> Projects
+            <i class="fa fa-rocket" aria-hidden="true"></i> Projects
           </button>
           <button class="nav-popup-btn certs-btn" onclick="showTab('certifications', null)" aria-label="Go to Certifications">
-            <i class="fa fa-certificate"></i> Certifications
+            <i class="fa fa-certificate" aria-hidden="true"></i> Certifications
           </button>
           <button class="nav-popup-btn resume-btn" onclick="showTab('resume', null)" aria-label="Go to Resume">
-            <i class="fa fa-file-text"></i> Resume
+            <i class="fa fa-file-text" aria-hidden="true"></i> Resume
           </button>
           <button class="nav-popup-btn contact-btn" onclick="showTab('contact', null)" aria-label="Go to Contact">
-            <i class="fa fa-envelope"></i> Contact
+            <i class="fa fa-envelope" aria-hidden="true"></i> Contact
           </button>
         </div>
       </div>

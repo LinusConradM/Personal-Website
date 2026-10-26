@@ -20,7 +20,7 @@ The portfolio is a single-page responsive web app featuring a fixed sidebar with
 | Section | Contents |
 |---|---|
 | **About Me** | Professional summary, academic journey, 8-role career timeline, core skills, interests |
-| **Projects** | Featured work including the CRPD Disability Rights Dashboard (IDPP), US Food Insecurity Analytics Platform, AI-Powered Federal Financial Reporting Dashboard (Harmonia Holdings), AI Job Tracker agent, and Planit WhatsApp booking assistant |
+| **Projects** | Featured work including the CRPD Disability Rights Dashboard (IDPP), US Food Insecurity Analytics Platform, AI-Powered Federal Financial Reporting Dashboard (Revolutional, formerly Harmonia Holdings Group), AI Job Tracker agent, and Planit WhatsApp booking assistant |
 | **Certifications** | Udemy AI Engineer Track, IBM Data Science (Coursera), CFI FMVA, CFI BIDA |
 | **Resume** | Downloadable PDF (generated client-side via html2pdf.js) and online viewer |
 | **Contact** | Contact form (Formspree) and direct links |
@@ -96,9 +96,9 @@ The site auto-deploys to Netlify on push to `main`. See [DEPLOYMENT.md](DEPLOYME
 
 ## Featured Projects
 
-- **[CRPD Disability Rights Data Dashboard](https://idpp-crpd-dashboard.share.connect.posit.cloud/)** — NLP and AI-powered platform for the full UN Convention on the Rights of Persons with Disabilities reporting cycle. Built at American University's Institute on Disability and Public Policy (IDPP).
+- **[CRPD Disability Rights Data Dashboard](https://crpd.idppglobal.org/)** — NLP and AI-powered platform for the full UN Convention on the Rights of Persons with Disabilities reporting cycle. Built at American University's Institute on Disability and Public Policy (IDPP).
 - **[US Food Insecurity Analytics Platform](https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud)** — LLM-powered analytics platform over 15 years of USDA county-level data, with SHAP explainability and Prophet/ARIMA forecasting.
-- **AI-Powered Federal Financial Reporting Dashboard** — End-to-end AI automation on AWS for federal compliance reporting at Harmonia Holdings. Reduced manual processing by 80%.
+- **AI-Powered Federal Financial Reporting Dashboard** — End-to-end AI automation on AWS for federal compliance reporting at Revolutional (formerly Harmonia Holdings Group). Reduced manual processing by 80%.
 - **[AI Job Tracker & Daily Digest Agent](https://github.com/LinusConradM/job_tracker)** — Autonomous agent with Claude-scored job matching across 50+ sources.
 - **[Planit — AI WhatsApp Appointment Booking](https://linusconradm.github.io/planit/)** — Multilingual AI assistant for East African service businesses.
 

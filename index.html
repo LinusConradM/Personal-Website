@@ -246,14 +246,14 @@
               </div>
             </div>
 
-            <!-- Harmonia Holdings -->
+            <!-- Revolutional (formerly Harmonia Holdings) -->
             <div class="tl-item tl-right">
               <div class="tl-icon logo-img" style="left:-22px;"><img src="images/Harmonia Holdings Logo.png"
                   alt="" loading="lazy"></div>
               <div class="tl-box">
                 <div class="tl-arrow-right"></div>
                 <h3>Software / Data Analyst – Intern</h3>
-                <small>Harmonia Holdings Group LLC &nbsp;|&nbsp; Jun – Aug 2025 &nbsp;·&nbsp; Virginia, USA</small>
+                <small>Revolutional (formerly Harmonia Holdings Group) &nbsp;|&nbsp; Jun – Aug 2025 &nbsp;·&nbsp; Virginia, USA</small>
                 <ul>
                   <li>Designed and integrated AI-powered validation and predictive analytics pipelines into a federal
                     financial reporting application, improving data accuracy and reducing regulatory risk.</li>
@@ -459,6 +459,37 @@
 
             <div class="project-card">
               <div class="project-banner">
+                <i class="fa fa-globe project-icon" aria-hidden="true"></i>
+                <h3>WBG Scorecard Explorer</h3>
+              </div>
+              <div class="project-body">
+                <p class="tools"><strong>Tools:</strong> Claude Haiku via LiteLLM, DuckDB, FastAPI, React + Vite, Tailwind, ECharts, FAISS, Docker, Hugging Face Spaces, WCAG 2.2 AA (axe-core)</p>
+                <p>
+                  A text-to-SQL analytical agent over World Bank Corporate Scorecard indicators. A
+                  tool-calling agent reads the table schema and either invokes typed analysis tools or
+                  composes its own SQL against DuckDB.
+                </p>
+                <ul>
+                  <li><strong>Parser-Level SQL Guard:</strong> Every query is validated with DuckDB's own
+                    parser, permitting only a single read-only SELECT, checking tables against an
+                    allow-list, and blocking file-reading functions.</li>
+                  <li><strong>Bounded Execution:</strong> A row cap and timeout are applied to every
+                    query the agent runs.</li>
+                  <li><strong>Number Traceability:</strong> Every figure in an answer is checked against
+                    the values the queries returned, and anything it cannot trace is flagged rather
+                    than presented as verified.</li>
+                  <li><strong>Accessible by Design:</strong> A React, Tailwind, and ECharts interface
+                    built to WCAG 2.2 AA and audited with axe-core.</li>
+                </ul>
+                <a class="learn-more" aria-label="View project: WBG Scorecard Explorer (opens in new tab)" href="https://conradlinus-wbg-scorecard.hf.space/"
+                  target="_blank" rel="noopener">
+                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-banner">
                 <i class="fa fa-balance-scale project-icon" aria-hidden="true"></i>
                 <h3>AI-Powered Contract Review Agent</h3>
               </div>
@@ -499,7 +530,7 @@
                 <h3>CRPD Disability Rights Data Dashboard</h3>
               </div>
               <div class="project-body">
-                <p class="tools"><strong>Tools:</strong> Python, Streamlit, FAISS, sentence-transformers (all-mpnet-base-v2), Anthropic Claude, Groq (Llama 3.3 70B), Ollama (qwen3:8b), Plotly, Folium, Playwright + axe (WCAG audits), Posit Connect</p>
+                <p class="tools"><strong>Tools:</strong> Python, Streamlit, FAISS, sentence-transformers (all-mpnet-base-v2), Anthropic Claude (Haiku 4.5, Sonnet 4), Plotly, Folium, Playwright + axe (WCAG audits), Posit Connect</p>
                 <p>
                   The first NLP and AI-powered platform to make the full UN Convention on the Rights of
                   Persons with Disabilities (CRPD) reporting cycle searchable, visual, and actionable —
@@ -507,10 +538,10 @@
                   disability rights organizations, governments, researchers, and policy advocates.
                 </p>
                 <ul>
-                  <li><strong>Multi-LLM RAG Architecture:</strong> Dual-stack combining local Ollama
-                    (qwen3:8b) for lightweight insights, Groq (Llama 3.3 70B) for RAG chat and policy
-                    briefs, and Anthropic Claude for the research-and-citation pipeline — all grounded
-                    in a sentence-transformers + FAISS vector index over the full CRPD corpus.</li>
+                  <li><strong>Claude-Powered RAG Architecture:</strong> Anthropic Claude Haiku 4.5
+                    handles insights, RAG chat, and policy briefs, with Sonnet 4 for synthesis and
+                    writing in the research pipeline — all grounded in an all-mpnet-base-v2 +
+                    FAISS vector index over the full CRPD corpus.</li>
                   <li><strong>17 Interactive Dashboards:</strong> Spanning Explore (Folium choropleths,
                     reporting timelines, country profiles, document comparison, semantic search),
                     Analyze (article coverage, co-occurrence, medical-vs-rights-based language shift),
@@ -524,7 +555,7 @@
                     moving DPOs, governments, and policy advocates from anecdote to defensible,
                     quotable evidence.</li>
                 </ul>
-                <a class="learn-more" aria-label="View project: CRPD Disability Rights Data Dashboard (opens in new tab)" href="https://idpp-crpd-dashboard.share.connect.posit.cloud/"
+                <a class="learn-more" aria-label="View project: CRPD Disability Rights Data Dashboard (opens in new tab)" href="https://crpd.idppglobal.org/"
                   target="_blank" rel="noopener">
                   <i class="fa fa-external-link" aria-hidden="true"></i> View Project
                 </a>
@@ -574,8 +605,8 @@
                 <p class="tools"><strong>Tools:</strong> React, Flask/FastAPI, AWS, PostgreSQL, NLP, Python</p>
                 <p>
                   End-to-end AI automation platform integrating predictive analytics, NLP-driven validation,
-                  and real-time compliance monitoring for federal financial reporting. Built at Harmonia Holdings Group
-                  LLC in partnership with a cross-functional team.
+                  and real-time compliance monitoring for federal financial reporting. Built at Revolutional (formerly Harmonia Holdings Group)
+                  in partnership with a cross-functional team.
                 </p>
                 <ul>
                   <li><strong>AI Validation Pipelines:</strong> Designed intelligent workflows for automated error
@@ -589,12 +620,8 @@
                   <li><strong>Accessible by Design:</strong> Implemented multi-language voice input using NLP and
                     WCAG 2.1 AA accessibility standards, ensuring inclusive access for all users.</li>
                 </ul>
-                <a class="learn-more" aria-label="View project: AI-Powered Federal Financial Reporting Dashboard (opens in new tab)" href="https://hail.harmonia.com/FederalFinancialReportingDashboard"
-                  target="_blank" rel="noopener">
-                  <i class="fa fa-external-link" aria-hidden="true"></i> View Project
-                </a>
                 <p style="font-size:0.75rem; color:#6B7280; margin-top:1rem; margin-bottom:0; font-style:italic;">
-                  &copy; All rights reserved to Harmonia Holdings Group LLC
+                  &copy; All rights reserved to Revolutional (formerly Harmonia Holdings Group)
                 </p>
               </div>
             </div>
@@ -898,7 +925,7 @@
 
 <!-- ═══ HIDDEN RESUME TEMPLATE FOR PDF EXPORT ═══════════════════════════════ -->
 <div id="resume-pdf-template" style="display:none; position:absolute; left:-9999px; top:0;">
-  <div style="font-family: Arial, Helvetica, sans-serif; font-size: 11.5px; color: #212121; background: white; width: 794px; padding: 28px 50px; box-sizing: border-box; line-height: 1.4;">
+  <div style="font-family: Arial, Helvetica, sans-serif; font-size: 11.5px; color: #212121; background: white; width: 794px; padding: 28px 50px 0; box-sizing: border-box; line-height: 1.4;">
 
     <!-- HEADER -->
     <div style="border-bottom: 3px solid #1A237E; padding-bottom: 10px; margin-bottom: 12px; text-align: center;">
@@ -1002,7 +1029,7 @@
 
       <div style="margin-bottom: 7px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700; font-size: 11.5px; color: #1A237E;">Software / Data Analyst – Intern</span><span style="font-size: 10.5px; color: #607D8B;">Jun 2025 – Aug 2025</span></div>
-        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Harmonia Holdings Group LLC &nbsp;·&nbsp; Virginia, USA</div>
+        <div style="font-size: 10.5px; color: #3949AB; font-weight: 600; margin-bottom: 2px;">Revolutional (formerly Harmonia Holdings Group) &nbsp;·&nbsp; Virginia, USA</div>
         <ul style="margin: 0; padding-left: 15px; color: #455A64; font-size: 11px; line-height: 1.4;">
           <li>Architected and deployed a full-stack AI validation platform on AWS (React, Flask/FastAPI, PostgreSQL), reducing manual processing by 80% through intelligent automation.</li>
           <li>Built real-time NLP workflows for automated error detection, compliance checks, and self-generating audit trails for federal financial reporting.</li>
@@ -1054,10 +1081,8 @@
       </div>
     </div>
 
-    <!-- PROJECTS (auto-populated by downloadResumePDF) -->
-    <div id="pdf-projects" style="margin-bottom: 11px;">
-      <h2 style="font-size: 11.5px; font-weight: 700; color: #1A237E; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid #C5CAE9; padding-bottom: 3px; margin: 0 0 7px 0;">Featured Projects</h2>
-    </div>
+    <!-- PROJECTS (heading and entries auto-populated by downloadResumePDF) -->
+    <div id="pdf-projects" style="margin-bottom: 11px;"></div>
 
     <!-- INTERESTS -->
     <div>

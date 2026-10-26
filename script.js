@@ -97,15 +97,20 @@ function buildPdfProjects() {
   var container = document.getElementById('pdf-projects');
   if (!container) return;
 
-  // Keep the heading, clear any previously generated entries
-  var heading = container.querySelector('h2');
+  // Clear any previously generated entries
   container.innerHTML = '';
-  if (heading) container.appendChild(heading);
 
   // Read project cards from the visible Projects tab (capped at MAX_PROJECTS)
   var cards = Array.prototype.slice.call(
     document.querySelectorAll('#projects .project-card'), 0, MAX_PROJECTS
   );
+  if (!cards.length) return;
+
+  // The heading lives here, not in index.html, so it never appears without entries
+  var heading = document.createElement('h2');
+  heading.style.cssText = 'font-size:11.5px;font-weight:700;color:#1A237E;text-transform:uppercase;letter-spacing:1px;border-bottom:1.5px solid #C5CAE9;padding-bottom:3px;margin:0 0 7px 0;';
+  heading.textContent = 'Featured Projects';
+  container.appendChild(heading);
 
   cards.forEach(function (card, i) {
     var title = (card.querySelector('.project-banner h3') || {}).textContent || '';

@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page not found · Conrad Linus Muhirwe" description="This page does not exist.">
+  <section class="wrap nf">
+    <p class="label">404</p>
+    <h1 class="serif">This page does not exist.</h1>
+    <p class="nf-text">It may have moved when the site was redesigned.</p>
+    <p class="nf-actions"><a class="btn btn-primary" href="/">Go to the home page</a><a class="btn btn-outline" href="/#work">See the work</a></p>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-top: 120px; padding-bottom: 160px; }
+  .nf h1 { margin-top: 24px; font-size: clamp(36px, 5vw, 56px); line-height: 1.08; }
+  .nf-text { margin-top: 20px; font-size: 18px; color: var(--ink-3); }
+  .nf-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+</style>

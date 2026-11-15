@@ -23,7 +23,8 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site).href;
+const canonicalPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
+const canonical = new URL(canonicalPath, Astro.site).href;
 const imageUrl = new URL(image, Astro.site).href;
 const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
 const navBase = isHome ? '' : '/';

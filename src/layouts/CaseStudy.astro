@@ -17,7 +17,7 @@ interface Props {
 
 const { title, description, kicker, headline, meta, links, ogImage, next } = Astro.props;
 ---
-<Base title={title} description={description} image={ogImage} type="article">
+<Base title={title} description={description} image={ogImage} imageAlt={headline} type="article">
   <article>
     <header class="wrap cs-head">
       <p class="label">{kicker}</p>

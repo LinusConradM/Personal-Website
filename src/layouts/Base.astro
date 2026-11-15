@@ -1,0 +1,191 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/source-serif-4/400.css';
+import '@fontsource/source-serif-4/500.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  type?: string;
+  jsonLd?: object;
+}
+
+const {
+  title,
+  description,
+  image = '/og/home.png',
+  imageAlt = 'Conrad Linus Muhirwe. I build AI systems that show their work.',
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
+const navBase = isHome ? '' : '/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Conrad Linus Muhirwe" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)" />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <script is:inline>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VSEDF267QR"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VSEDF267QR');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="/">Conrad Linus Muhirwe</a>
+        <nav aria-label="Main" class="site-nav">
+          <a href={`${navBase}#work`}>Work</a>
+          <a href={`${navBase}#experience`}>Experience</a>
+          <a href={`${navBase}#contact`}>Contact</a>
+          <a class="btn btn-outline nav-resume" href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Résumé</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+            <svg class="icon-moon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            <svg class="icon-sun" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>Washington, DC</span>
+        <span>© {new Date().getFullYear()} Conrad Linus Muhirwe</span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        var root = document.documentElement;
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        function current() { return root.dataset.theme || (mq.matches ? 'dark' : 'light'); }
+        function label() {
+          btn.setAttribute('aria-label', current() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        }
+        label();
+        mq.addEventListener('change', label);
+        btn.addEventListener('click', function () {
+          var next = current() === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          label();
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header { border-bottom: 1px solid var(--line); }
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    min-height: 72px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .site-name { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; }
+  .site-name:hover { color: var(--ink); }
+  .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-left: auto; }
+  .site-nav > a:not(.btn) {
+    color: var(--ink-3);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px 2px;
+  }
+  .site-nav > a:not(.btn):hover { color: var(--ink); }
+  .nav-resume { min-height: 40px; padding: 0 14px; font-size: 14px; }
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+  .icon-sun { display: none; }
+  :global(:root[data-theme='dark']) .icon-sun { display: block; }
+  :global(:root[data-theme='dark']) .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .icon-sun { display: block; }
+    :global(:root:not([data-theme='light'])) .icon-moon { display: none; }
+  }
+
+  .site-footer { border-top: 1px solid var(--line); }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 560px) {
+    .site-name { flex: 1; }
+    .theme-toggle { order: 2; }
+    .site-nav { order: 3; width: 100%; margin-left: 0; gap: 4px 14px; }
+    .site-nav > a:not(.btn) { font-size: 14px; }
+  }
+</style>

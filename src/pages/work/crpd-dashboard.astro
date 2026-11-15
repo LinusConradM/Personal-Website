@@ -1,0 +1,93 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+<CaseStudy
+  title="CRPD Disability Rights Dashboard, case study · Conrad Linus Muhirwe"
+  description="An NLP and RAG platform that makes the UN Convention on the Rights of Persons with Disabilities reporting cycle searchable and cited, built at American University’s Institute on Disability and Public Policy."
+  kicker="Case study 02 · 2026"
+  headline="CRPD Dashboard: turning a treaty’s paperwork into evidence advocates can quote."
+  meta={[
+    { label: 'Role', value: 'Research Associate, Institute on Disability and Public Policy, Feb to Aug 2026' },
+    { label: 'Stack', value: 'Python, Streamlit, FAISS, Claude, Plotly' },
+    { label: 'Runs on', value: 'Posit Connect' },
+  ]}
+  links={[{ label: 'crpd.idppglobal.org', href: 'https://crpd.idppglobal.org/' }]}
+  ogImage="/og/crpd-dashboard.png"
+  next={{ href: '/work/contract-review', title: 'Contract Review Agent' }}
+>
+  <section class="cs-section" aria-labelledby="problem">
+    <p class="label">The problem</p>
+    <div class="cs-prose">
+      <h2 id="problem">The evidence exists. It is spread across years of treaty documents.</h2>
+      <p>Every State Party to the UN Convention on the Rights of Persons with Disabilities (CRPD) reports to the UN on how it implements the treaty, and the committee responds. That record covers more than 180 countries and many languages, which makes it hard for disability organizations and governments to see trends or compare countries.</p>
+      <p>The platform was built at American University’s Institute on Disability and Public Policy for the June 2026 Conference of States Parties, in collaboration with the World Bank Disability Data Hub and Fordham’s Disability Data Initiative.</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="approach">
+    <p class="label">The approach</p>
+    <div class="cs-prose">
+      <h2 id="approach">Collect the documents, index them, and make every AI answer cite its source.</h2>
+      <ul>
+        <li><strong>Collection.</strong> Automated pipelines in Python and R gather the UN reports for each reporting cycle.</li>
+        <li><strong>Retrieval.</strong> The full corpus is embedded with all-mpnet-base-v2 and indexed in FAISS.</li>
+        <li><strong>Generation.</strong> Claude Haiku 4.5 handles insights, the research chat and policy briefs; Claude Sonnet 4 handles synthesis and writing in the research pipeline. Answers carry inline citations to the passages they draw on.</li>
+        <li><strong>Analysis.</strong> NLP and transformer-based text analysis track how often each article is addressed, which articles appear together, and the shift from medical to rights-based language.</li>
+      </ul>
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <div class="panel">
+      <p class="big-number serif">17</p>
+      <p class="panel-sub">interactive views, in three groups</p>
+      <div class="groups">
+        <div>
+          <p class="group-title">Explore</p>
+          <ul><li>Choropleth maps</li><li>Reporting timelines</li><li>Country profiles</li><li>Document comparison</li><li>Semantic search</li></ul>
+        </div>
+        <div>
+          <p class="group-title">Analyze</p>
+          <ul><li>Article coverage</li><li>Co-occurrence</li><li>Medical vs rights-based language shift</li></ul>
+        </div>
+        <div class="group-accent">
+          <p class="group-title">AI-powered</p>
+          <ul><li>Research Assistant</li><li>Policy Brief Generator</li><li>Both cite their sources inline</li></ul>
+        </div>
+      </div>
+    </div>
+    <figcaption>How the platform is organized.</figcaption>
+  </figure>
+
+  <section class="cs-section" aria-labelledby="access">
+    <p class="label">Accessibility</p>
+    <div class="cs-prose">
+      <h2 id="access">A disability rights tool has to be accessible, because the treaty says so.</h2>
+      <p>Articles 9 and 21 of the CRPD require accessible information. The platform meets WCAG 2.2 AA: it is keyboard-navigable, tested with screen readers, and audited continuously with Playwright and axe. User input is sanitized with bleach against cross-site scripting.</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="result">
+    <p class="label">The result</p>
+    <div class="cs-prose">
+      <h2 id="result">From anecdote to defensible, quotable evidence.</h2>
+      <p>Disability organizations, governments and researchers can see treaty compliance trends, rights-based language shifts and cross-country comparisons across States Parties, and generate a cited policy brief instead of assembling one by hand.</p>
+    </div>
+  </section>
+</CaseStudy>
+
+<style>
+  .panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-subtle); padding: 40px; }
+  .big-number { font-size: 56px; line-height: 1; }
+  .panel-sub { margin-top: 6px; margin-bottom: 32px; font-size: 15px; color: var(--ink-3); }
+  .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .groups > div { border-top: 2px solid var(--rule); padding-top: 12px; }
+  .groups .group-accent { border-top-color: var(--accent); }
+  .group-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .group-accent .group-title { color: var(--accent); }
+  .groups ul { list-style: none; padding: 0; font-size: 14px; line-height: 1.7; color: var(--ink-3); }
+  @media (max-width: 760px) {
+    .panel { padding: 24px; }
+    .groups { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+</style>

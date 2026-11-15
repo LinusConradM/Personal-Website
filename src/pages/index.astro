@@ -1,0 +1,416 @@
+---
+import Base from '../layouts/Base.astro';
+
+const email = 'linusconradm@gmail.com';
+const github = 'https://github.com/LinusConradM';
+const linkedin = 'https://www.linkedin.com/in/Conrad-Linus-m';
+const scorecardLive = 'https://wbg-scorecard-529644724770.us-east4.run.app';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Conrad Linus Muhirwe',
+  url: 'https://conradlinusmuhirwe.netlify.app/',
+  image: 'https://conradlinusmuhirwe.netlify.app/images/conrad-linus-muhirwe.jpg',
+  jobTitle: 'Data Scientist and AI Engineer',
+  worksFor: { '@type': 'CollegeOrUniversity', name: 'American University' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Washington', addressRegion: 'DC', addressCountry: 'US' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'American University' },
+    { '@type': 'CollegeOrUniversity', name: 'Uganda Martyrs University' },
+  ],
+  sameAs: [linkedin, github],
+};
+
+const moreWork = [
+  {
+    kind: 'Forecasting',
+    title: 'US Food Insecurity Analytics',
+    text: 'Fifteen years of county-level data (2009 to 2023) with Prophet and ARIMA forecasts, SHAP to explain what drives each county, and a plain-English query box built on Gemini.',
+    links: [
+      { label: 'Live app', href: 'https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud' },
+      { label: 'Code', href: 'https://github.com/LinusConradM/feeding_america' },
+    ],
+  },
+  {
+    kind: 'Agent',
+    title: 'Job Tracker and Daily Digest',
+    text: 'An agent on GitHub Actions that searches 50+ sources each day, including 9 ATS platforms and Workday’s JSON API, scores every role against a résumé with Claude, and emails only the roles it scores 8 or higher out of 10.',
+    links: [],
+  },
+  {
+    kind: 'Voice and chat',
+    title: 'Planit',
+    text: 'WhatsApp appointment booking for East African businesses, by text or voice note in Luganda, Runyankore, Kiswahili, Kinyarwanda or English. A LangGraph state machine with live Google Calendar availability.',
+    links: [{ label: 'Project page', href: 'https://linusconradm.github.io/planit/' }],
+  },
+  {
+    kind: 'Internship',
+    title: 'Federal Financial Reporting',
+    text: 'At Revolutional (formerly Harmonia Holdings Group): AI validation, compliance checks and audit trails for a federal reporting app on AWS, cutting manual processing by 80%. Proprietary, so there is no public link.',
+    links: [],
+  },
+];
+
+const roles = [
+  { years: 'Sep 2026 – now', role: 'Power BI Analyst', org: 'American University' },
+  { years: 'Feb – Aug 2026', role: 'Research Associate', org: 'Institute on Disability and Public Policy' },
+  { years: 'Aug 2025 – Jan 2026', role: 'Event Data Coordinator', org: 'American University' },
+  { years: 'Jun – Aug 2025', role: 'Software / Data Analyst Intern', org: 'Revolutional' },
+  { years: 'Jan – Jun 2025', role: 'Graduate Assistant, Research and Teaching', org: 'American University' },
+  { years: 'Jun 2023 – Jul 2024', role: 'Senior Internal Auditor', org: 'Uganda Development Bank' },
+  { years: 'Dec 2021 – May 2023', role: 'Business Compliance Advisory Manager', org: 'Stanbic Bank Uganda' },
+  { years: 'Dec 2012 – Nov 2021', role: 'Internal Auditor to Manager, Internal Audit', org: 'Equity Bank Uganda' },
+];
+---
+<Base
+  title="Conrad Linus Muhirwe, data scientist and AI engineer"
+  description="Data scientist and AI engineer in Washington, DC. I build AI systems that show their work: answers traced to the query, citations to the passage, and a person signing off where it matters."
+  jsonLd={jsonLd}
+>
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <img
+      class="portrait"
+      src="/images/conrad-linus-muhirwe-600.webp"
+      srcset="/images/conrad-linus-muhirwe-320.webp 320w, /images/conrad-linus-muhirwe-600.webp 600w"
+      sizes="(max-width: 760px) 96px, 240px"
+      width="600" height="600"
+      alt="Portrait of Conrad Linus Muhirwe"
+    />
+    <div class="hero-text">
+    <p class="label">Data scientist and AI engineer · Washington, DC</p>
+    <h1 id="hero-title" class="serif">I build AI systems that show their work.</h1>
+    <p class="hero-lede">
+      I spent more than ten years in bank audit and compliance, where every number had to trace back to a source.
+      Now I build LLM applications held to the same rule: answers tied to the query that produced them, citations
+      to the passage, and a person signing off where it matters.
+    </p>
+    <p class="hero-meta">Power BI Analyst at American University. MS in Analytics and Artificial Intelligence, American University, 2026.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#work">See the work</a>
+      <a class="btn btn-outline" href={`mailto:${email}`}>{email}</a>
+      <a class="btn btn-quiet" href={github} rel="me noopener">GitHub</a>
+      <a class="btn btn-quiet" href={linkedin} rel="me noopener">LinkedIn</a>
+    </div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap" aria-labelledby="work-title">
+    <div class="section-head">
+      <h2 id="work-title">Selected work</h2>
+      <span class="label">3 case studies · 4 more below</span>
+    </div>
+
+    <article class="case" aria-labelledby="case-1">
+      <div class="case-text">
+        <p class="label">01 · Independent build · 2026</p>
+        <h3 id="case-1" class="serif"><a href="/work/scorecard-explorer">Scorecard Explorer</a></h3>
+        <p class="case-lede">Ask the World Bank Group Corporate Scorecard a question in plain English. Every number in the answer is checked against the rows its query returned.</p>
+        <ul class="points">
+          <li><strong>SQL guard at the parser.</strong> DuckDB’s own parser allows one read-only SELECT on allow-listed tables, with a row cap and a timeout.</li>
+          <li><strong>Number traceability.</strong> A figure that does not match a returned row is marked “Not checked” instead of shown as fact.</li>
+          <li><strong>Model chosen by eval.</strong> Claude Haiku answered 12 of 12 test questions, as Sonnet did, at about a twentieth of the cost per query.</li>
+        </ul>
+        <ul class="chips" aria-label="Stack">
+          <li>Claude Haiku</li><li>DuckDB</li><li>FastAPI</li><li>React</li><li>FAISS</li><li>Cloud Run</li>
+        </ul>
+        <p class="case-links">
+          <a href="/work/scorecard-explorer">Read the case study</a>
+          <a href={scorecardLive} rel="noopener">Open the live app</a>
+        </p>
+      </div>
+      <figure class="case-figure">
+        <div class="shot">
+          <img
+            src="/images/work/scorecard-landing-1600.webp"
+            srcset="/images/work/scorecard-landing-800.webp 800w, /images/work/scorecard-landing-1600.webp 1600w"
+            sizes="(max-width: 760px) 100vw, 620px"
+            width="1600" height="1000"
+            alt="Scorecard Explorer landing page. Headline: 258.4 million people have gained electricity access through active World Bank Group projects, shown as a bar at 50.5 percent of the 511.7 million expected, with an Ask the Scorecard box below."
+          />
+        </div>
+        <figcaption>The live landing page, FY2026 edition. The headline is a query result, not copy.</figcaption>
+      </figure>
+    </article>
+
+    <article class="case" aria-labelledby="case-2">
+      <div class="case-text">
+        <p class="label">02 · Institute on Disability and Public Policy · 2026</p>
+        <h3 id="case-2" class="serif"><a href="/work/crpd-dashboard">CRPD Disability Rights Dashboard</a></h3>
+        <p class="case-lede">The full UN Convention on the Rights of Persons with Disabilities reporting cycle, searchable and cited, for advocates, governments and researchers. Built for the June 2026 Conference of States Parties.</p>
+        <ul class="points">
+          <li><strong>RAG over the treaty corpus.</strong> all-mpnet-base-v2 embeddings in FAISS; Claude Haiku answers with inline citations.</li>
+          <li><strong>Accessibility is the subject.</strong> Articles 9 and 21 require accessible information, so WCAG 2.2 AA is audited with Playwright and axe.</li>
+        </ul>
+        <ul class="chips" aria-label="Stack">
+          <li>Python</li><li>Streamlit</li><li>FAISS</li><li>Claude</li><li>Plotly</li><li>Posit Connect</li>
+        </ul>
+        <p class="case-links">
+          <a href="/work/crpd-dashboard">Read the case study</a>
+          <a href="https://crpd.idppglobal.org/" rel="noopener">Open crpd.idppglobal.org</a>
+        </p>
+      </div>
+      <figure class="case-figure">
+        <div class="panel">
+          <p class="big-number serif">17</p>
+          <p class="panel-sub">interactive views, in three groups</p>
+          <div class="groups">
+            <div>
+              <p class="group-title">Explore</p>
+              <ul><li>Choropleth maps</li><li>Reporting timelines</li><li>Country profiles</li><li>Document comparison</li><li>Semantic search</li></ul>
+            </div>
+            <div>
+              <p class="group-title">Analyze</p>
+              <ul><li>Article coverage</li><li>Co-occurrence</li><li>Medical vs rights-based language shift</li></ul>
+            </div>
+            <div class="group-accent">
+              <p class="group-title">AI-powered</p>
+              <ul><li>Research Assistant</li><li>Policy Brief Generator</li><li>Both cite their sources inline</li></ul>
+            </div>
+          </div>
+        </div>
+        <figcaption>How the platform is organized.</figcaption>
+      </figure>
+    </article>
+
+    <article class="case" aria-labelledby="case-3">
+      <div class="case-text">
+        <p class="label">03 · Independent build · 2026</p>
+        <h3 id="case-3" class="serif"><a href="/work/contract-review">Contract Review Agent</a></h3>
+        <p class="case-lede">Reads a contract, analyzes every clause for legal risk in parallel, then stops and waits for a person to approve before any memo is sent.</p>
+        <ul class="points">
+          <li><strong>Durable by design.</strong> Each stage is a checkpointed task, so a crash or redeploy resumes where it stopped, with no lost or duplicated work.</li>
+          <li><strong>Provider-agnostic.</strong> One call routes across Groq, Gemini, OpenRouter, OpenAI and Anthropic with key-driven fallback.</li>
+        </ul>
+        <ul class="chips" aria-label="Stack">
+          <li>Next.js 15</li><li>Trigger.dev</li><li>Postgres</li><li>Prisma</li><li>Cloudflare R2</li>
+        </ul>
+        <p class="case-links">
+          <a href="/work/contract-review">Read the case study</a>
+          <a href="https://contract-review-pied.vercel.app" rel="noopener">Open the live app</a>
+          <a href="https://github.com/LinusConradM/contract_review" rel="noopener">Code</a>
+        </p>
+      </div>
+      <figure class="case-figure">
+        <div class="panel">
+          <p class="label">One run, start to finish</p>
+          <ol class="steps">
+            <li><span class="step-n">1</span><span>Extract text from the PDF or Word file</span></li>
+            <li><span class="step-n">2</span><span>Split it into clauses</span></li>
+            <li><span class="step-n">3</span><span>Analyze each clause as its own child run, throttled to provider rate limits</span></li>
+            <li class="step-key"><span class="step-n">4</span><span><strong>Wait for a reviewer.</strong> The run suspends and frees its compute for minutes or weeks, then resumes on approval.</span></li>
+            <li><span class="step-n">5</span><span>Write the memo, stream it to the page, email it</span></li>
+          </ol>
+        </div>
+        <figcaption>Step 4 is the point of the project: nothing leaves without a person’s sign-off.</figcaption>
+      </figure>
+    </article>
+
+    <div class="section-head">
+      <h2>More work</h2>
+    </div>
+    <ul class="rows" role="list">
+      {moreWork.map((w) => (
+        <li class="row">
+          <span class="label">{w.kind}</span>
+          <h3 class="row-title">{w.title}</h3>
+          <div>
+            <p class="row-text">{w.text}</p>
+            {w.links.length > 0 && (
+              <p class="row-links">
+                {w.links.map((l) => <a href={l.href} rel="noopener">{l.label}<span class="sr-only">: {w.title}</span></a>)}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="experience" class="experience" aria-labelledby="exp-title">
+    <div class="wrap exp-grid">
+      <div>
+        <h2 id="exp-title" class="serif">A decade of checking numbers, then building systems that check them.</h2>
+        <p class="exp-lede">Audit and compliance at three banks in Uganda, then a move to Washington for graduate study in AI.</p>
+        <p class="exp-lede"><a href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Full résumé</a></p>
+      </div>
+      <div>
+        <ul class="roles" role="list">
+          {roles.map((r) => (
+            <li>
+              <span class="label">{r.years}</span>
+              <span class="role">{r.role}</span>
+              <span class="org">{r.org}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="edu">
+          <strong>Education.</strong> MS in Analytics and Artificial Intelligence, and Graduate Certificate in Data Science,
+          American University, 2026. BBA in Finance and Accounting, Uganda Martyrs University, 2011.
+        </p>
+        <p class="edu">
+          <strong>Certifications.</strong> <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" rel="noopener">IBM Data Science</a>, <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37" rel="noopener">CFI FMVA</a>, <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6" rel="noopener">CFI BIDA</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap contact" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="serif">Hiring for data science or AI engineering? I’d like to hear about it.</h2>
+    <div class="actions">
+      <a class="btn btn-primary" href={`mailto:${email}`}>{email}</a>
+      <a class="btn btn-outline" href={linkedin} rel="noopener">LinkedIn</a>
+      <a class="btn btn-outline" href={github} rel="noopener">GitHub</a>
+      <a class="btn btn-outline" href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Résumé</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-top: 112px;
+    padding-bottom: 104px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero-text { grid-column: 1; grid-row: 1; }
+  .portrait {
+    grid-column: 2;
+    grid-row: 1;
+    width: 240px;
+    height: 240px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    margin-top: 44px;
+  }
+  .hero h1 {
+    margin-top: 28px;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.05;
+    max-width: 900px;
+  }
+  .hero-lede { margin-top: 32px; font-size: 20px; line-height: 1.6; color: var(--ink-3); max-width: 720px; }
+  .hero-meta { margin-top: 20px; font-size: 15px; color: var(--muted); max-width: 720px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    margin-bottom: 56px;
+  }
+  .section-head h2 { font-size: 15px; font-weight: 600; }
+
+  .case {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 56px;
+    margin-bottom: 120px;
+    align-items: start;
+  }
+  .case h3 { margin-top: 16px; font-size: 36px; line-height: 1.15; }
+  .case h3 a { color: var(--ink); text-decoration: none; }
+  .case h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+  .case-lede { margin-top: 16px; font-size: 18px; line-height: 1.55; }
+  .points { list-style: none; padding: 0; margin: 24px 0; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.55; color: var(--ink-3); }
+  .points strong { color: var(--ink); font-weight: 600; }
+  .case-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 24px; font-size: 15px; font-weight: 500; }
+  .case-links a { padding: 10px 0; }
+
+  .panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-subtle); padding: 40px; }
+  .big-number { font-size: 56px; line-height: 1; }
+  .panel-sub { margin-top: 6px; margin-bottom: 32px; font-size: 15px; color: var(--ink-3); }
+  .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .groups > div { border-top: 2px solid var(--rule); padding-top: 12px; }
+  .groups .group-accent { border-top-color: var(--accent); }
+  .group-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .group-accent .group-title { color: var(--accent); }
+  .groups ul { list-style: none; padding: 0; font-size: 14px; line-height: 1.7; color: var(--ink-3); }
+
+  .steps { list-style: none; padding: 0; margin-top: 20px; }
+  .steps li {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  .steps li:last-child { border-bottom: 0; }
+  .step-n { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; }
+  .steps .step-key { background: var(--bg-raised); margin: 0 -16px; padding-left: 16px; padding-right: 16px; border-radius: 8px; border-bottom-color: transparent; }
+  .step-key .step-n { color: var(--accent); }
+  .step-key strong { font-weight: 600; }
+
+  .rows { list-style: none; padding: 0; margin: 0 0 120px; }
+  .row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 8px 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row-title { font-size: 16px; font-weight: 500; }
+  .row-text { font-size: 15px; line-height: 1.55; color: var(--ink-3); }
+  .row-links { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 4px; font-size: 14px; font-weight: 500; }
+  .row-links a { padding: 8px 0; }
+
+  .experience { background: var(--bg-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 56px;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .exp-grid h2 { font-size: 34px; line-height: 1.18; }
+  .exp-lede { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--ink-3); }
+  .roles { list-style: none; padding: 0; }
+  .roles li {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4px 24px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .roles li:last-child { border-bottom: 1px solid var(--line); }
+  .role { font-weight: 500; }
+  .org { color: var(--ink-3); }
+  .edu { margin-top: 24px; font-size: 15px; line-height: 1.7; color: var(--ink-3); }
+  .edu strong { color: var(--ink); font-weight: 600; }
+
+  .contact { padding-top: 112px; padding-bottom: 96px; }
+  .contact h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.12; max-width: 780px; }
+
+  @media (max-width: 900px) {
+    .case, .exp-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .case-figure { order: -1; }
+    .case { margin-bottom: 88px; }
+  }
+  @media (max-width: 760px) {
+    .hero { padding-top: 48px; padding-bottom: 64px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .portrait { grid-column: 1; width: 96px; height: 96px; border-radius: 50%; margin-top: 0; }
+    .hero-text { grid-row: 2; }
+    .hero-lede { font-size: 17px; }
+    .actions .btn { flex: 1 1 100%; }
+    .actions .btn-quiet { flex: 1 1 40%; border: 1px solid var(--line-strong); }
+    .case h3 { font-size: 28px; }
+    .panel { padding: 24px; }
+    .groups { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .roles li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .exp-grid { padding-top: 64px; padding-bottom: 64px; }
+    .exp-grid h2 { font-size: 28px; }
+    .contact { padding-top: 72px; padding-bottom: 64px; }
+  }
+</style>

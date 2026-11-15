@@ -1,0 +1,113 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+
+const live = 'https://wbg-scorecard-529644724770.us-east4.run.app';
+---
+<CaseStudy
+  title="Scorecard Explorer, case study · Conrad Linus Muhirwe"
+  description="An LLM analyst for the World Bank Group Corporate Scorecard that checks every number in its answer against the rows its query returned. Model chosen by a 12-question grounding eval."
+  kicker="Case study 01 · 2026"
+  headline="Scorecard Explorer: an analyst for World Bank results that has to show its rows."
+  meta={[
+    { label: 'Role', value: 'Sole builder' },
+    { label: 'Stack', value: 'Claude Haiku, DuckDB, FastAPI, React, FAISS' },
+    { label: 'Runs on', value: 'Google Cloud Run' },
+  ]}
+  links={[{ label: 'Live app', href: live }]}
+  ogImage="/og/scorecard-explorer.png"
+  next={{ href: '/work/crpd-dashboard', title: 'CRPD Disability Rights Dashboard' }}
+>
+  <figure slot="hero" class="wrap cs-figure">
+    <div class="shot">
+      <img
+        src="/images/work/scorecard-answer-1600.webp"
+        srcset="/images/work/scorecard-answer-800.webp 800w, /images/work/scorecard-answer-1600.webp 1600w"
+        sizes="(max-width: 1184px) 100vw, 1056px"
+        width="1600" height="1000"
+        alt="An answer page in Scorecard Explorer. The question is the page title, a status row says the numbers match the query rows, the answer underlines verified figures, and an evidence rail shows the SQL query and the matched row."
+      />
+    </div>
+    <figcaption>An answer page, captured in the app’s demo mode, which answers from fixed queries without a model. Verified figures are underlined and open the exact query and row behind them.</figcaption>
+  </figure>
+
+  <section class="cs-section" aria-labelledby="problem">
+    <p class="label">The problem</p>
+    <div class="cs-prose">
+      <h2 id="problem">The Scorecard publishes results. It does not answer questions.</h2>
+      <p>The World Bank Group Corporate Scorecard reports results for 15 outcome areas across three editions. Asking something simple, such as which region is furthest from its expected electricity results, means downloading extracts and joining them by hand.</p>
+      <p>A language model can answer that in seconds. It can also state a wrong number with full confidence, and in a results report a wrong number is worse than no answer.</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="approach">
+    <p class="label">The approach</p>
+    <div class="cs-prose">
+      <h2 id="approach">The model writes the query. The data supplies every number.</h2>
+      <p>A tool-calling agent reads the schema and either calls a typed analysis tool or writes its own SQL against DuckDB. Before any SQL runs, DuckDB’s own parser checks it: one read-only SELECT, allow-listed tables, no file-reading functions, a row cap and a timeout.</p>
+      <p>After the model answers, a checker compares every figure in the text with the values the queries returned. A figure that matches is underlined and cited. A figure that does not is labeled “Not checked” instead of being presented as fact.</p>
+      <p>Definitions and indicator notes are retrieved from a FAISS index embedded locally with bge-small, so retrieval adds no second paid API.</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="eval">
+    <p class="label">Choosing the model</p>
+    <div>
+      <div class="cs-prose">
+        <h2 id="eval">Haiku matched Sonnet on accuracy at about a twentieth of the cost.</h2>
+        <p>I ran 12 questions, with answers computed from SQL, through the same pipeline for each model at temperature 0, and scored accuracy, traceability, latency and cost.</p>
+      </div>
+      <div class="table-box" tabindex="0" role="region" aria-label="Grounding eval results table">
+        <table>
+          <caption>Grounding eval, 12 questions, run 2026-11-10</caption>
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col" class="num">Correct</th>
+              <th scope="col" class="num">Answers fully traced</th>
+              <th scope="col" class="num">Median latency</th>
+              <th scope="col" class="num">Cost per query</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="chosen"><td><strong>Claude Haiku</strong> (chosen)</td><td class="num">12 of 12</td><td class="num">100%</td><td class="num">5.2 s</td><td class="num">$0.0018</td></tr>
+            <tr><td>Claude Sonnet</td><td class="num">12 of 12</td><td class="num">100%</td><td class="num">6.7 s</td><td class="num">$0.0399</td></tr>
+            <tr><td>Claude Opus</td><td class="num">11 of 12</td><td class="num">100%</td><td class="num">9.2 s</td><td class="num">$0.0741</td></tr>
+            <tr><td>gpt-oss 20B, local</td><td class="num">4 of 12</td><td class="num">66.7%</td><td class="num">87.6 s</td><td class="num">$0</td></tr>
+            <tr><td>Llama 3.2, local</td><td class="num">2 of 12</td><td class="num">91.7%</td><td class="num">18.5 s</td><td class="num">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cs-note">Twelve questions is a small set. Haiku, Sonnet and Opus are within noise of each other (exact McNemar p = 1.0); both local models trail Haiku significantly (p ≤ 0.008).</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="design">
+    <p class="label">Design</p>
+    <div class="cs-prose">
+      <h2 id="design">The finding is the headline, and the evidence is one click away.</h2>
+      <p>Every chart is titled with its finding instead of its axes. Achieved against expected is drawn the same way everywhere, as a filled bar on a track with an end mark, and every chart has a table view. The interface meets WCAG 2.2 AA, checked with axe-core on every merge, and has light and dark themes.</p>
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <div class="shot">
+      <img
+        src="/images/work/scorecard-compare-1600.webp"
+        srcset="/images/work/scorecard-compare-800.webp 800w, /images/work/scorecard-compare-1600.webp 1600w"
+        sizes="(max-width: 1184px) 100vw, 1056px"
+        width="1600" height="1000"
+        loading="lazy"
+        alt="The Compare page. Title: In 8 of 15 indicators, projects in fragile and conflict-affected situations are further from their expected results than projects elsewhere. A dot plot shows each indicator with a hollow ring for fragile settings and a filled dot for elsewhere."
+      />
+    </div>
+    <figcaption>The Compare page states its finding in the title, then shows it as a dot plot with a table view one click away.</figcaption>
+  </figure>
+
+  <section class="cs-section" aria-labelledby="next-steps">
+    <p class="label">What I’d do next</p>
+    <div class="cs-prose">
+      <h2 id="next-steps" class="sr-only">What I’d do next</h2>
+      <p>Grow the eval set well beyond 12 questions so differences between models become measurable, and let readers pick their own peer group of countries for comparisons.</p>
+    </div>
+  </section>
+</CaseStudy>

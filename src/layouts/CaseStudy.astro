@@ -44,7 +44,8 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
       <slot />
     </div>
 
-    <nav aria-label="More case studies" class="wrap cs-next">
+    <nav aria-label="More case studies" class="wrap">
+      <div class="cs-next">
       <a href="/#work">
         <span class="label">All work</span>
         <span class="cs-next-title">Back to the home page</span>
@@ -53,6 +54,7 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
         <span class="label">Next case study</span>
         <span class="cs-next-title serif">{next.title}</span>
       </a>
+      </div>
     </nav>
   </article>
 </Base>

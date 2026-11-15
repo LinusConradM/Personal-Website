@@ -31,7 +31,7 @@
   :root:not([data-theme='light']) {
     --bg: #0e1013;
     --bg-subtle: #15181d;
-    --bg-raised: #15181d;
+    --bg-raised: #1f232b;
     --ink: #e8eaee;
     --ink-2: #d6d9df;
     --ink-3: #c9cdd5;
@@ -52,7 +52,7 @@
 :root[data-theme='dark'] {
   --bg: #0e1013;
   --bg-subtle: #15181d;
-  --bg-raised: #15181d;
+  --bg-raised: #1f232b;
   --ink: #e8eaee;
   --ink-2: #d6d9df;
   --ink-3: #c9cdd5;

@@ -1,0 +1,79 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+<CaseStudy
+  title="Contract Review Agent, case study · Conrad Linus Muhirwe"
+  description="A durable AI workflow that analyzes every clause of a contract in parallel, then suspends until a person approves, before writing and emailing the memo. Built with Trigger.dev and Next.js."
+  kicker="Case study 03 · 2026"
+  headline="Contract Review Agent: fast where a model helps, and stopped where a person has to decide."
+  meta={[
+    { label: 'Role', value: 'Sole builder' },
+    { label: 'Stack', value: 'Next.js 15, Trigger.dev, Postgres, Prisma, Cloudflare R2, Resend' },
+    { label: 'Models', value: 'Groq, Gemini, OpenRouter, OpenAI, Anthropic' },
+  ]}
+  links={[
+    { label: 'Live app', href: 'https://contract-review-pied.vercel.app' },
+    { label: 'Code', href: 'https://github.com/LinusConradM/contract_review' },
+  ]}
+  ogImage="/og/contract-review.png"
+  next={{ href: '/work/scorecard-explorer', title: 'Scorecard Explorer' }}
+>
+  <section class="cs-section" aria-labelledby="problem">
+    <p class="label">The problem</p>
+    <div class="cs-prose">
+      <h2 id="problem">Contract review is slow, and it should not be fully automated.</h2>
+      <p>A model can read a contract clause by clause and flag risk far faster than a person. But a risk memo that goes out without a lawyer’s sign-off is a liability, and the sign-off can take minutes or weeks. A normal web request cannot wait that long, and a background job that holds a server while it waits is expensive.</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="approach">
+    <p class="label">The approach</p>
+    <div class="cs-prose">
+      <h2 id="approach">One durable run per contract, with a waitpoint where the person decides.</h2>
+      <p>Upload a PDF or Word file and a Trigger.dev workflow takes over. Each stage is a checkpointed task, so a crash, redeploy or eviction resumes where it stopped, with no lost or duplicated work.</p>
+    </div>
+  </section>
+
+  <figure class="cs-figure">
+    <div class="panel">
+      <p class="label">One run, start to finish</p>
+      <ol class="steps">
+        <li><span class="step-n">1</span><span>Extract text from the PDF or Word file</span></li>
+        <li><span class="step-n">2</span><span>Split it into clauses</span></li>
+        <li><span class="step-n">3</span><span>Analyze each clause as its own child run: risk level, explanation, ambiguous terms and recommendations. At most 5 run at once, each retried up to 5 times with exponential backoff.</span></li>
+        <li class="step-key"><span class="step-n">4</span><span><strong>Wait for a reviewer.</strong> The run creates a waitpoint token, emails the owner, and suspends with no timeout, freeing its compute. A separate run sleeps for 7 days and sends a reminder if the contract is still waiting.</span></li>
+        <li><span class="step-n">5</span><span>The reviewer approves or rejects clause by clause. The run resumes, writes the memo, streams it to the page and emails it.</span></li>
+      </ol>
+    </div>
+    <figcaption>Step 4 is the point of the project: nothing leaves without a person’s sign-off, and waiting costs nothing.</figcaption>
+  </figure>
+
+  <section class="cs-section" aria-labelledby="providers">
+    <p class="label">Model layer</p>
+    <div class="cs-prose">
+      <h2 id="providers">Any provider, swapped without touching the pipeline.</h2>
+      <p>One <code>complete()</code> call routes to Groq, Gemini, OpenRouter, OpenAI or Anthropic. With no provider pinned, it walks the configured keys in order and falls through to the next when one is rate-limited or down. Each clause run is tagged with the provider that served it and its risk band, so the dashboard can filter “all high-risk clauses” or “everything Gemini analyzed”.</p>
+    </div>
+  </section>
+</CaseStudy>
+
+<style>
+  .panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-subtle); padding: 40px; }
+  .steps { list-style: none; padding: 0; margin-top: 20px; }
+  .steps li {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .steps li:last-child { border-bottom: 0; }
+  .step-n { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+  .steps .step-key { background: var(--bg-raised); margin: 0 -16px; padding-left: 16px; padding-right: 16px; border-radius: 8px; border-bottom-color: transparent; }
+  .step-key .step-n { color: var(--accent); }
+  .step-key strong { font-weight: 600; }
+  :global(.cs-prose code) { font-family: var(--mono); font-size: 0.88em; background: var(--bg-subtle); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+  @media (max-width: 760px) { .panel { padding: 24px; } }
+</style>

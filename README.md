@@ -16,7 +16,7 @@ Live: https://conradlinusmuhirwe.netlify.app/
 ## Stack
 
 - [Astro](https://astro.build) 7, static output, no client framework. The only scripts are the theme toggle and Google Analytics.
-- Self-hosted fonts from Fontsource: Source Serif 4 (headlines), Inter (text), JetBrains Mono (labels).
+- Self-hosted fonts from Fontsource: Manrope (headlines and text), DM Mono (labels).
 - Light and dark themes from CSS tokens in `src/styles/global.css`; follows the system setting until the visitor picks one.
 - WCAG 2.2 AA: axe reports zero violations on every page in both themes at desktop and phone widths; `prefers-reduced-motion` is respected.
 - Hosted on Netlify; build settings live in `netlify.toml`.

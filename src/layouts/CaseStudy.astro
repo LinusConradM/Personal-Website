@@ -19,9 +19,10 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
 ---
 <Base title={title} description={description} image={ogImage} imageAlt={headline} type="article">
   <article>
+    <div class="dots cs-band">
     <header class="wrap cs-head">
       <p class="label">{kicker}</p>
-      <h1 class="serif">{headline}</h1>
+      <h1 class="display">{headline}</h1>
       <dl class="cs-meta">
         {meta.map((m) => (
           <div>
@@ -39,6 +40,7 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
     </header>
 
     <slot name="hero" />
+    </div>
 
     <div class="wrap cs-body">
       <slot />
@@ -52,7 +54,7 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
       </a>
       <a href={next.href} class="cs-next-right">
         <span class="label">Next case study</span>
-        <span class="cs-next-title serif">{next.title}</span>
+        <span class="cs-next-title display">{next.title}</span>
       </a>
       </div>
     </nav>
@@ -61,11 +63,14 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
 
 <style>
   .cs-head { padding-top: 88px; }
+  .cs-band { padding-bottom: 64px; border-bottom: 1px solid var(--line); }
+  .cs-head > .label { color: var(--accent); }
   .cs-head h1 {
     margin-top: 24px;
-    font-size: clamp(36px, 5vw, 56px);
-    line-height: 1.08;
-    max-width: 920px;
+    font-size: clamp(38px, 6.2vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    max-width: 1080px;
   }
   .cs-meta {
     display: grid;
@@ -93,18 +98,19 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
   .cs-next a { color: var(--ink); text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 4px 0; }
   .cs-next a:hover .cs-next-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
   .cs-next-right { text-align: right; align-items: flex-end; }
-  .cs-next-title { font-size: 20px; }
+  .cs-next-title { font-size: clamp(22px, 3vw, 36px); font-weight: 700; letter-spacing: -0.03em; }
 
-  :global(.cs-figure) { margin-top: 64px; }
+  :global(.cs-figure) { margin-top: 72px; }
+
   :global(.cs-section) {
     display: grid;
     grid-template-columns: 200px minmax(0, 1fr);
-    gap: 48px;
-    padding-top: 72px;
+    gap: 64px;
+    padding-top: 104px;
   }
   :global(.cs-section > .label) { padding-top: 8px; }
   :global(.cs-prose) { max-width: 680px; }
-  :global(.cs-prose h2) { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 16px; }
+  :global(.cs-prose h2) { font-family: var(--display); font-weight: 700; font-size: 36px; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 18px; }
   :global(.cs-prose p), :global(.cs-prose li) { font-size: 18px; line-height: 1.65; color: var(--ink-2); }
   :global(.cs-prose p + p) { margin-top: 18px; }
   :global(.cs-prose ul), :global(.cs-prose ol) { padding-left: 1.2em; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
@@ -125,7 +131,7 @@ const { title, description, kicker, headline, meta, links, ogImage, next } = Ast
     .cs-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .cs-next-right { text-align: left; align-items: flex-start; }
     :global(.cs-section) { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-top: 48px; }
-    :global(.cs-prose h2) { font-size: 25px; }
+    :global(.cs-prose h2) { font-size: 27px; }
     :global(.cs-prose p), :global(.cs-prose li) { font-size: 17px; }
     :global(.cs-figure) { margin-top: 40px; }
   }

@@ -68,92 +68,138 @@ const roles = [
   description="Data scientist and AI engineer in Washington, DC. I build AI systems that show their work: answers traced to the query, citations to the passage, and a person signing off where it matters."
   jsonLd={jsonLd}
 >
-  <section class="wrap hero" aria-labelledby="hero-title">
-    <img
-      class="portrait"
-      src="/images/conrad-linus-muhirwe-600.webp"
-      srcset="/images/conrad-linus-muhirwe-320.webp 320w, /images/conrad-linus-muhirwe-600.webp 600w"
-      sizes="(max-width: 760px) 96px, 240px"
-      width="600" height="600"
-      alt="Portrait of Conrad Linus Muhirwe"
-    />
-    <div class="hero-text">
-    <p class="label">Data scientist and AI engineer · Washington, DC</p>
-    <h1 id="hero-title" class="serif">I build AI systems that show their work.</h1>
-    <p class="hero-lede">
-      I spent more than ten years in bank audit and compliance, where every number had to trace back to a source.
-      Now I build LLM applications held to the same rule: answers tied to the query that produced them, citations
-      to the passage, and a person signing off where it matters.
-    </p>
-    <p class="hero-meta">Power BI Analyst at American University. MS in Analytics and Artificial Intelligence, American University, 2026.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="#work">See the work</a>
-      <a class="btn btn-outline" href={`mailto:${email}`}>{email}</a>
-      <a class="btn btn-quiet" href={github} rel="me noopener">GitHub</a>
-      <a class="btn btn-quiet" href={linkedin} rel="me noopener">LinkedIn</a>
-    </div>
+  <section class="hero dots" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-id">
+        <img
+          class="portrait"
+          src="/images/conrad-linus-muhirwe-320.webp"
+          width="320" height="320"
+          alt="Portrait of Conrad Linus Muhirwe"
+        />
+        <p class="label">Data scientist and AI engineer <span aria-hidden="true">/</span> Washington, DC</p>
+      </div>
+      <h1 id="hero-title" class="display">I build AI systems that <span class="hl">show their work.</span></h1>
+      <div class="hero-row">
+        <p class="hero-lede">
+          I spent more than ten years in bank audit and compliance, where every number had to trace back to a source.
+          Now I build LLM applications held to the same rule: answers tied to the query that produced them, citations
+          to the passage, and a person signing off where it matters.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn btn-outline" href={`mailto:${email}`}>Get in touch</a>
+        </div>
+      </div>
+
+      <figure class="trace" aria-labelledby="trace-cap">
+        <figcaption id="trace-cap" class="trace-cap label">
+          <span><span class="trace-dot" aria-hidden="true"></span>One real answer from Scorecard Explorer, traced</span>
+          <span>FY2026 edition · DuckDB</span>
+        </figcaption>
+        <ol class="trace-steps" role="list">
+          <li class="step s1">
+            <span class="step-label">01 Question</span>
+            <p class="step-q">How many people have gained electricity access through active World Bank Group projects?</p>
+          </li>
+          <li class="wire w1" aria-hidden="true"></li>
+          <li class="step s2">
+            <span class="step-label">02 Query, checked by the parser</span>
+<pre class="step-sql"><code><b>SELECT</b> achieved, expected
+<b>FROM</b> wbg_results_wide
+<b>WHERE</b> ind_code = 'CSC_RES_ELC_ACCS'
+  AND snapshot_fy = 2026
+  AND ref_area_type = 'WORLD'</code></pre>
+          </li>
+          <li class="wire w2" aria-hidden="true"></li>
+          <li class="step s3">
+            <span class="step-label">03 Row returned</span>
+            <dl class="step-row">
+              <div><dt>achieved</dt><dd class="hit">258.4M</dd></div>
+              <div><dt>expected</dt><dd>511.7M</dd></div>
+            </dl>
+          </li>
+          <li class="wire w3" aria-hidden="true"></li>
+          <li class="step s4 step-answer">
+            <span class="step-label">04 Answer, numbers checked</span>
+            <p class="step-a"><mark>258.4 million people</mark> have gained access, 50.5% of the <u>511.7 million</u> expected.</p>
+            <span class="step-ok">2 of 2 figures match the row</span>
+          </li>
+        </ol>
+      </figure>
     </div>
   </section>
 
-  <section id="work" class="wrap" aria-labelledby="work-title">
+  <section class="proof" aria-label="At a glance">
+    <ul class="wrap proof-grid" role="list">
+      <li><span class="proof-n">12/12</span><span class="proof-t">questions right in the Scorecard grounding eval</span></li>
+      <li><span class="proof-n">$0.0018</span><span class="proof-t">per query, about a twentieth of the Sonnet cost</span></li>
+      <li><span class="proof-n">WCAG 2.2</span><span class="proof-t">AA on every public build, checked with axe</span></li>
+      <li><span class="proof-n">10+ yrs</span><span class="proof-t">in bank audit and compliance</span></li>
+    </ul>
+  </section>
+
+  <section id="work" class="wrap work" aria-labelledby="work-title">
     <div class="section-head">
-      <h2 id="work-title">Selected work</h2>
+      <h2 id="work-title" class="display">Selected work</h2>
       <span class="label">3 case studies · 4 more below</span>
     </div>
 
-    <article class="case" aria-labelledby="case-1">
-      <div class="case-text">
-        <p class="label">01 · Independent build · 2026</p>
-        <h3 id="case-1" class="serif"><a href="/work/scorecard-explorer">Scorecard Explorer</a></h3>
-        <p class="case-lede">Ask the World Bank Group Corporate Scorecard a question in plain English. Every number in the answer is checked against the rows its query returned.</p>
+    <article class="exhibit" aria-labelledby="case-1">
+      <div class="ex-text">
+        <span class="numeral" aria-hidden="true">01</span>
+        <p class="label ex-kicker">Independent build · 2026</p>
+        <h3 id="case-1" class="display"><a href="/work/scorecard-explorer">Scorecard Explorer</a></h3>
+        <p class="ex-lede">Ask the World Bank Group Corporate Scorecard a question in plain English. Every number in the answer is checked against the rows its query returned.</p>
         <ul class="points">
           <li><strong>SQL guard at the parser.</strong> DuckDB’s own parser allows one read-only SELECT on allow-listed tables, with a row cap and a timeout.</li>
           <li><strong>Number traceability.</strong> A figure that does not match a returned row is marked “Not checked” instead of shown as fact.</li>
-          <li><strong>Model chosen by eval.</strong> Claude Haiku answered 12 of 12 test questions, as Sonnet did, at about a twentieth of the cost per query.</li>
         </ul>
-        <ul class="chips" aria-label="Stack">
-          <li>Claude Haiku</li><li>DuckDB</li><li>FastAPI</li><li>React</li><li>FAISS</li><li>Cloud Run</li>
-        </ul>
-        <p class="case-links">
-          <a href="/work/scorecard-explorer">Read the case study</a>
-          <a href={scorecardLive} rel="noopener">Open the live app</a>
+        <p class="stack">Claude Haiku · DuckDB · FastAPI · React · FAISS · Cloud Run</p>
+        <p class="ex-links">
+          <a class="btn btn-primary" href="/work/scorecard-explorer">Read the case study</a>
+          <a class="btn btn-outline" href={scorecardLive} rel="noopener">Open the live app</a>
         </p>
       </div>
-      <figure class="case-figure">
+      <figure class="ex-figure">
         <div class="shot">
           <img
             src="/images/work/scorecard-landing-1600.webp"
             srcset="/images/work/scorecard-landing-800.webp 800w, /images/work/scorecard-landing-1600.webp 1600w"
-            sizes="(max-width: 760px) 100vw, 620px"
+            sizes="(max-width: 760px) 100vw, 700px"
             width="1600" height="1000"
+            loading="lazy"
             alt="Scorecard Explorer landing page. Headline: 258.4 million people have gained electricity access through active World Bank Group projects, shown as a bar at 50.5 percent of the 511.7 million expected, with an Ask the Scorecard box below."
           />
         </div>
+        <p class="pin pin-a"><span class="label">Grounding eval</span><strong>12 of 12 correct</strong></p>
+        <p class="pin pin-b"><span class="label">Cost per query</span><strong>$0.0018</strong></p>
         <figcaption>The live landing page, FY2026 edition. The headline is a query result, not copy.</figcaption>
       </figure>
     </article>
 
-    <article class="case" aria-labelledby="case-2">
-      <div class="case-text">
-        <p class="label">02 · Institute on Disability and Public Policy · 2026</p>
-        <h3 id="case-2" class="serif"><a href="/work/crpd-dashboard">CRPD Disability Rights Dashboard</a></h3>
-        <p class="case-lede">The full UN Convention on the Rights of Persons with Disabilities reporting cycle, searchable and cited, for advocates, governments and researchers. Built for the June 2026 Conference of States Parties.</p>
+    <article class="exhibit exhibit-flip" aria-labelledby="case-2">
+      <div class="ex-text">
+        <span class="numeral" aria-hidden="true">02</span>
+        <p class="label ex-kicker">Institute on Disability and Public Policy · 2026</p>
+        <h3 id="case-2" class="display"><a href="/work/crpd-dashboard">CRPD Disability Rights Dashboard</a></h3>
+        <p class="ex-lede">The full UN Convention on the Rights of Persons with Disabilities reporting cycle, searchable and cited, for advocates, governments and researchers. Built for the June 2026 Conference of States Parties.</p>
         <ul class="points">
           <li><strong>RAG over the treaty corpus.</strong> all-mpnet-base-v2 embeddings in FAISS; Claude Haiku answers with inline citations.</li>
           <li><strong>Accessibility is the subject.</strong> Articles 9 and 21 require accessible information, so WCAG 2.2 AA is audited with Playwright and axe.</li>
         </ul>
-        <ul class="chips" aria-label="Stack">
-          <li>Python</li><li>Streamlit</li><li>FAISS</li><li>Claude</li><li>Plotly</li><li>Posit Connect</li>
-        </ul>
-        <p class="case-links">
-          <a href="/work/crpd-dashboard">Read the case study</a>
-          <a href="https://crpd.idppglobal.org/" rel="noopener">Open crpd.idppglobal.org</a>
+        <p class="stack">Python · Streamlit · FAISS · Claude · Plotly · Posit Connect</p>
+        <p class="ex-links">
+          <a class="btn btn-primary" href="/work/crpd-dashboard">Read the case study</a>
+          <a class="btn btn-outline" href="https://crpd.idppglobal.org/" rel="noopener">crpd.idppglobal.org</a>
         </p>
       </div>
-      <figure class="case-figure">
+      <figure class="ex-figure">
         <div class="panel">
-          <p class="big-number serif">17</p>
-          <p class="panel-sub">interactive views, in three groups</p>
+          <div class="panel-head">
+            <span class="big-number display">17</span>
+            <span class="panel-sub">interactive views over the UN treaty reporting record, in three groups</span>
+          </div>
           <div class="groups">
             <div>
               <p class="group-title">Explore</p>
@@ -173,41 +219,40 @@ const roles = [
       </figure>
     </article>
 
-    <article class="case" aria-labelledby="case-3">
-      <div class="case-text">
-        <p class="label">03 · Independent build · 2026</p>
-        <h3 id="case-3" class="serif"><a href="/work/contract-review">Contract Review Agent</a></h3>
-        <p class="case-lede">Reads a contract, analyzes every clause for legal risk in parallel, then stops and waits for a person to approve before any memo is sent.</p>
+    <article class="exhibit" aria-labelledby="case-3">
+      <div class="ex-text">
+        <span class="numeral" aria-hidden="true">03</span>
+        <p class="label ex-kicker">Independent build · 2026</p>
+        <h3 id="case-3" class="display"><a href="/work/contract-review">Contract Review Agent</a></h3>
+        <p class="ex-lede">Reads a contract, analyzes every clause for legal risk in parallel, then stops and waits for a person to approve before any memo is sent.</p>
         <ul class="points">
           <li><strong>Durable by design.</strong> Each stage is a checkpointed task, so a crash or redeploy resumes where it stopped, with no lost or duplicated work.</li>
           <li><strong>Provider-agnostic.</strong> One call routes across Groq, Gemini, OpenRouter, OpenAI and Anthropic with key-driven fallback.</li>
         </ul>
-        <ul class="chips" aria-label="Stack">
-          <li>Next.js 15</li><li>Trigger.dev</li><li>Postgres</li><li>Prisma</li><li>Cloudflare R2</li>
-        </ul>
-        <p class="case-links">
-          <a href="/work/contract-review">Read the case study</a>
-          <a href="https://contract-review-pied.vercel.app" rel="noopener">Open the live app</a>
-          <a href="https://github.com/LinusConradM/contract_review" rel="noopener">Code</a>
+        <p class="stack">Next.js 15 · Trigger.dev · Postgres · Prisma · Cloudflare R2</p>
+        <p class="ex-links">
+          <a class="btn btn-primary" href="/work/contract-review">Read the case study</a>
+          <a class="btn btn-outline" href="https://contract-review-pied.vercel.app" rel="noopener">Live app</a>
+          <a class="btn btn-outline" href="https://github.com/LinusConradM/contract_review" rel="noopener">Code</a>
         </p>
       </div>
-      <figure class="case-figure">
+      <figure class="ex-figure">
         <div class="panel">
           <p class="label">One run, start to finish</p>
           <ol class="steps">
-            <li><span class="step-n">1</span><span>Extract text from the PDF or Word file</span></li>
-            <li><span class="step-n">2</span><span>Split it into clauses</span></li>
-            <li><span class="step-n">3</span><span>Analyze each clause as its own child run, throttled to provider rate limits</span></li>
-            <li class="step-key"><span class="step-n">4</span><span><strong>Wait for a reviewer.</strong> The run suspends and frees its compute for minutes or weeks, then resumes on approval.</span></li>
-            <li><span class="step-n">5</span><span>Write the memo, stream it to the page, email it</span></li>
+            <li><span class="step-n">01</span><span>Extract text from the PDF or Word file</span></li>
+            <li><span class="step-n">02</span><span>Split it into clauses</span></li>
+            <li><span class="step-n">03</span><span>Analyze each clause as its own child run, throttled to provider rate limits</span></li>
+            <li class="step-key"><span class="step-n">04</span><span><strong>Wait for a reviewer.</strong> The run suspends and frees its compute for minutes or weeks, then resumes on approval.</span></li>
+            <li><span class="step-n">05</span><span>Write the memo, stream it to the page, email it</span></li>
           </ol>
         </div>
         <figcaption>Step 4 is the point of the project: nothing leaves without a person’s sign-off.</figcaption>
       </figure>
     </article>
 
-    <div class="section-head">
-      <h2>More work</h2>
+    <div class="section-head more-head">
+      <h2 class="display">More work</h2>
     </div>
     <ul class="rows" role="list">
       {moreWork.map((w) => (
@@ -228,13 +273,18 @@ const roles = [
   </section>
 
   <section id="experience" class="experience" aria-labelledby="exp-title">
-    <div class="wrap exp-grid">
-      <div>
-        <h2 id="exp-title" class="serif">A decade of checking numbers, then building systems that check them.</h2>
-        <p class="exp-lede">Audit and compliance at three banks in Uganda, then a move to Washington for graduate study in AI.</p>
-        <p class="exp-lede"><a href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Full résumé</a></p>
-      </div>
-      <div>
+    <div class="wrap">
+      <h2 id="exp-title" class="display">A decade of checking numbers. Then systems that check them.</h2>
+      <p class="exp-lede">Audit and compliance at three banks in Uganda, then a move to Washington for graduate study in AI.</p>
+
+      <ol class="timeline" role="list" aria-label="Career at a glance">
+        <li><span class="node" aria-hidden="true"></span><span class="label">2012 · Kampala</span><span class="tl-org">Equity Bank Uganda</span><span class="tl-text">Internal Auditor to Manager, Internal Audit</span></li>
+        <li><span class="node" aria-hidden="true"></span><span class="label">2021</span><span class="tl-org">Stanbic Bank Uganda</span><span class="tl-text">Business Compliance Advisory Manager</span></li>
+        <li><span class="node" aria-hidden="true"></span><span class="label">2023</span><span class="tl-org">Uganda Development Bank</span><span class="tl-text">Senior Internal Auditor</span></li>
+        <li class="tl-now"><span class="node" aria-hidden="true"></span><span class="label">2025 · Washington, DC</span><span class="tl-org">American University</span><span class="tl-text">MS in Analytics and AI, then research and analytics roles</span></li>
+      </ol>
+
+      <div class="exp-detail">
         <ul class="roles" role="list">
           {roles.map((r) => (
             <li>
@@ -244,173 +294,283 @@ const roles = [
             </li>
           ))}
         </ul>
-        <p class="edu">
-          <strong>Education.</strong> MS in Analytics and Artificial Intelligence, and Graduate Certificate in Data Science,
-          American University, 2026. BBA in Finance and Accounting, Uganda Martyrs University, 2011.
-        </p>
-        <p class="edu">
-          <strong>Certifications.</strong> <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" rel="noopener">IBM Data Science</a>, <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37" rel="noopener">CFI FMVA</a>, <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6" rel="noopener">CFI BIDA</a>.
-        </p>
+        <div class="edu-col">
+          <p class="edu">
+            <strong>Education.</strong> MS in Analytics and Artificial Intelligence, and Graduate Certificate in Data Science,
+            American University, 2026. BBA in Finance and Accounting, Uganda Martyrs University, 2011.
+          </p>
+          <p class="edu"><strong>Certifications.</strong> <a href="https://www.coursera.org/account/accomplishments/specialization/T6XEQGVXB7R4" rel="noopener">IBM Data Science</a>, <a href="https://credentials.corporatefinanceinstitute.com/68664647-7852-47f7-9a55-50289335bd37" rel="noopener">CFI FMVA</a>, <a href="https://credentials.corporatefinanceinstitute.com/f4890a5f-3502-410a-9592-d21952d2b9a6" rel="noopener">CFI BIDA</a>.</p>
+          <p class="edu"><a href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Full résumé</a></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="wrap contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="serif">Hiring for data science or AI engineering? I’d like to hear about it.</h2>
-    <div class="actions">
-      <a class="btn btn-primary" href={`mailto:${email}`}>{email}</a>
-      <a class="btn btn-outline" href={linkedin} rel="noopener">LinkedIn</a>
-      <a class="btn btn-outline" href={github} rel="noopener">GitHub</a>
-      <a class="btn btn-outline" href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Résumé</a>
+  <section id="contact" class="contact dots" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="label contact-kicker">Hiring for data science or AI engineering?</p>
+      <h2 id="contact-title" class="display">Let’s talk.</h2>
+      <a class="contact-email" href={`mailto:${email}`}>{email}</a>
+      <div class="actions">
+        <a class="btn btn-outline" href={linkedin} rel="me noopener">LinkedIn</a>
+        <a class="btn btn-outline" href={github} rel="me noopener">GitHub</a>
+        <a class="btn btn-outline" href="https://flowcv.com/resume/gm2mwats01sh" rel="noopener">Résumé</a>
+      </div>
     </div>
   </section>
 </Base>
 
 <style>
-  .hero {
-    padding-top: 112px;
-    padding-bottom: 104px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 240px;
-    gap: 56px;
-    align-items: start;
-  }
-  .hero-text { grid-column: 1; grid-row: 1; }
-  .portrait {
-    grid-column: 2;
-    grid-row: 1;
-    width: 240px;
-    height: 240px;
-    border-radius: 16px;
-    object-fit: cover;
-    border: 1px solid var(--line);
-    margin-top: 44px;
-  }
+  .hero { border-bottom: 1px solid var(--line); padding: 104px 0 96px; }
+  .hero-id { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .portrait { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px var(--line-strong), 0 0 0 4px var(--bg); }
+  .hero-id .label { color: var(--ink-3); }
+  .hero-id .label span { color: var(--line-strong); margin: 0 6px; }
   .hero h1 {
-    margin-top: 28px;
-    font-size: clamp(40px, 6vw, 68px);
-    line-height: 1.05;
-    max-width: 900px;
+    margin-top: 36px;
+    font-size: clamp(46px, 8.6vw, 116px);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    max-width: 1100px;
   }
-  .hero-lede { margin-top: 32px; font-size: 20px; line-height: 1.6; color: var(--ink-3); max-width: 720px; }
-  .hero-meta { margin-top: 20px; font-size: 15px; color: var(--muted); max-width: 720px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+  .hl { color: var(--accent); }
+  .hero-row { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 64px; }
+  .hero-lede { max-width: 640px; font-size: 20px; line-height: 1.6; color: var(--ink-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .actions .btn { min-height: 52px; padding: 0 26px; font-size: 16px; }
 
-  .section-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px;
-    border-top: 1px solid var(--rule);
-    padding-top: 20px;
-    margin-bottom: 56px;
+  .trace { margin-top: 88px; }
+  .trace-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin: 0 0 16px; }
+  .trace-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); margin-right: 10px; vertical-align: 1px; }
+  .trace-steps {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; align-items: stretch;
+    border-radius: 20px;
+    background: var(--bg-raised);
+    box-shadow: 0 0 0 1px var(--line), 0 40px 100px -60px var(--glow);
+    overflow: hidden;
   }
-  .section-head h2 { font-size: 15px; font-weight: 600; }
+  .step { flex: 1 1 0; min-width: 0; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .s2 { flex-grow: 1.5; }
+  .s4 { flex-grow: 1.3; }
+  .step-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .step-q, .step-a { font-size: 18px; line-height: 1.45; color: var(--ink); }
+  .step-sql { margin: 0; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: var(--ink-2); white-space: pre-wrap; }
+  .step-sql b { font-weight: 500; color: var(--accent); }
+  .step-row { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; font-family: var(--mono); font-size: 13px; }
+  .step-row dt { color: var(--muted); margin-bottom: 8px; }
+  .step-row dd { margin: 0; padding: 10px; border-radius: 8px; box-shadow: 0 0 0 1px var(--line-strong); color: var(--ink); }
+  .step-row dd.hit { background: var(--accent-wash); box-shadow: 0 0 0 1px var(--gold); font-weight: 500; }
+  .step-answer { background: var(--bg-subtle); }
+  .step-a mark { background: none; color: var(--accent); font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 5px; }
+  .step-a u { text-decoration-color: var(--line-strong); text-underline-offset: 5px; }
+  .step-ok { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .wire { flex: 0 0 36px; align-self: center; height: 1px; background: var(--gold); transform-origin: left center; }
 
-  .case {
+  @media (prefers-reduced-motion: no-preference) {
+    .step { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .s2 { animation-delay: 0.7s; } .s3 { animation-delay: 1.4s; } .s4 { animation-delay: 2.1s; }
+    .wire { animation: draw 0.5s ease-out both; }
+    .w1 { animation-delay: 0.45s; } .w2 { animation-delay: 1.15s; } .w3 { animation-delay: 1.85s; }
+    .hit { animation: glow 1.6s ease-in-out 2.6s 2; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes glow { 50% { box-shadow: 0 0 0 1px var(--gold), 0 0 24px var(--glow); } }
+
+  .proof { border-bottom: 1px solid var(--line); }
+  .proof-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof-grid li { padding: 36px 24px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid var(--line); }
+  .proof-grid li:first-child { border-left: 0; padding-left: 0; }
+  .proof-n { font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; }
+  .proof-t { font-size: 14px; color: var(--muted); }
+
+  .work { padding-top: 128px; }
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+  .section-head h2 { font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: -0.045em; }
+
+  .exhibit {
+    position: relative;
+    margin-top: 120px;
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: 56px;
-    margin-bottom: 120px;
     align-items: start;
   }
-  .case h3 { margin-top: 16px; font-size: 36px; line-height: 1.15; }
-  .case h3 a { color: var(--ink); text-decoration: none; }
-  .case h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-  .case-lede { margin-top: 16px; font-size: 18px; line-height: 1.55; }
-  .points { list-style: none; padding: 0; margin: 24px 0; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.55; color: var(--ink-3); }
-  .points strong { color: var(--ink); font-weight: 600; }
-  .case-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 24px; font-size: 15px; font-weight: 500; }
-  .case-links a { padding: 10px 0; }
+  .exhibit:first-of-type { margin-top: 80px; }
+  .exhibit-flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .exhibit-flip .ex-text { order: 2; }
+  .exhibit-flip .ex-figure { order: 1; }
+  .numeral {
+    display: block;
+    font-size: clamp(88px, 10vw, 136px);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--gold);
+    user-select: none;
+    margin-bottom: 8px;
+  }
+  .ex-text, .ex-figure { position: relative; }
+  .ex-text { display: flex; flex-direction: column; gap: 20px; }
+  .ex-kicker { color: var(--accent); }
+  .ex-text h3 { font-size: clamp(32px, 3.8vw, 48px); line-height: 1.04; }
+  .ex-text h3 a { color: var(--ink); text-decoration: none; }
+  .ex-text h3 a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+  .ex-lede { font-size: 18px; line-height: 1.6; color: var(--ink-2); }
+  .points { padding-left: 1.1em; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+  .points strong { color: var(--ink); font-weight: 700; }
+  .stack { font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--muted); }
+  .ex-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 
-  .panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-subtle); padding: 40px; }
-  .big-number { font-size: 56px; line-height: 1; }
-  .panel-sub { margin-top: 6px; margin-bottom: 32px; font-size: 15px; color: var(--ink-3); }
+  .ex-figure .shot { transition: box-shadow var(--dur); }
+  .exhibit:hover .shot { box-shadow: 0 0 0 1px var(--gold), 0 60px 140px -60px var(--glow); }
+  .pin {
+    position: absolute;
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--bg-raised);
+    box-shadow: 0 0 0 1px var(--line-strong), 0 18px 40px -24px rgba(27, 42, 65, 0.35);
+  }
+  .pin strong { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .pin-a { left: -24px; bottom: 56px; box-shadow: 0 0 0 1px var(--gold), 0 18px 40px -24px rgba(27, 42, 65, 0.35); }
+  .pin-a strong { color: var(--accent); }
+  .pin-b { right: -16px; top: -20px; }
+
+  .panel {
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    box-shadow: 0 0 0 1px var(--line), 0 50px 120px -60px var(--glow);
+    padding: 44px;
+  }
+  .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; margin-bottom: 32px; }
+  .big-number { font-size: clamp(80px, 9vw, 120px); line-height: 0.9; color: var(--accent); letter-spacing: -0.06em; }
+  .panel-sub { font-size: 17px; color: var(--ink-3); max-width: 320px; }
   .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .groups > div { border-top: 2px solid var(--rule); padding-top: 12px; }
-  .groups .group-accent { border-top-color: var(--accent); }
-  .group-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .groups > div { border-top: 1px solid var(--line-strong); padding-top: 14px; }
+  .groups .group-accent { border-top: 2px solid var(--gold); }
+  .group-title { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
   .group-accent .group-title { color: var(--accent); }
-  .groups ul { list-style: none; padding: 0; font-size: 14px; line-height: 1.7; color: var(--ink-3); }
+  .groups ul { list-style: none; padding: 0; font-size: 14px; line-height: 1.8; color: var(--ink-3); }
 
   .steps { list-style: none; padding: 0; margin-top: 20px; }
-  .steps li {
-    display: grid;
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 12px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 15px;
-  }
+  .steps li { display: flex; gap: 20px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; color: var(--ink-3); }
   .steps li:last-child { border-bottom: 0; }
-  .step-n { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; }
-  .steps .step-key { background: var(--bg-raised); margin: 0 -16px; padding-left: 16px; padding-right: 16px; border-radius: 8px; border-bottom-color: transparent; }
-  .step-key .step-n { color: var(--accent); }
-  .step-key strong { font-weight: 600; }
+  .step-n { font-family: var(--mono); font-size: 13px; color: var(--muted); flex: 0 0 24px; }
+  .steps .step-key { margin: 6px -20px; padding: 18px 20px; border: 0; border-radius: 12px; background: var(--accent-wash); box-shadow: 0 0 0 1px var(--gold); color: var(--ink); }
+  .steps .step-key .step-n, .steps .step-key strong { color: var(--accent); }
 
-  .rows { list-style: none; padding: 0; margin: 0 0 120px; }
+  .more-head { margin-top: 160px; }
+  .more-head h2 { font-size: clamp(30px, 3.6vw, 40px); }
+  .rows { list-style: none; padding: 0; margin-top: 28px; border-top: 1px solid var(--line-strong); }
   .row {
     display: grid;
-    grid-template-columns: 140px minmax(0, 1fr) minmax(0, 1.4fr);
-    gap: 8px 24px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
+    grid-template-columns: 170px minmax(0, 1fr) minmax(0, 1.7fr);
+    gap: 12px 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
     align-items: baseline;
   }
-  .row:last-child { border-bottom: 1px solid var(--line); }
-  .row-title { font-size: 16px; font-weight: 500; }
-  .row-text { font-size: 15px; line-height: 1.55; color: var(--ink-3); }
-  .row-links { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 4px; font-size: 14px; font-weight: 500; }
-  .row-links a { padding: 8px 0; }
+  .row-title { font-size: 24px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+  .row-text { font-size: 16px; line-height: 1.6; color: var(--ink-3); }
+  .row-links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 20px; font-family: var(--mono); font-size: 13px; }
+  .row-links a { padding: 6px 0; }
 
-  .experience { background: var(--bg-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .exp-grid {
+  .experience { margin-top: 160px; background: var(--bg-subtle); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 128px 0; }
+  .experience h2 { font-size: clamp(36px, 5.6vw, 68px); line-height: 1.02; letter-spacing: -0.045em; max-width: 1000px; }
+  .exp-lede { margin-top: 24px; font-size: 19px; line-height: 1.6; color: var(--ink-2); max-width: 640px; }
+  .timeline {
+    list-style: none; padding: 0; margin-top: 80px;
     display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-    gap: 56px;
-    padding-top: 96px;
-    padding-bottom: 96px;
+    grid-template-columns: 1.9fr 0.6fr 0.6fr 1.1fr;
+    gap: 24px;
+    position: relative;
+    border-top: 2px solid var(--line-strong);
   }
-  .exp-grid h2 { font-size: 34px; line-height: 1.18; }
-  .exp-lede { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--ink-3); }
-  .roles { list-style: none; padding: 0; }
-  .roles li {
-    display: grid;
-    grid-template-columns: 168px minmax(0, 1fr) minmax(0, 1fr);
-    gap: 4px 24px;
-    padding: 16px 0;
-    border-top: 1px solid var(--line);
-    align-items: baseline;
-  }
-  .roles li:last-child { border-bottom: 1px solid var(--line); }
-  .role { font-weight: 500; }
-  .org { color: var(--ink-3); }
-  .edu { margin-top: 24px; font-size: 15px; line-height: 1.7; color: var(--ink-3); }
-  .edu strong { color: var(--ink); font-weight: 600; }
+  .timeline::after { content: ''; position: absolute; top: -2px; right: 0; width: 26%; height: 2px; background: var(--gold); }
+  .timeline li { display: flex; flex-direction: column; gap: 10px; margin-top: -7px; }
+  .node { width: 12px; height: 12px; border-radius: 50%; background: var(--bg-subtle); box-shadow: inset 0 0 0 2px var(--muted); margin-bottom: 6px; position: relative; z-index: 1; }
+  .tl-now .node { background: var(--gold); box-shadow: none; }
+  .tl-now .label { color: var(--accent); }
+  .tl-org { font-size: 18px; font-weight: 700; letter-spacing: -0.015em; }
+  .tl-text { font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+  .exp-detail { margin-top: 80px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 64px; }
+  .roles { list-style: none; padding: 0; border-top: 1px solid var(--line-strong); }
+  .roles li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 2px 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .roles .label { grid-row: span 2; padding-top: 3px; }
+  .role { font-weight: 700; font-size: 16px; }
+  .org { font-size: 15px; color: var(--ink-3); }
+  .edu-col { display: flex; flex-direction: column; gap: 18px; }
+  .edu { font-size: 15px; line-height: 1.65; color: var(--ink-3); }
+  .edu strong { color: var(--ink); }
 
-  .contact { padding-top: 112px; padding-bottom: 96px; }
-  .contact h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.12; max-width: 780px; }
-
-  @media (max-width: 900px) {
-    .case, .exp-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-    .case-figure { order: -1; }
-    .case { margin-bottom: 88px; }
+  .contact { padding: 160px 0 128px; }
+  .contact-kicker { color: var(--accent); }
+  .contact h2 { margin-top: 20px; font-size: clamp(64px, 11vw, 132px); line-height: 0.95; letter-spacing: -0.055em; }
+  .contact-email {
+    display: inline-block;
+    margin-top: 36px;
+    font-size: clamp(22px, 3vw, 34px);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+    overflow-wrap: anywhere;
   }
+  .contact .actions { margin-top: 40px; }
+
+  @media (max-width: 980px) {
+    .trace-steps { flex-direction: column; }
+    .step { flex: none; }
+    .wire { flex: 0 0 24px; width: 1px; height: 24px; margin-left: 40px; align-self: flex-start; transform-origin: top center; }
+    @media (prefers-reduced-motion: no-preference) {
+      .wire { animation-name: drawv; }
+    }
+    .exhibit, .exhibit-flip { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .exhibit-flip .ex-text { order: 1; }
+    .exhibit-flip .ex-figure { order: 2; }
+    .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .proof-grid li:nth-child(3) { border-left: 0; padding-left: 0; }
+    .proof-grid li:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .exp-detail { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  }
+  @keyframes drawv { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
   @media (max-width: 760px) {
-    .hero { padding-top: 48px; padding-bottom: 64px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
-    .portrait { grid-column: 1; width: 96px; height: 96px; border-radius: 50%; margin-top: 0; }
-    .hero-text { grid-row: 2; }
+    .hero { padding: 48px 0 56px; }
+    .portrait { width: 52px; height: 52px; }
+    .hero h1 { margin-top: 28px; }
     .hero-lede { font-size: 17px; }
-    .actions .btn { flex: 1 1 100%; }
-    .actions .btn-quiet { flex: 1 1 40%; border: 1px solid var(--line-strong); }
-    .case h3 { font-size: 28px; }
+    .actions { width: 100%; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    .trace { margin-top: 56px; }
+    .step { padding: 20px; }
+    .wire { margin-left: 30px; }
+    .proof-grid li { padding: 24px 16px; }
+    .proof-grid li:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .work { padding-top: 80px; }
+    .exhibit { margin-top: 96px; }
+    .exhibit:first-of-type { margin-top: 64px; }
+    .pin { position: static; margin-top: 12px; }
+    .ex-figure { display: flex; flex-direction: column; }
     .panel { padding: 24px; }
     .groups { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-    .row { grid-template-columns: minmax(0, 1fr); }
-    .roles li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-    .exp-grid { padding-top: 64px; padding-bottom: 64px; }
-    .exp-grid h2 { font-size: 28px; }
-    .contact { padding-top: 72px; padding-bottom: 64px; }
+    .steps .step-key { margin: 6px -12px; padding: 16px 12px; }
+    .more-head { margin-top: 112px; }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 24px 0; }
+    .experience { margin-top: 112px; padding: 80px 0; }
+    .timeline { grid-template-columns: minmax(0, 1fr); border-top: 0; border-left: 2px solid var(--line-strong); margin-left: 5px; padding-left: 22px; gap: 22px; margin-top: 48px; }
+    .timeline::after { display: none; }
+    .timeline li { margin-top: 0; position: relative; }
+    .node { position: absolute; left: -29px; top: 2px; margin: 0; }
+    .tl-now { border-left: 0; }
+    .roles li { grid-template-columns: minmax(0, 1fr); }
+    .roles .label { grid-row: auto; }
+    .contact { padding: 96px 0 80px; }
   }
 </style>

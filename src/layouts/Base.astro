@@ -1,8 +1,7 @@
 ---
-import '@fontsource-variable/inter';
-import '@fontsource/source-serif-4/400.css';
-import '@fontsource/source-serif-4/500.css';
-import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource-variable/manrope';
+import '@fontsource/dm-mono/400.css';
+import '@fontsource/dm-mono/500.css';
 import '../styles/global.css';
 
 interface Props {
@@ -54,8 +53,8 @@ const navBase = isHome ? '' : '/';
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1726" media="(prefers-color-scheme: dark)" />
     <link rel="sitemap" href="/sitemap.xml" />
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
@@ -80,7 +79,7 @@ const navBase = isHome ? '' : '/';
 
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="site-name" href="/">Conrad Linus Muhirwe</a>
+        <a class="site-name" href="/"><span class="site-dot" aria-hidden="true"></span>Conrad Linus Muhirwe</a>
         <nav aria-label="Main" class="site-nav">
           <a href={`${navBase}#work`}>Work</a>
           <a href={`${navBase}#experience`}>Experience</a>
@@ -139,14 +138,18 @@ const navBase = isHome ? '' : '/';
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  .site-name { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; }
+  .site-name { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
+  .site-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
   .site-name:hover { color: var(--ink); }
   .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-left: auto; }
   .site-nav > a:not(.btn) {
     color: var(--ink-3);
     text-decoration: none;
-    font-size: 15px;
-    padding: 10px 2px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 2px;
   }
   .site-nav > a:not(.btn):hover { color: var(--ink); }
   .nav-resume { min-height: 40px; padding: 0 14px; font-size: 14px; }
@@ -157,7 +160,7 @@ const navBase = isHome ? '' : '/';
     align-items: center;
     justify-content: center;
     border: 1px solid var(--line-strong);
-    border-radius: 8px;
+    border-radius: 999px;
     background: transparent;
     color: var(--ink-3);
     cursor: pointer;
@@ -179,7 +182,8 @@ const navBase = isHome ? '' : '/';
     gap: 8px 16px;
     padding-top: 24px;
     padding-bottom: 32px;
-    font-size: 13px;
+    font-family: var(--mono);
+    font-size: 12px;
     color: var(--muted);
   }
 
@@ -187,6 +191,6 @@ const navBase = isHome ? '' : '/';
     .site-name { flex: 1; }
     .theme-toggle { order: 2; }
     .site-nav { order: 3; width: 100%; margin-left: 0; gap: 4px 14px; }
-    .site-nav > a:not(.btn) { font-size: 14px; }
+    .site-nav > a:not(.btn) { font-size: 12px; }
   }
 </style>

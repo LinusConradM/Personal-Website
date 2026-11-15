@@ -69,6 +69,15 @@ const roles = [
   jsonLd={jsonLd}
 >
   <section class="wrap hero" aria-labelledby="hero-title">
+    <img
+      class="portrait"
+      src="/images/conrad-linus-muhirwe-600.webp"
+      srcset="/images/conrad-linus-muhirwe-320.webp 320w, /images/conrad-linus-muhirwe-600.webp 600w"
+      sizes="(max-width: 760px) 96px, 240px"
+      width="600" height="600"
+      alt="Portrait of Conrad Linus Muhirwe"
+    />
+    <div class="hero-text">
     <p class="label">Data scientist and AI engineer · Washington, DC</p>
     <h1 id="hero-title" class="serif">I build AI systems that show their work.</h1>
     <p class="hero-lede">
@@ -82,6 +91,7 @@ const roles = [
       <a class="btn btn-outline" href={`mailto:${email}`}>{email}</a>
       <a class="btn btn-quiet" href={github} rel="me noopener">GitHub</a>
       <a class="btn btn-quiet" href={linkedin} rel="me noopener">LinkedIn</a>
+    </div>
     </div>
   </section>
 
@@ -257,7 +267,25 @@ const roles = [
 </Base>
 
 <style>
-  .hero { padding-top: 112px; padding-bottom: 104px; }
+  .hero {
+    padding-top: 112px;
+    padding-bottom: 104px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero-text { grid-column: 1; grid-row: 1; }
+  .portrait {
+    grid-column: 2;
+    grid-row: 1;
+    width: 240px;
+    height: 240px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    margin-top: 44px;
+  }
   .hero h1 {
     margin-top: 28px;
     font-size: clamp(40px, 6vw, 68px);
@@ -370,7 +398,9 @@ const roles = [
     .case { margin-bottom: 88px; }
   }
   @media (max-width: 760px) {
-    .hero { padding-top: 56px; padding-bottom: 64px; }
+    .hero { padding-top: 48px; padding-bottom: 64px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .portrait { grid-column: 1; width: 96px; height: 96px; border-radius: 50%; margin-top: 0; }
+    .hero-text { grid-row: 2; }
     .hero-lede { font-size: 17px; }
     .actions .btn { flex: 1 1 100%; }
     .actions .btn-quiet { flex: 1 1 40%; border: 1px solid var(--line-strong); }

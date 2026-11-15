@@ -1,118 +1,59 @@
-# Conrad Linus Muhirwe — Personal Portfolio
+# Conrad Linus Muhirwe, personal site
 
-> Data Scientist · AI Engineer · Data Analyst
-> A portfolio showcasing work at the intersection of machine learning, financial operations, and applied AI.
+Portfolio for a data scientist and AI engineer: **I build AI systems that show their work.**
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-Visit-0072CE?style=for-the-badge&logo=netlify&logoColor=white)](https://conradlinusmuhirwe.netlify.app/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Deployed on Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
+Live: https://conradlinusmuhirwe.netlify.app/
 
----
+## Pages
 
-## Preview
-
-**Live site:** https://conradlinusmuhirwe.netlify.app/
-
-The portfolio is a single-page responsive web app featuring a fixed sidebar with profile information and a tabbed main panel covering five sections:
-
-| Section | Contents |
+| Path | Contents |
 |---|---|
-| **About Me** | Professional summary, academic journey, 8-role career timeline, core skills, interests |
-| **Projects** | Featured work including the CRPD Disability Rights Dashboard (IDPP), US Food Insecurity Analytics Platform, AI-Powered Federal Financial Reporting Dashboard (Revolutional, formerly Harmonia Holdings Group), AI Job Tracker agent, and Planit WhatsApp booking assistant |
-| **Certifications** | Udemy AI Engineer Track, IBM Data Science (Coursera), CFI FMVA, CFI BIDA |
-| **Resume** | Downloadable PDF (generated client-side via html2pdf.js) and online viewer |
-| **Contact** | Contact form (Formspree) and direct links |
+| `/` | Thesis, three selected projects, four more, experience, contact |
+| `/work/scorecard-explorer` | Case study: LLM analyst over the World Bank Group Corporate Scorecard, with the grounding eval |
+| `/work/crpd-dashboard` | Case study: RAG platform for the UN CRPD reporting cycle |
+| `/work/contract-review` | Case study: durable contract review workflow with a human sign-off |
 
----
+## Stack
 
-## Features
+- [Astro](https://astro.build) 7, static output, no client framework. The only scripts are the theme toggle and Google Analytics.
+- Self-hosted fonts from Fontsource: Source Serif 4 (headlines), Inter (text), JetBrains Mono (labels).
+- Light and dark themes from CSS tokens in `src/styles/global.css`; follows the system setting until the visitor picks one.
+- WCAG 2.2 AA: axe reports zero violations on every page in both themes at desktop and phone widths; `prefers-reduced-motion` is respected.
+- Hosted on Netlify; build settings live in `netlify.toml`.
 
-- **Responsive, mobile-first layout** — sidebar collapses above main content at `<900px`, further condensed below `600px`.
-- **Accessible tab navigation** — ARIA roles, keyboard-navigable, visible focus states.
-- **Animated scroll-driven timeline** — `requestAnimationFrame` lerp animation for the career timeline.
-- **Client-side PDF resume export** — [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) renders a hidden template into a downloadable PDF.
-- **AJAX contact form** — [Formspree](https://formspree.io/) integration with no page reload.
-- **"Explore more" popup** — context-aware prompt that slides in near the end of each tab's content.
-- **Single-file architecture** — all HTML, CSS, and JS live in `index.html` for zero-build simplicity.
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Markup** | HTML5 (semantic, ARIA-annotated) |
-| **Styling** | CSS3 (custom, no framework), CSS custom properties, flexbox + grid, gradients |
-| **Scripting** | Vanilla JavaScript (ES6+), no build step |
-| **Typography** | [Google Fonts — Inter](https://fonts.google.com/specimen/Inter) |
-| **Icons** | [Font Awesome](https://fontawesome.com/) |
-| **PDF Export** | [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) |
-| **Forms** | [Formspree](https://formspree.io/) |
-| **Hosting** | [Netlify](https://www.netlify.com/) |
-
----
-
-## Project Structure
+## Layout
 
 ```
-personal_website/
-├── index.html           # Main file — all HTML, inline CSS, and JS
-├── images/              # Profile photo, institution logos, certification badges
-├── styles.css           # Legacy (styles are inline in index.html)
-├── script.js            # Legacy (scripts are inline in index.html)
-├── DEPLOYMENT.md        # Netlify deployment instructions
-└── README.md
+src/
+  layouts/Base.astro        head, meta, header, footer, theme toggle
+  layouts/CaseStudy.astro   case study page template
+  pages/index.astro         home page
+  pages/work/*.astro        case studies
+  pages/404.astro
+  styles/global.css         design tokens and shared styles
+public/
+  images/work/              project screenshots (webp, 800 and 1600 px)
+  og/                       1200x630 share images, one per page
+  favicon.svg, apple-touch-icon.png, robots.txt, sitemap.xml
 ```
 
----
+## Run locally
 
-## Getting Started
-
-### Run locally
-
-No build step required. Clone and open `index.html` in a browser:
+Needs Node 22.23 or newer.
 
 ```bash
-git clone https://github.com/LinusConradM/personal_website.git
-cd personal_website
-open index.html          # macOS
-# or: xdg-open index.html (Linux) / start index.html (Windows)
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # writes dist/
+npm run preview   # serves dist/
 ```
 
-For live-reload during development:
+## Deploy
 
-```bash
-npx serve .
-# or: python3 -m http.server 8000
-```
-
-### Deploy
-
-The site auto-deploys to Netlify on push to `main`. See [DEPLOYMENT.md](DEPLOYMENT.md) for manual drag-and-drop or Git-integrated deployment.
-
----
-
-## Featured Projects
-
-- **[CRPD Disability Rights Data Dashboard](https://crpd.idppglobal.org/)** — NLP and AI-powered platform for the full UN Convention on the Rights of Persons with Disabilities reporting cycle. Built at American University's Institute on Disability and Public Policy (IDPP).
-- **[US Food Insecurity Analytics Platform](https://conradlinusmuhirwe-feeding-america.share.connect.posit.cloud)** — LLM-powered analytics platform over 15 years of USDA county-level data, with SHAP explainability and Prophet/ARIMA forecasting.
-- **AI-Powered Federal Financial Reporting Dashboard** — End-to-end AI automation on AWS for federal compliance reporting at Revolutional (formerly Harmonia Holdings Group). Reduced manual processing by 80%.
-- **[AI Job Tracker & Daily Digest Agent](https://github.com/LinusConradM/job_tracker)** — Autonomous agent with Claude-scored job matching across 50+ sources.
-- **[Planit — AI WhatsApp Appointment Booking](https://linusconradm.github.io/planit/)** — Multilingual AI assistant for East African service businesses.
-
----
+See [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Contact
 
-- **Location:** Washington, DC
-- **Email:** [linusconradm@gmail.com](mailto:linusconradm@gmail.com)
-- **LinkedIn:** [Conrad Linus Muhirwe](https://linkedin.com/in/Conrad-Linus-m)
-- **Portfolio:** [conradlinusmuhirwe.netlify.app](https://conradlinusmuhirwe.netlify.app/)
+[linusconradm@gmail.com](mailto:linusconradm@gmail.com) · [LinkedIn](https://www.linkedin.com/in/Conrad-Linus-m) · [GitHub](https://github.com/LinusConradM)
 
----
-
-## License
-
-Personal portfolio — all content © Conrad Linus Muhirwe. Code structure available for reference under permissive use.
+All content © Conrad Linus Muhirwe.
